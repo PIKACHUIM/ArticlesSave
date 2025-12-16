@@ -300,7 +300,7 @@ slmgr -ato
 
 ### 创建虚拟机
 
-1、打开 [Hyper-V 管理器](Shorts\hyperv.lnk) ，点击`新建`——选择`第二代`：
+1、打开 [Hyper-V 管理器](hyperv.msc) ，点击`新建`——选择`第二代`：
 
 ![QQ20241111-215622](/image/systems/win-server25-install/QQ20241111-215622.png)
 
@@ -318,7 +318,7 @@ slmgr -ato
 
 ### 设置硬件直通(DDA)
 
-1、打开： [DiscreteDeviceAssign.exe](Setups\DiscreteDeviceAssign.exe) ，选中虚拟机，点击`添加设备`：
+1、打开： DiscreteDeviceAssign.exe ，选中虚拟机，点击`添加设备`：
 
 ![QQ20241111-220325](/image/systems/win-server25-install/QQ20241111-220325.png)
 
