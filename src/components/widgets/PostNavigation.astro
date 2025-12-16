@@ -1,11 +1,10 @@
----
+---    
 import type { CollectionEntry } from "astro:content";
-
-interface Props {
-  prevPost?: CollectionEntry<"blog">;
-  nextPost?: CollectionEntry<"blog">;
-}
----
+    
+interface Props {    
+  prevPost?: CollectionEntry<"blog">;    
+  nextPost?: CollectionEntry<"blog">;    
+}    
     
 const { prevPost, nextPost } = Astro.props;    
 ---    

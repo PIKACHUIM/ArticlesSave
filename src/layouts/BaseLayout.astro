@@ -24,7 +24,6 @@ const {
   headings = [],
   showTOC = false,
   isIndexed = true,
-  isPostPage = false,
 } = Astro.props;
 
 // 根据当前路径从配置中获取 Banner 内容
@@ -57,6 +56,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
       umamiConfig.enable && (
         <script
           defer
+          is:inline
           src={`${umamiConfig.baseUrl}/script.js`}
           data-website-id={umamiConfig.websiteId}
         />
@@ -64,7 +64,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
     }
 
     <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+    <script type="text/javascript" is:inline>
       (function (c, l, a, r, i, t, y) {
         c[a] =
           c[a] ||
@@ -154,8 +154,8 @@ const bannerSubtitle = pageConfig?.subtitle || "";
             case 'y': ret = Math.random() * window.innerHeight; break;
             case 's': ret = config.size.min + Math.random() * (config.size.max - config.size.min); break;
             case 'r': ret = Math.random() * 6; break;
-            case 'fnx': random = config.speed.horizontal.min + Math.random() * (config.speed.horizontal.max - config.speed.horizontal.min); ret = function (x, y) { return x + random; }; break;
-            case 'fny': random = config.speed.vertical.min + Math.random() * (config.speed.vertical.max - config.speed.vertical.min); ret = function (x, y) { return y + random; }; break;
+            case 'fnx': random = config.speed.horizontal.min + Math.random() * (config.speed.horizontal.max - config.speed.horizontal.min); ret = function (x) { return x + random; }; break;
+            case 'fny': random = config.speed.vertical.min + Math.random() * (config.speed.vertical.max - config.speed.vertical.min); ret = function (y) { return y + random; }; break;
             case 'fnr': ret = function (r) { return r + config.speed.rotation; }; break;
           }
           return ret;
