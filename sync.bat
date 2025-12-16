@@ -3,6 +3,7 @@ chcp 65001 >nul
 echo.
 echo ========================================
 echo    文章同步脚本快捷方式
+echo    JWT Secret: %jwtSecret:~0,10%***%jwtSecret:~-3%
 echo ========================================
 echo.
 
@@ -31,37 +32,37 @@ set /p choice=请输入选项 (0-6):
 
 if "%choice%"=="1" (
     echo 正在同步所有文章...
-    if defined JWT_SECRET (
-        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js
-    ) else (
+    if "%jwtSecret%"=="" (
         node scripts/sync.js
+    ) else (
+        set JWT_SECRET=%jwtSecret% && node scripts/sync.js
     )
     git add src/content/blog/*
     git commit -m "update blog"
     git push
 ) else if "%choice%"=="2" (
     echo 调试模式：预览要上传的数据
-    if defined JWT_SECRET (
-        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --dry-run
-    ) else (
+    if "%jwtSecret%"=="" (
         node scripts/sync.js --dry-run
+    ) else (
+        set JWT_SECRET=%jwtSecret% && node scripts/sync.js --dry-run
     )
 ) else if "%choice%"=="3" (
     echo 详细模式同步所有文章...
-    if defined JWT_SECRET (
-        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --verbose
-    ) else (
+    if "%jwtSecret%"=="" (
         node scripts/sync.js --verbose
+    ) else (
+        set JWT_SECRET=%jwtSecret% && node scripts/sync.js --verbose
     )
     git add src/content/blog/*
     git commit -m "update blog"
     git push
 ) else if "%choice%"=="4" (
     echo 调试+详细模式：预览详细数据
-    if defined JWT_SECRET (
-        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --dry-run --verbose
-    ) else (
+    if "%jwtSecret%"=="" (
         node scripts/sync.js --dry-run --verbose
+    ) else (
+        set JWT_SECRET=%jwtSecret% && node scripts/sync.js --dry-run --verbose
     )
     git add src/content/blog/*
     git commit -m "update blog"
@@ -69,10 +70,10 @@ if "%choice%"=="1" (
 ) else if "%choice%"=="5" (
     set /p articleId=请输入文章ID: 
     echo 正在同步ID为 %articleId% 的文章...
-    if defined JWT_SECRET (
-        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --id %articleId%
-    ) else (
+    if "%jwtSecret%"=="" (
         node scripts/sync.js --id %articleId%
+    ) else (
+        set JWT_SECRET=%jwtSecret% && node scripts/sync.js --id %articleId%
     )
     git add src/content/blog/*
     git commit -m "update blog"
