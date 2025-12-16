@@ -131,14 +131,14 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 graph LR
 A[对外域名www.example.com] --> |解析| B[优选域名ct.877774.xyz]
 B -->|指向| C[Cloudflare SAAS转发www.example.com] 
-C -->|回源| D[回源域名www.another.com]
+C -->|回源| D[回源域名org.example.com]
 D -->|回源| E[服务器]
 ```
 
 ### 优选教程
 1. 打开Cloudflare解析设置页面，添加『回源域名』CNAME记录，**需要**打开小黄云『代理』
 
-案例里应该设置www.another.com解析到你的回源服务器，或者设置为Tunnel绑定IP的隧道连接
+案例里应该设置org.example.com解析到你的回源服务器，或者设置为Tunnel绑定IP的隧道连接
 ![QQ20251216-151738.jpg](/image/network/cloudflare-best-node/QQ20251216-151738.jpg)
 
 2. 添加『优选域名』CNAME记录，**不能**打开小黄云『代理』，记录的值为『优选节点域名』
@@ -146,14 +146,13 @@ D -->|回源| E[服务器]
 案例里应该设置www.example.com解析到ct.877774.xyz（可以替换为你自己的优选节点的域名）
 ![QQ20251216-152720.jpg](/image/network/cloudflare-best-node/QQ20251216-152720.jpg)
 
-3. 打开『回源域名』的『SSL-自定义主机名』，设置任意一个回源域名为回退源的回源域名
-
-注意是『回源域名』（org.example.com）SSL设置，不是『优选域名』的（www.example.com）
+3. 打开SSL设置页面-自定义主机名，在回退源这里设置任意一个回源域名为回退源的回源域名
 
 添加的回退源主机名应该是回源域名的org.example.com，而不是优选域名的www.example.com
 ![QQ20251216-152215.jpg](/image/network/cloudflare-best-node/QQ20251216-152215.jpg)
 
-5. 添加『优选域名』到『回源域名』的『SSL-自定义主机名』中，建议设置HTTP验证SSL证书
+5. 添加『优选域名』到『自定义主机名』中，建议设置HTTP验证SSL证书，其他选项保持默认
+
 自定义源需要填写『回源域名』org.example.com，如果只要一个优选可以选『默认源服务器』
 ![QQ20251216-152503.jpg](/image/network/cloudflare-best-node/QQ20251216-152503.jpg)
 
