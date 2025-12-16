@@ -1,5 +1,5 @@
 ---
-title: Windows Server 2025 安装优化教程
+title: WindowsServer 2025安装优化教程
 description: 本教程将介绍如何安装Windows Server 2025，并且优化系统性能，适合日常使用
 pubDate: 12 15 2025
 image: /image/systems/win-server25-install/QQ20251216-124639.jpg

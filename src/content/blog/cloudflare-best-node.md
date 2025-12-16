@@ -1,5 +1,5 @@
 ---
-title: Cloudflare 不同类型优选教程
+title: Cloudflare 不同类型优选节点IP教程
 description: 本教程将介绍如何通过Cloudflare优选IP，从而优选国内访问质量较好的IP地址
 pubDate: 12 15 2025
 image: /image/network/cloudflare-best-node/QQ20251216-123005.jpg
@@ -11,7 +11,7 @@ tags:
 badge: Cloudflare
 ---
 
-# Cloudflare 不同类型优选教程
+# Cloudflare 不同类型优选节点IP教程
 
 CloudFlare优选IP通过在全国部署节点测试CloudFlare的公布的IP地址
 
