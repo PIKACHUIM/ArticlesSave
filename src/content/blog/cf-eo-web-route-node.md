@@ -77,6 +77,8 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 
 这样虽然实现了优选IP，但是感觉不优雅，怎么办？当然可以再套一层CNAME，指向cdn
 
+### 实现原理
+
 ```mermaid
 graph LR
 A[对外域名www.example.com]
@@ -86,4 +88,10 @@ A[对外域名www.example.com]
     C --> E[CF Pages]
     D --> E[CF Pages]
 ```
+
+### 实现方法
+
+在上一步的基础上，添加CNAME记录：
+ - 记录值：www.cdn.example.com（指向中间域名）
+![QQ20251216-163701.jpg](/image/network/cf-eo-web-route-node/QQ20251216-163701.jpg)
 
