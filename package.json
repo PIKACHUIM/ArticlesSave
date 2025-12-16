@@ -19,7 +19,6 @@
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/tailwind": "^6.0.2",
     "@fancyapps/ui": "^6.0.21",
-    "@mermaid-js/layout-elk": "^0.2.0",
     "@notionhq/client": "^2.3.0",
     "@playform/compress": "^0.1.9",
     "@rollup/plugin-terser": "^0.4.4",
