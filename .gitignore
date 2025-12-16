@@ -28,3 +28,4 @@ public/pagefind/
 
 # pnpm store
 pnpm-store/
+pnpm-lock.yaml
