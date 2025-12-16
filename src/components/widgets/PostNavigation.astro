@@ -1,11 +1,11 @@
----    
-import type { CollectionEntry } from "astro:content";    
-import { Icon } from "astro-icon/components";  
-    
-interface Props {    
-  prevPost?: CollectionEntry<"blog">;    
-  nextPost?: CollectionEntry<"blog">;    
-}    
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  prevPost?: CollectionEntry<"blog">;
+  nextPost?: CollectionEntry<"blog">;
+}
+---
     
 const { prevPost, nextPost } = Astro.props;    
 ---    

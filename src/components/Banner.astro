@@ -11,8 +11,6 @@ export interface Props {
   subtitle?: string;
 }
 
-const { title, subtitle } = Astro.props;
-
 // 统一所有页面都只用配置文件 SITE_PAGES
 const currentPath = Astro.url.pathname;
 let pageKey = "home";

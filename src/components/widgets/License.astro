@@ -175,7 +175,7 @@ const socialLinks = [
 </div>  
   
 {slug && (  
-  <script define:vars={{ slug, umamiConfig }}>  
+  <script is:inline define:vars={{ slug, umamiConfig }}>
     // 获取浏览量统计  
     async function fetchLicensePageViews() {  
       if (!umamiConfig.enable) {  

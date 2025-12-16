@@ -4,8 +4,7 @@ import ThemeToggle from "./widgets/ThemeToggle.astro";
 import { SITE_TITLE, SITE_MENU } from "../config";      
       
 // Get current path to determine active link      
-const currentPath = Astro.url.pathname;      
-const className = Astro.props.class;      
+const currentPath = Astro.url.pathname;
       
 // Type safely process SITE_MENU before rendering      
 type SubMenuItem = {      
