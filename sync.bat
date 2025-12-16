@@ -5,6 +5,19 @@ echo ========================================
 echo    文章同步脚本快捷方式
 echo ========================================
 echo.
+
+:: 获取JWT Secret
+echo 请输入JWT Secret (留空使用默认值):
+set /p jwtSecret=
+if "%jwtSecret%"=="" (
+    set JWT_SECRET=
+    echo 将使用默认JWT Secret
+) else (
+    set JWT_SECRET=%jwtSecret%
+    echo 将使用指定的JWT Secret
+)
+echo.
+
 echo 请选择操作：
 echo 1. 同步所有文章
 echo 2. 调试模式（不实际上传）
@@ -18,20 +31,52 @@ set /p choice=请输入选项 (0-6):
 
 if "%choice%"=="1" (
     echo 正在同步所有文章...
-    node scripts/sync.js
+    if defined JWT_SECRET (
+        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js
+    ) else (
+        node scripts/sync.js
+    )
+    git add src/content/blog/*
+    git commit -m "update blog"
+    git push
 ) else if "%choice%"=="2" (
     echo 调试模式：预览要上传的数据
-    node scripts/sync.js --dry-run
+    if defined JWT_SECRET (
+        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --dry-run
+    ) else (
+        node scripts/sync.js --dry-run
+    )
 ) else if "%choice%"=="3" (
     echo 详细模式同步所有文章...
-    node scripts/sync.js --verbose
+    if defined JWT_SECRET (
+        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --verbose
+    ) else (
+        node scripts/sync.js --verbose
+    )
+    git add src/content/blog/*
+    git commit -m "update blog"
+    git push
 ) else if "%choice%"=="4" (
     echo 调试+详细模式：预览详细数据
-    node scripts/sync.js --dry-run --verbose
+    if defined JWT_SECRET (
+        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --dry-run --verbose
+    ) else (
+        node scripts/sync.js --dry-run --verbose
+    )
+    git add src/content/blog/*
+    git commit -m "update blog"
+    git push
 ) else if "%choice%"=="5" (
     set /p articleId=请输入文章ID: 
     echo 正在同步ID为 %articleId% 的文章...
-    node scripts/sync.js --id %articleId%
+    if defined JWT_SECRET (
+        set JWT_SECRET=%JWT_SECRET% node scripts/sync.js --id %articleId%
+    ) else (
+        node scripts/sync.js --id %articleId%
+    )
+    git add src/content/blog/*
+    git commit -m "update blog"
+    git push
 ) else if "%choice%"=="6" (
     node scripts/sync.js --help
 ) else if "%choice%"=="0" (
