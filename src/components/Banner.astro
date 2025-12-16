@@ -154,7 +154,7 @@ const bannerHeight = BANNER_HEIGHT;
 
 <!-- 打字机效果脚本 -->
 <script define:vars={{ TYPEWRITER_TEXTS, useTypewriter }} is:inline>
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener("astro:page-load", () => {// @ts-ignore
     if (!useTypewriter || !TYPEWRITER_TEXTS || TYPEWRITER_TEXTS.length === 0) {
       return;
     }

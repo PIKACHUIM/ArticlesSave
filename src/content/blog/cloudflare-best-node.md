@@ -106,7 +106,6 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 2、查看NS记录，如果你添加的是根域名，直接去注册商那里修改为DNS POD的NS记录
 ![QQ20251216-150956.jpg](/image/network/cloudflare-best-node/QQ20251216-150956.jpg)
 
-
 3、如果是母域名托管Cloudflare需要优选子域名的，添加子域名到Cloudflare
  - 记录类型为NS，记录值为ns1.xxxxx.xxx（DNS POD的NS记录）
 ![QQ20251216-151233.jpg](/image/network/cloudflare-best-node/QQ20251216-151233.jpg)
