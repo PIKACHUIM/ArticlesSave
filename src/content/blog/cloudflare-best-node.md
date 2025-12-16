@@ -99,12 +99,32 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 可以绑定www.example.com的NS到三方DNS解析商，直接解析@记录。
 
 ### 优选教程
+1、找一个支持区分国内和海外不同线路解析的DNS解析商，例如DNSPod、华为云DNS等，
+这里以DNS POD为例，添加域名，例如cdn.example.com，也可以直接添加example.com
+![QQ20251216-150833.jpg](/image/network/cloudflare-best-node/QQ20251216-150833.jpg)
+
+2、查看NS记录，如果你添加的是根域名，直接去注册商那里修改为DNS POD的NS记录
+![QQ20251216-150956.jpg](/image/network/cloudflare-best-node/QQ20251216-150956.jpg)
+
+
+3、如果是母域名托管Cloudflare需要优选子域名的，添加子域名到Cloudflare
+ - 记录类型为NS，记录值为ns1.xxxxx.xxx（DNS POD的NS记录）
+![QQ20251216-151233.jpg](/image/network/cloudflare-best-node/QQ20251216-151233.jpg)
+
+4. 打开DNSPod解析设置页面，添加CNAME记录：
+ - 默认线路：默认填CF Pages的记录xxxx.pages.dev
+ - 优选线路：填优选节点域名ct.877774.xyz（替换你自己的）
+![QQ20251216-151422.jpg](/image/network/cloudflare-best-node/QQ20251216-151422.jpg)
+
+此时优选就完成了！注意：如果你之前开启了代理，那么解析记录可能要一两个小时才会生效。
 
 ## CDN / Tunnel 优选
 
 CDN / Tunnel 优选要求至少有两个域名，其中一个绑定到Cloudflare
 
 另一个绑定Cloudflare或者三方DNS解析商都可以，这里以绑定CF为例
+
+并且你需要准备一个外币信用卡或者Paypal用于开通免费的Saas服务
 
 - 用于优选的域名： www.example.com （替换为你自己的域名）
 - 用于回源的域名： www.another.com （替换为你自己的域名）
@@ -120,5 +140,27 @@ C -->|回源| D[回源域名www.another.com]
 D -->|回源| E[服务器]
 ```
 
-
 ### 优选教程
+1. 打开Cloudflare解析设置页面，添加『回源域名』CNAME记录，**需要**打开小黄云『代理』
+
+案例里应该设置www.another.com解析到你的回源服务器，或者设置为Tunnel绑定IP的隧道连接
+![QQ20251216-151738.jpg](/image/network/cloudflare-best-node/QQ20251216-151738.jpg)
+
+2. 添加『优选域名』CNAME记录，**不能**打开小黄云『代理』，记录的值为『优选节点域名』
+
+案例里应该设置www.example.com解析到ct.877774.xyz（可以替换为你自己的优选节点的域名）
+![QQ20251216-151844.jpg](/image/network/cloudflare-best-node/QQ20251216-151844.jpg)
+
+3. 打开『回源域名』的『SSL-自定义主机名』，设置回源域名为任意一个『优选域名』的域名
+
+注意是『回源域名』（www.another.com）SSL设置，不是『优选域名』的（www.example.com）
+
+添加的回退源主机名应该是回源域名的www.another.com，而不是优选域名的www.example.com
+![QQ20251216-152215.jpg](/image/network/cloudflare-best-node/QQ20251216-152215.jpg)
+
+5. 添加『优选域名』到『回源域名』的『SSL-自定义主机名』中，建议设置HTTP验证SSL证书
+自定义源需要填写『回源域名』www.another.com，如果只要一个优选可以选『默认源服务器』
+![QQ20251216-152503.jpg](/image/network/cloudflare-best-node/QQ20251216-152503.jpg)
+
+
+此时优选就完成了！注意：如果你之前开启了代理，那么解析记录可能要一两个小时才会生效。
