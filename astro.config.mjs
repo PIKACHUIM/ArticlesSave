@@ -24,6 +24,10 @@ export default defineConfig({
     },
   },
   integrations: [
+    mermaid({
+      theme: 'forest',
+      autoTheme: true
+    }),
     updateConfig(),
     mdx(),
     icon(),
@@ -36,10 +40,6 @@ export default defineConfig({
       configFile: "./tailwind.config.mjs",
     }),
     playformCompress(),
-    mermaid({
-      theme: 'forest',
-      autoTheme: true
-    })
   ],
   markdown: {
     shikiConfig: {

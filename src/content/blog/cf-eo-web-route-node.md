@@ -18,7 +18,7 @@ badge: Cloudflare
 
 有的，兄弟，有的，利用DNS分线路解析，可以很轻松实现这一点
 
-## 实现原理
+## 分线路实现原理
 
 大致思路就是，找个支持区分国内和海外不同线路解析的DNS解析商：
 
@@ -52,7 +52,7 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 
 可以绑定www.example.com的NS到三方DNS解析商，直接解析@记录。
 
-### 优选教程
+### 分线路教程
 1. 找一个支持区分国内和海外不同线路解析的DNS解析商，例如DNSPod、华为云DNS等，
 这里以DNS POD为例，添加域名，例如cdn.example.com，也可以直接添加example.com
 ![QQ20251216-150833.jpg](/image/network/cloudflare-best-node/QQ20251216-150833.jpg)
@@ -70,3 +70,20 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 ![QQ20251216-153712.jpg](/image/network/cf-eo-web-route-node/QQ20251216-153712.jpg)
 
 此时就OK了！注意：如果你之前开启了代理，那么解析记录可能要一两个小时才会生效。
+
+## 搭配CF Pages优选IP
+
+比如你有个CF Pages站点www.cdn.example.com，因为优选了CF IP，但是多了一层cdn
+
+这样虽然实现了优选IP，但是感觉不优雅，怎么办？当然可以再套一层CNAME，指向cdn
+
+```mermaid
+graph LR
+A[对外域名www.example.com]
+    A -->|Clouflare| B[中间域名www.cdn.example.com]
+    B -->|第三方DNS-国内| C[CF优选域名ct.877774.xyz]
+    B -->|第三方DNS-海外| D[CF原始域名xxx.pages.dev]
+    C --> E[CF Pages]
+    D --> E[CF Pages]
+```
+
