@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+import { USER_NAME, USER_SITE, USER_FOOTER_SOCIAL_ICONS } from "@config";
+---
+
+<footer class="footer bg-base-100 p-10 rounded-xl shadow-lg">
+  <aside>
+    <p>
+  Pikachu's Static Archive Blog, Powered by <a href="https://github.com/EveSunMaple/Ryuchan" target="_blank" class="font-bold">Ryuchan</a>
+      <br />
+      Copyright © <a href={USER_SITE} target="_blank" class="font-bold">Pikachu Ren</a>
+      {new Date().getFullYear()} - All right reserved
+    </p>
+    如果未经声明，本站内容遵循CC-BY-NC-SA-4及GPL3协议
+  </aside>
+  <nav>
+    <span class="footer-title">Social / 联系我</span>
+    <div class="grid grid-flow-col gap-4">
+      {
+        USER_FOOTER_SOCIAL_ICONS.map((icon) => (
+          <div class="tooltip" data-tip={icon.title}>
+            <a tabindex="0" href={icon.href} aria-label={icon.ariaLabel}>
+              <Icon name={icon.svg} class="text-2xl md:text-xl" />
+            </a>
+          </div>
+        ))
+      }
+      <div class="tooltip" data-tip="RSS Feed">
+        <a tabindex="0" href="/rss.xml" aria-label="RSS Feed">
+          <Icon name="ri:rss-line" class="text-2xl md:text-xl" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</footer>
