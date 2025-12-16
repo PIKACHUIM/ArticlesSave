@@ -1,5 +1,5 @@
 ---
-title: Cloudflare + EdgeOne CDN 线路自动选择
+title: Cloudflare + EdgeOne 线路自动选择
 description: 本教程将介绍让国内外线路走Cloudflare + EdgeOne CDN
 pubDate: 12 15 2025
 image: /image/network/cloudflare-best-node/QQ20251216-123005.jpg
