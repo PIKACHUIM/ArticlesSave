@@ -149,7 +149,7 @@ D -->|回源| E[服务器]
 2. 添加『优选域名』CNAME记录，**不能**打开小黄云『代理』，记录的值为『优选节点域名』
 
 案例里应该设置www.example.com解析到ct.877774.xyz（可以替换为你自己的优选节点的域名）
-![QQ20251216-151844.jpg](/image/network/cloudflare-best-node/QQ20251216-151844.jpg)
+![QQ20251216-152720.jpg](/image/network/cloudflare-best-node/QQ20251216-152720.jpg)
 
 3. 打开『回源域名』的『SSL-自定义主机名』，设置回源域名为任意一个『优选域名』的域名
 
