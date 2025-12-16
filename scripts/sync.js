@@ -103,18 +103,40 @@ function parseDate(dateStr) {
   }
 }
 
+// 获取JWT secret
+function getJwtSecret() {
+  // 优先使用环境变量
+  const envSecret = process.env.JWT_SECRET;
+  if (envSecret) {
+    return envSecret;
+  }
+  
+  // 使用命令行参数
+  const jwtIndex = args.findIndex(arg => arg === '--jwt-secret' || arg === '-j');
+  if (jwtIndex !== -1 && args[jwtIndex + 1]) {
+    return args[jwtIndex + 1];
+  }
+  
+  // 默认值
+  return 'VrRCvo7cHRAUWjTh';
+}
+
 // 上传文章到服务器
-async function uploadArticle(articleData) {
+async function uploadArticle(articleData, jwtSecret) {
   try {
+    // 替换内容中的图片路径
+    const processedContent = articleData.content.replace(/\/image\//g, 'https://record.pika.net.cn/image/');
+    
     const response = await fetch(`https://server.524228.xyz/feed/${articleData.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'jwt_secret': jwtSecret
       },
       body: JSON.stringify({
         title: articleData.title,
         alias: articleData.alias,
-        content: articleData.content,
+        content: processedContent,
         tags: articleData.tags,
         listed: true,
         draft: false,
@@ -123,12 +145,17 @@ async function uploadArticle(articleData) {
     });
     
     if (!response.ok) {
-      console.error(`上传失败 ID ${articleData.id}: HTTP ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`❌ 上传失败 ID ${articleData.id}: HTTP ${response.status} ${response.statusText}`);
+      console.error(`📄 服务器返回内容: ${errorText}`);
       return false;
     }
     
     const result = await response.text();
     console.log(`✅ 成功上传文章 ID: ${articleData.id}, 标题: ${articleData.title}`);
+    if (result.trim()) {
+      console.log(`📄 服务器返回: ${result}`);
+    }
     return true;
   } catch (error) {
     console.error(`❌ 上传文章 ID ${articleData.id} 时发生错误:`, error.message);
@@ -138,13 +165,14 @@ async function uploadArticle(articleData) {
 
 // 主函数
 async function syncArticles(options = {}) {
-  const { dryRun = false, verbose = false, singleId = null } = options;
+  const { dryRun = false, verbose = false, singleId = null, jwtSecret = getJwtSecret() } = options;
   const blogDir = path.join(__dirname, '../src/content/blog');
   
   console.log('🚀 开始同步文章...');
   if (dryRun) {
     console.log('🔍 调试模式：只显示要上传的数据，不实际发送请求');
   }
+  console.log(`🔑 使用 JWT Secret: ${jwtSecret.substring(0, 4)}****${jwtSecret.length > 8 ? jwtSecret.substring(jwtSecret.length - 4) : ''}`);
   
   try {
     // 检查目录是否存在
@@ -206,8 +234,16 @@ async function syncArticles(options = {}) {
         console.log(`   - 描述: ${articleData.alias.substring(0, 50)}...`);
         console.log(`   - 内容长度: ${articleData.content.length} 字符`);
         
+        // 显示图片路径替换信息
+        const hasImagePaths = /\/image\//g.test(articleData.content);
+        if (hasImagePaths) {
+          console.log(`   🖼️  检测到图片路径，将替换 /image/ 为 https://record.pika.net.cn/image/`);
+        }
+        
         if (verbose) {
-          console.log(`   - 内容预览: ${articleData.content.substring(0, 200)}...`);
+          // 在详细模式下显示处理后的内容预览
+          const processedContent = articleData.content.replace(/\/image\//g, 'https://record.pika.net.cn/image/');
+          console.log(`   - 内容预览: ${processedContent.substring(0, 200)}...`);
         }
         
         if (dryRun) {
@@ -225,7 +261,7 @@ async function syncArticles(options = {}) {
         }
         
         // 上传文章
-        const success = await uploadArticle(articleData);
+        const success = await uploadArticle(articleData, jwtSecret);
         if (success) {
           successCount++;
         }
@@ -264,6 +300,11 @@ if (singleIdIndex !== -1 && args[singleIdIndex + 1]) {
   options.singleId = args[singleIdIndex + 1];
 }
 
+const jwtSecretIndex = args.findIndex(arg => arg === '--jwt-secret' || arg === '-j');
+if (jwtSecretIndex !== -1 && args[jwtSecretIndex + 1]) {
+  options.jwtSecret = args[jwtSecretIndex + 1];
+}
+
 if (args.includes('--help') || args.includes('-h')) {
   console.log(`
 📖 同步脚本使用说明
@@ -272,21 +313,29 @@ if (args.includes('--help') || args.includes('-h')) {
   node scripts/sync.js [选项]
 
 选项:
-  -d, --dry-run     调试模式，只显示要上传的数据，不实际发送请求
-  -v, --verbose     详细模式，显示更多信息包括内容预览
-  -i, --id <ID>     只同步指定ID的文章
-  -h, --help        显示帮助信息
+  -d, --dry-run         调试模式，只显示要上传的数据，不实际发送请求
+  -v, --verbose         详细模式，显示更多信息包括内容预览
+  -i, --id <ID>         只同步指定ID的文章
+  -j, --jwt-secret <KEY> 指定JWT secret
+  -h, --help            显示帮助信息
+
+环境变量:
+  JWT_SECRET            设置JWT secret (优先级高于命令行参数)
 
 示例:
-  node scripts/sync.js                    # 同步所有文章
-  node scripts/sync.js --dry-run          # 调试模式，不实际上传
-  node scripts/sync.js --verbose          # 详细模式
-  node scripts/sync.js --id 5             # 只同步ID为5的文章
-  node scripts/sync.js -d -v              # 调试+详细模式
+  node scripts/sync.js                           # 同步所有文章
+  node scripts/sync.js --dry-run                 # 调试模式，不实际上传
+  node scripts/sync.js --verbose                 # 详细模式
+  node scripts/sync.js --id 5                    # 只同步ID为5的文章
+  node scripts/sync.js --jwt-secret your_key     # 指定JWT secret
+  node scripts/sync.js -d -v                     # 调试+详细模式
+  JWT_SECRET=your_key node scripts/sync.js       # 使用环境变量设置JWT secret
 
 注意: 
   - 只有包含ID字段的文章才会被同步
   - API URL: https://server.524228.xyz/feed/<ID>
+  - JWT secret 优先级: 环境变量 > 命令行参数 > 默认值
+  - 默认JWT secret: VrRCvo7cHRAUWjTh
 `);
   process.exit(0);
 }
@@ -294,4 +343,4 @@ if (args.includes('--help') || args.includes('-h')) {
 // 运行同步
 syncArticles(options);
 
-export { syncArticles, parseFrontmatter, parseDate };
+export { syncArticles, parseFrontmatter, parseDate, getJwtSecret };
