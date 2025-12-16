@@ -119,14 +119,10 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 
 ## CDN / Tunnel 优选
 
-CDN / Tunnel 优选要求至少有两个域名，其中一个绑定到Cloudflare
-
-另一个绑定Cloudflare或者三方DNS解析商都可以，这里以绑定CF为例
-
-并且你需要准备一个外币信用卡或者Paypal用于开通免费的Saas服务
+你需要准备一个外币信用卡或者Paypal用于开通免费的Saas服务
 
 - 用于优选的域名： www.example.com （替换为你自己的域名）
-- 用于回源的域名： www.another.com （替换为你自己的域名）
+- 用于回源的域名： org.example.com （替换为你自己的域名）
 - CF优选节点域名： ct.877774.xyz （你可以找别的优选域名）
 
 ### 优选原理
@@ -150,15 +146,15 @@ D -->|回源| E[服务器]
 案例里应该设置www.example.com解析到ct.877774.xyz（可以替换为你自己的优选节点的域名）
 ![QQ20251216-152720.jpg](/image/network/cloudflare-best-node/QQ20251216-152720.jpg)
 
-3. 打开『回源域名』的『SSL-自定义主机名』，设置回源域名为任意一个『优选域名』的域名
+3. 打开『回源域名』的『SSL-自定义主机名』，设置任意一个回源域名为回退源的回源域名
 
-注意是『回源域名』（www.another.com）SSL设置，不是『优选域名』的（www.example.com）
+注意是『回源域名』（org.example.com）SSL设置，不是『优选域名』的（www.example.com）
 
-添加的回退源主机名应该是回源域名的www.another.com，而不是优选域名的www.example.com
+添加的回退源主机名应该是回源域名的org.example.com，而不是优选域名的www.example.com
 ![QQ20251216-152215.jpg](/image/network/cloudflare-best-node/QQ20251216-152215.jpg)
 
 5. 添加『优选域名』到『回源域名』的『SSL-自定义主机名』中，建议设置HTTP验证SSL证书
-自定义源需要填写『回源域名』www.another.com，如果只要一个优选可以选『默认源服务器』
+自定义源需要填写『回源域名』org.example.com，如果只要一个优选可以选『默认源服务器』
 ![QQ20251216-152503.jpg](/image/network/cloudflare-best-node/QQ20251216-152503.jpg)
 
 
