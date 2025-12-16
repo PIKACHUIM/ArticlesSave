@@ -8,6 +8,7 @@ categories:
 tags:
   - Windows
 badge: Windows
+ID: 6
 ---
 
 # Windows Server 2025 安装优化教程
