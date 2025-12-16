@@ -160,6 +160,7 @@ const bannerSubtitle = pageConfig?.subtitle || "";
           }
           return ret;
         }
+        // @ts-ignore - 第三方樱花效果代码
         function Sakura(x, y, s, r, fn, idx, img, limitArray, config) {
           this.x = x; this.y = y; this.s = s; this.r = r; this.fn = fn; this.idx = idx; this.img = img; this.limitArray = limitArray; this.config = config;
         }
@@ -183,10 +184,12 @@ const bannerSubtitle = pageConfig?.subtitle || "";
             this.x = window.innerWidth; this.y = getRandom('y', this.config); this.s = getRandom('s', this.config); this.r = getRandom('r', this.config);
           }
         };
+        // @ts-ignore - 第三方樱花效果代码
         function SakuraList() { this.list = []; }
         SakuraList.prototype.push = function (sakura) { this.list.push(sakura); };
         SakuraList.prototype.update = function () { for (var i = 0, len = this.list.length; i < len; i++) { this.list[i].update(); } };
         SakuraList.prototype.draw = function (cxt) { for (var i = 0, len = this.list.length; i < len; i++) { this.list[i].draw(cxt); } };
+        // @ts-ignore - 第三方樱花效果代码
         function SakuraManager(config) {
           this.config = config; this.canvas = null; this.ctx = null; this.sakuraList = null; this.animationId = null; this.img = null; this.isRunning = false;
         }

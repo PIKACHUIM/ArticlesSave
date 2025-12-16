@@ -12,7 +12,7 @@ tags:
 badge: Cloudflare
 ---
 
-# Cloudflare + EdgeOne CDN 线路自动选择
+# Cloudflare + EdgeOne 线路自动选择
 
 众所周知，CloudFlare国外速度快，EdgeOne国内速度快，那有没有办法自动分线路解析呢
 
@@ -21,8 +21,9 @@ badge: Cloudflare
 ## 实现原理
 
 大致思路就是，找个支持区分国内和海外不同线路解析的DNS解析商：
+
 - 海外区域：CNAME指向CF优选的域名ct.877774.xyz
-(如果Pages：CNAME指向CF优选的域名xxx.pages.dev)
+
 - 大陆区域：CNAME指向EO加速的域名dns**.eo.xxxx
 
 这样EO/CF检测你域名CNAME的时候就会正常通过，而不会报错。
