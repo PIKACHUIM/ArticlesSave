@@ -62,7 +62,7 @@ badge: Virtual
 
     - 然后在`VNC地址`里面可以填写协议和端口，例如：`wss://1.1.1.1:1880`
 
-  
+- #### 修复带端口情况下公网IP
   
 - #### 使用宝塔NGINX代理WS端口
   
@@ -182,5 +182,58 @@ badge: Virtual
      2. 运行命令：`sh -c './run --token-plugin TokenFile --token-source /home/qzcloud/vnc/token/token.conf 6080'`
 
 
-## 魔方业务V10主控端
+### 安装教程
 
+#### 安装被控
+
+准备一台PVE系统的机器，PVE7 或者PVE 8 均可以 PVE7可能会遇到一些问题
+
+PVE被控 安装命令：
+```shell
+wget -O install http://dcim.qzsystem.com/pve/install && chmod 777 install && ./install
+```
+安装后会提示：
+
+```shell
+Install successfull 
+your apikey: 74dc07a01be2d411 
+your node Admin url:  http://your_ip:8000 
+
+```
+
+#### 配置服务
+用IP:8000打开 注意是服务器的公网IP 不是真的ip:8000 是服务器的公网IP
+比如我的服务器ip是 192.168.1.1 那么就是 192.168.1.1:8000 进入
+
+
+这个APIKEY就是 安装后提示的 apikey 也就是 74dc07a01be2d411
+
+### 常用命令
+
+```shell
+# 安装目录
+/home/qzcloud/
+
+# 配置文件 
+/home/qzcloud/conf/app.ini
+
+# 系统日志
+/home/qzcloud/logs
+
+# 启动服务
+systemctl start qzcloud
+systemctl start qzvnc
+
+# 重启服务
+systemctl restart qzcloud
+systemctl restart qzvnc
+
+# 查看状态
+systemctl status qzcloud
+systemctl status qzvnc
+
+# 停止服务
+systemctl stop qzvnc
+systemctl stop qzcloud
+
+```
