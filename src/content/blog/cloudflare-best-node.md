@@ -58,7 +58,7 @@ A[对外域名www.example.com]
 
 优选就完成了！注意：如果你之前开启了代理，那么解析记录可能要一两个小时才会生效。
 
-## Pages 优选
+## Pages 优选 / 分线路优选
 
 CF Pages优选复杂一点，因为Pages要求你必须CNAME指向Cloudflare指定的域名。
 
@@ -118,7 +118,7 @@ B -->|DNS解析| C[三方DNS解析商ns1.xxxxx.xxx]
 
 此时优选就完成了！注意：如果你之前开启了代理，那么解析记录可能要一两个小时才会生效。
 
-## CDN / Tunnel 优选
+## CDN / Tunnel / R2 优选
 
 你需要准备一个外币信用卡或者Paypal用于开通免费的Saas服务
 

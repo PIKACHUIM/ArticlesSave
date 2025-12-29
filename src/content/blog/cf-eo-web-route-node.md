@@ -96,3 +96,93 @@ A[对外域名www.example.com]
  - 记录值：www.cdn.example.com（指向中间域名）
 ![QQ20251216-163701.jpg](/image/network/cf-eo-web-route-node/QQ20251216-163701.jpg)
 
+## 按不同运营商优选
+
+那么，如果我想按运营商优选，可以选择不同的节点IP吗？
+
+当然可以！只需要在上一步的基础上改一下就行
+
+### 实现原理
+
+```mermaid
+graph LR
+A[对外域名www.example.com]
+    A -->|Clouflare| B[中间域名www.cdn.example.com]
+    B -->|第三方DNS-海外| C[CF原始域名xxx.pages.dev]
+    B -->|第三方DNS-国内| D[CF-电信ct.877774.xyz]
+    B -->|第三方DNS-国内| E[CF-移动cmcc.877774.xyz]
+    B -->|第三方DNS-国内| F[CF-联通cu.877774.xyz]
+    B -->|第三方DNS-国内| G[CF-境内cf.877774.xyz]
+    
+    C --> Z[CF Pages]
+    D --> Z[CF Pages]
+    E --> Z[CF Pages]
+    F --> Z[CF Pages]
+    G --> Z[CF Pages]
+```
+
+### 实现方法
+
+在上一步的基础上，修改CNAME记录：
+- 类型：CNAME记录
+- 名称：www.cdn.example.com
+- 记录：ct.877774.xyz/cu.877774.xyz/cmcc.877774.xyz/cf.877774.xyz
+- 线路：电信/联通/移动/境内
+
+注意：这个**境内**是必须的，否则会有教育网或者铁通等会走非优选节点
+生效顺序：电信/联通/移动>境内/境外>默认
+
+## 记录太多怎么办？
+
+上一步的【按不同运营商优选】，每一个域名都会产生5条线路记录
+
+太多了，有办法可以减少记录数量吗？当然有！只需要设置一下即可
+
+### 实现原理
+
+```mermaid
+graph LR
+O[线路域名cfnode.cdn.example.com]
+    O -->|第三方DNS-默认| P[CF-默认cf.877774.xyz]
+    O -->|第三方DNS-国内| Q[CF-电信ct.877774.xyz]
+    O -->|第三方DNS-国内| R[CF-移动cmcc.877774.xyz]
+    O -->|第三方DNS-国内| S[CF-联通cu.877774.xyz]
+    O -->|第三方DNS-国内| T[CF-境内cf.877774.xyz]
+    Q --> Z[CF Pages]
+    R --> Z[CF Pages]
+    S --> Z[CF Pages]
+    T --> Z[CF Pages]
+    P --> Y[无效线路（无法触发）]
+   
+A[优选域名www.example.com]
+    A -->|Clouflare| B[中间域名www.cdn.example.com]
+    B -->|国内| O
+    B -->|海外| E[CF原始域名xxx.pages.dev]
+    E --> Z[CF Pages]
+    
+```
+### 实现方法
+
+1. 在上一步的基础上，分别添加CNAME记录：
+- 类型：CNAME记录
+- 名称：cfnode.cdn.example.com
+- 记录：ct.877774.xyz/cu.877774.xyz/cmcc.877774.xyz/cf.877774.xyz/cf.877774.xyz
+- 线路：电信/联通/移动/境内/默认
+
+2. 把之前设置的分线路CNAME记录修改一下：
+
+   a.修改原有的分线路记录，只保留一个
+   - 类型：CNAME记录
+   - 名称：www.cdn.example.com
+   - 记录：cfnode.cdn.example.com
+   - 线路：境内
+
+   b.默认这个线路还是需要保留
+   - 类型：CNAME记录
+   - 名称：www.cdn.example.com
+   - 记录：xxxxx.pages.dev
+   - 线路：默认
+
+注意：cfnode.cdn.example.com域名必须保留境内和默认：
+ - 保留境内的原因是可能有教育网或铁通等会走非优选节点
+ - 保留默认的原因是因为分线路解析必须要保留默认线路
