@@ -329,8 +329,6 @@ macOS 的显卡驱动是系统内置的，这些驱动支持部分 AMD/NVIDIA/In
 - [Daliansky - 黑苹果长期维护机型 EFI 及安装教程整理](https://github.com/daliansky/Hackintosh)
 - [皮卡的资源站 - 黑苹果EFI引导文件搜集](https://shared.pika.net.cn/Sources/OSImages/MacOS/EFIData)
 
-
-
 ### 2.1 镜像下载
 
 | 版本类型    | 说明                            | 下载地址                                                      |
@@ -577,192 +575,150 @@ A: BIOS检查：
 
 等了一会儿，进度条结束之后，就开始安装向导了。首先是语言，我这里选择“简体中文”，你可以根据自己的实际情况选择，选好后点击右下角的箭头按钮
 
-
 ![vmware-macos-26.jpg](/image/systems/hackintosh-tutorials/vmware-macos-26.jpg)
-
 
 因为我们的磁盘还没有格式化，所以现在点击“磁盘工具”，再点击“继续”按钮因为我们的磁盘还没有格式化，所以我们需要先处理一下，那现在点击“磁盘工具”，再点击“继续”按钮
 
-
 ![vmware-macos-27.jpg](/image/systems/hackintosh-tutorials/vmware-macos-27.jpg)
-
 
 左边可能会列出多个挂载磁盘，一般最上面的那个写着“VMware Virtual”字样的就是虚拟机分配的磁盘了，你也可以根据它显示的磁盘大小进行判断。选中虚拟机的磁盘之后，直接点击“抹除”按钮
 
-
 ![vmware-macos-28.jpg](/image/systems/hackintosh-tutorials/vmware-macos-28.jpg)
-
 
 它会让你输入一个磁盘名称，随便输入一个英文名就行，格式和方案不要修改，直接点击“抹掉”按钮
 
-
 ![vmware-macos-29.jpg](/image/systems/hackintosh-tutorials/vmware-macos-29.jpg)
-
 
 几秒之后它就操作成功了，先点击“完成”按钮
 
-
 ![vmware-macos-30.jpg](/image/systems/hackintosh-tutorials/vmware-macos-30.jpg)
-
 
 再点击左上角的红色按钮把这个界面关闭掉
 
-
 ![vmware-macos-31.jpg](/image/systems/hackintosh-tutorials/vmware-macos-31.jpg)
-
 
 现在可以选择“安装macOS Sequoia”选项，再点击“继续”按钮
 
-
 ![vmware-macos-32.jpg](/image/systems/hackintosh-tutorials/vmware-macos-32.jpg)
-
 
 再次点击“继续”按钮
 
-
 ![vmware-macos-33.jpg](/image/systems/hackintosh-tutorials/vmware-macos-33.jpg)
-
 
 这里只能同意许可协议
 
-
 ![vmware-macos-34.jpg](/image/systems/hackintosh-tutorials/vmware-macos-34.jpg)
-
 
 这里要先选中中间的那个磁盘，才能点击“继续”按钮
 
-
 ![vmware-macos-35.jpg](/image/systems/hackintosh-tutorials/vmware-macos-35.jpg)
-
 
 到了这个界面就有得等了，虽然它显示需要二十多分钟，但我感觉好像不止，反正等了很久。因为这个过程会很消耗内存，所以建议整个过程不要动电脑，避免安装失败或者直接卡死
 
-
 ![vmware-macos-36.jpg](/image/systems/hackintosh-tutorials/vmware-macos-36.jpg)
-
 
 等它进度条结束之后会让你选择国家或地区，我这里选择“中国大陆”，再点击“继续”按钮
 
-
 ![vmware-macos-37.jpg](/image/systems/hackintosh-tutorials/vmware-macos-37.jpg)
-
 
 语言和输入法这里不用动，直接点击“继续”按钮
 
-
 ![vmware-macos-38.jpg](/image/systems/hackintosh-tutorials/vmware-macos-38.jpg)
-
 
 辅助功能可以先不开启（开启就更卡了），直接点击“以后”按钮
 
-
 ![vmware-macos-39.jpg](/image/systems/hackintosh-tutorials/vmware-macos-39.jpg)
-
 
 数据与隐私这里，直接点击“继续”按钮
 
-
 ![vmware-macos-40.jpg](/image/systems/hackintosh-tutorials/vmware-macos-40.jpg)
-
 
 迁移助理，点击左下角的“以后”按钮
 
-
 ![vmware-macos-41.jpg](/image/systems/hackintosh-tutorials/vmware-macos-41.jpg)
-
 
 账户登录，直接点击左下角的“稍后设置”按钮，再点击“跳过”按钮
 
-
 ![vmware-macos-42.jpg](/image/systems/hackintosh-tutorials/vmware-macos-42.jpg)
-
 
 条款与条件，只能同意啦
 
-
 ![vmware-macos-43.jpg](/image/systems/hackintosh-tutorials/vmware-macos-43.jpg)
-
 
 因为我们前面没有登录Apple账户，所以这里需要创建一个本地账户，建议用户名使用纯英文字符
 
-
 ![vmware-macos-44.jpg](/image/systems/hackintosh-tutorials/vmware-macos-44.jpg)
-
 
 服务定位，建议先不开启，避免占用资源，所以点击“继续”和“不使用”按钮
 
-
 ![vmware-macos-45.jpg](/image/systems/hackintosh-tutorials/vmware-macos-45.jpg)
-
 
 选择时区，你可以用鼠标点击那个地图，比如我这里点击了上海，时区会影响时间的显示，所以得选对了（当然后面我也会讲如何修改时区）
 
-
 ![vmware-macos-46.jpg](/image/systems/hackintosh-tutorials/vmware-macos-46.jpg)
-
 
 分析功能，建议取消勾选“与Apple共享Mac分析”选项，然后点击“继续”按钮
 
-
 ![vmware-macos-47.jpg](/image/systems/hackintosh-tutorials/vmware-macos-47.jpg)
-
 
 屏幕使用时间，为了节省性能资源，建议先不要开启，直接点击“稍后设置”按钮
 
-
 ![vmware-macos-48.jpg](/image/systems/hackintosh-tutorials/vmware-macos-48.jpg)
-
 
 外观，看你心情随便选择一个吧
 
-
 ![vmware-macos-49.jpg](/image/systems/hackintosh-tutorials/vmware-macos-49.jpg)
-
 
 现在终于进入到macOS 15的桌面了，但是你需要等一下，因为现在可能有点卡
 
-
 ![vmware-macos-50.jpg](/image/systems/hackintosh-tutorials/vmware-macos-50.jpg)
-
 
 等了一段时间之后，你可以试着动动鼠标，发现已经可以正常使用了，但是壁纸一直加载不出来，你也不用继续等了，因为显存过小，所以它默认的动态壁纸是永远也加载不出来的。为了不至于显示这么丑的白屏，我们可以打开设置选项，找一张图片壁纸给它换上
 
-
 ![vmware-macos-51.jpg](/image/systems/hackintosh-tutorials/vmware-macos-51.jpg)
 
+## 0x5 黑苹果OCLP-MOD补丁教程
 
-## 0x5 黑苹果OCLP补丁教程
+### 5.1 OCLP-MOD 简介
+OpenCore Legacy Patcher (OCLP) 是一个基于 Python 的开源项目，主要旨在让旧款 Mac 能够运行较新的 macOS 版本。
+在黑苹果（Hackintosh）领域，OCLP 主要用于：
+1. **驱动旧硬件**：如在 macOS Sonoma 中驱动博通 Wi-Fi 网卡。
+2. **图形加速**：为旧款 NVIDIA (Kepler/Maxwell/Pascal) 和 Intel 核显提供补丁支持。
+3. **功能解锁**：解锁 Sidecar、AirPlay 等功能。
 
-### 安装 KDK
+### 5.2 准备工作
+在运行 OCLP-MOD 之前，必须调整 `config.plist` 设置以允许补丁写入系统分区：
 
-### 关闭 SIP
+1. **关闭 SIP (System Integrity Protection)**
+   - `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> csr-active-config`: 设置为 `03080000` (或 `FF0F0000` 彻底禁用)。
+2. **禁用安全启动 (Secure Boot)**
+   - `Misc -> Security -> SecureBootModel`: 设置为 `Disabled`。
+3. **添加引导参数**
+   - `boot-args`: 添加 `amfi=0x80` (或 `amfi_get_out_of_my_way=1`) 以允许加载未签名驱动。
+4. **注入 Kexts**
+   - 确保 `IOSkywalkFamily.kext` 和 `IO80211FamilyLegacy.kext` (针对博通网卡) 已正确注入并被阻止 (Block) 系统原生驱动（如果适用）。
 
-1.
-```
-csr-active-config：FF0F000
-```
+### 5.3 安装与打补丁步骤
+1. **下载工具**
+   - 从 [GitHub Releases](https://github.com/laobamac/OCLP-Mod/releases) 下载最新的 `OpenCore-Patcher-GUI.app`。
+2. **运行补丁**
+   - 打开应用程序，点击 **"Post-Install Root Patch"**。
+   - OCLP 会自动检测可用的补丁（如 "Networking: Broadcom", "Graphics: Nvidia Kepler" 等）。
+   - 点击 **"Start Root Patching"**。
+   - 输入管理员密码，等待进度条完成。
+3. **重启生效**
+   - 提示完成后，点击重启。
 
-2. 进入opencore页面按空格选择“reset nvram”项
-3. 重启电脑，就关闭成功了
+### 5.4 常见问题与警告
+- **macOS 14.4+ 兼容性**：部分非 Metal 显卡和旧版 Wi-Fi 在 macOS 14.4+ 上可能存在兼容性问题，升级前请务必检查 OCLP 官方更新日志。
+- **权限问题**：如果提示无法写入，请检查是否已在“系统设置 -> 隐私与安全性 -> 完全磁盘访问权限”中添加了 OCLP 和终端。
+- **撤销补丁**：如需撤销，再次运行 OCLP，选择 "Post-Install Root Patch" -> "Revert Root Patches"。
 
-参考
-```text
-0xFF030000 - 禁用 macOS High Sierra (0x3ff) 中的所有标志。
-0xFF070000 - 禁用 macOS Mojave 和 macOS Catalina (0x7ff) 中的所有标志
-0xFF0F0000 - 禁用 macOS Big Sur (0xfff) 中的所有标志
-0x00000000 - 完全启用SIP
-0x30000000 - 部分禁用SIP，允许未签名的 Kext 加载并允许写入受保护的文件系统路径
-0x03080000 - 部分禁用SIP，
-0xE7030000 - 彻底禁用SIP，不再推荐使用
-0x67000000 - 彻底禁用SIP，不再推荐使用
-0x7f0a0000 - 彻底禁用SIP
-```
-
-### 如何撤销OCLP
+> 参考资料：
+> - [OpenCore Legacy Patcher 官方文档](https://dortania.github.io/OpenCore-Legacy-Patcher/)
+> - [imacos.top - OCLP 介绍](https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/)
 
 ## 0x6 驱动显卡教程
-
-
 
 ### 6.1 Intel1-10代核显
 
@@ -962,7 +918,6 @@ csr-active-config：FF0F000
 6. 点击"Generate Patch"生成补丁
 7. 将生成的内容复制到`config.plist`的`DeviceProperties`中
 
-
 ##### 6. BIOS设置
 
 **6.1 必需设置**
@@ -996,7 +951,6 @@ csr-active-config：FF0F000
    - 下载VideoProc并运行
    - 查看是否支持H.264/HEVC硬件编解码
 
-
 **7.2 常见问题排查**
 
 | 问题现象 | 可能原因 | 解决方法 |
@@ -1010,7 +964,6 @@ csr-active-config：FF0F000
 ##### 8. 进阶优化
 
 **8.1 添加启动参数**
-
 
 在`config.plist` → `NVRAM` → `Add` → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → `boot-args`中添加：
 
@@ -1094,8 +1047,6 @@ macOS 对 NVIDIA 的支持在 Mojave (10.14) 之后大幅缩减。
 
 - **Kepler (开普勒)**: GT 710/730/740, GTX 650/660/760/770/780 (原生支持至 Big Sur，Monterey 后需 OCLP 补丁)
 - **Maxwell/Pascal/Turing/Ampere**: GTX 9xx/10xx/16xx/20xx/30xx/40xx 无法在 Mojave (10.14) 及之后版本驱动。仅能在 High Sierra (10.13.6) 使用 Web Driver 驱动。
-
-
 
 ## 0x7 驱动网卡蓝牙
 
@@ -1643,8 +1594,6 @@ pmset -g log | grep -e "Sleep.*due to" -e "Wake.*due to"
 |48|[SSDT-RP.PXSX-disbale.aml](https://sqlsec.lanzoub.com/iTg3G04b2kdg)|屏蔽 NVME 硬盘补丁示例，记得替换自己电脑的实际硬盘路径|
 |49|[SSDT-PLUG-ALT.aml](https://sqlsec.lanzoub.com/i7oos04b2m8d)|12 代 CPU 大小核调度|
 
-
-
 ## 0xA 定制USB 教程
 
 USB 定制是黑苹果安装后必做的一步，否则可能出现睡眠秒醒、蓝牙失效、USB 设备掉线等问题。目前推荐使用 **USBToolBox** 在 Windows 下进行定制。
@@ -1678,25 +1627,18 @@ USB 定制是黑苹果安装后必做的一步，否则可能出现睡眠秒醒�
 ### 10.4 验证
 使用 **Hackintool** -> USB 选项卡，检查是否所有端口都已正确识别（USB2 显示为 HSxx，USB3 显示为 SSxx），且多余的端口已被移除。
 
-
-
 ## 0xB 虚拟机黑苹果
 ### b.1 Vmware 黑苹果
 
-
 如果你没有买苹果的电脑，但是又因为某些原因需要用一下macOS系统的软件，并且你又不好意思借用别人的电脑，那你完全可以自己安装一个虚拟机版的macOS，这样也能勉强应付一下。不管什么原因，如果你就是想要用一下黑苹果，又不想破坏电脑已安装的Windows系统，那你可以跟着本教程，使用VMwarePro 17安装一个macOS 15。本文将从如何安装VMware开始，每一个步骤都有截图，详细得堪称保姆级，你跟着我的步骤操作基本上都是可以成功的
-
 
 #### 1.下载
 
 VMware虚拟机安装包和macOS镜像文件以及其他要用到的工具已经一起打包上传到冰裤袋小程序了，你可以从gongzhonghao“冰冷的希望”菜单栏进入“冰裤袋”小程序，找到黑苹果的下载链接之后，把macOS15版本的相关文件都下载好。你应该下载得到“Install_macOS_Sequoia_15.0.iso”、“VMware_17.6.1-24319023_Setup.exe”、“unlocker427.zip”和“darwin12.0.5.iso”这4个文件（你的系统不一定显示文件扩展名）
 
-
 ![vmware-macos-1.jpg](/image/systems/hackintosh-tutorials/vmware-macos-1.jpg)
 
-
 因为macOS 15系统镜像文件的大小达到16G，所以下载时间可能会比较久，其他文件都比较好下载
-
 
 #### 2.安装VMware
 
@@ -1704,269 +1646,179 @@ VMware虚拟机安装包和macOS镜像文件以及其他要用到的工具已经
 
 现在我们选中“VMware_17.6.1-24319023_Setup.exe”这个文件，右键，使用管理员身份运行
 
-
 ![vmware-macos-2.jpg](/image/systems/hackintosh-tutorials/vmware-macos-2.jpg)
-
 
 现在已经启动安装向导界面了，我们直接点击“下一步”按钮
 
-
 ![vmware-macos-3.jpg](/image/systems/hackintosh-tutorials/vmware-macos-3.jpg)
-
 
 勾选“我接受许可协议中的条款”，点击“下一步”按钮
 
-
 ![vmware-macos-4.jpg](/image/systems/hackintosh-tutorials/vmware-macos-4.jpg)
-
 
 这里可以点击“更改”按钮修改VMware的安装路径，建议不要放在C盘，还有就是，整个路径中建议不要出现中文或者其他非法字符。之后点击“下一步”按钮
 
-
 ![vmware-macos-5.jpg](/image/systems/hackintosh-tutorials/vmware-macos-5.jpg)
-
 
 用户体验设置这里，可以取消勾选这两个选项，然后点击“下一步”按钮
 
-
 ![vmware-macos-6.jpg](/image/systems/hackintosh-tutorials/vmware-macos-6.jpg)
-
 
 创建快捷方式，这里可以保持默认就行，点击“下一步”按钮
 
-
 ![vmware-macos-7.jpg](/image/systems/hackintosh-tutorials/vmware-macos-7.jpg)
-
 
 OK，那这里就直接点击“安装”按钮了
 
-
 ![vmware-macos-8.jpg](/image/systems/hackintosh-tutorials/vmware-macos-8.jpg)
-
 
 如果安装过程中遇到了卫士类软件的拦截，记得允许执行，或者干脆直接退出全部杀软
 
-
 ![vmware-macos-9.jpg](/image/systems/hackintosh-tutorials/vmware-macos-9.jpg)
-
 
 等安装进度条结束之后就算是安装完成了，因为这个VMware版本已经对个人用户免费了，所以不需要激活，直接点击“完成”按钮关闭安装向导界面
 
-
 ![vmware-macos-10.jpg](/image/systems/hackintosh-tutorials/vmware-macos-10.jpg)
-
 
 如果你不确定的话，可以打开VMware的“关于”页面看一下激活信息（我这里可能是以前激活过商业版本，所以会显示为商业用途，你的应该会显示个人用途）
 
-
 ![vmware-macos-11.jpg](/image/systems/hackintosh-tutorials/vmware-macos-11.jpg)
-
-
 
 #### 3.安装Unlocker
 
 我们知道VMware默认是不支持引导macOS的，所以我们需要借助第三方的工具让它支持。把之前下载得到的“unlocker427.zip”文件解压了，我这里是使用360压缩进行解压
 
-
 ![vmware-macos-12.jpg](/image/systems/hackintosh-tutorials/vmware-macos-12.jpg)
-
 
 解压得到的文件中有个“windows”文件夹，该文件夹里面有个“unlock.exe”文件，选中它，右键，以管理员身份运行
 
-
 ![vmware-macos-13.jpg](/image/systems/hackintosh-tutorials/vmware-macos-13.jpg)
-
 
 大概几秒钟时间它就处理完了，你可以对比一下我的截图，输出日志中有一句“Patching Complete!”，然后你就可以把它关闭了。如果没有执行成功，你可以检查一下，是不是VMware版本不太合适？是不是没有使用管理员身份运行？是不是被卫士类软件拦截了？
 
-
 ![vmware-macos-14.jpg](/image/systems/hackintosh-tutorials/vmware-macos-14.jpg)
-
 
 我们还需要重启一下VMware相关的服务（好像不重启也行，但是我不确定）。我们按快捷键“Ctrl+Shift+ESc”打开任务管理器，在“服务”面板找到“VM”开头的这几个服务（名称太长了不想写，直接看我截图吧），右键，重新启动
 
-
 ![vmware-macos-15.jpg](/image/systems/hackintosh-tutorials/vmware-macos-15.jpg)
-
-
 
 #### 4.创建虚拟机
 
 现在我们打开VMware，点击“创建新的虚拟机”按钮
 
-
 ![vmware-macos-16.jpg](/image/systems/hackintosh-tutorials/vmware-macos-16.jpg)
-
 
 选择“典型（推荐）”选项，点击“下一步”按钮
 
-
 ![vmware-macos-17.jpg](/image/systems/hackintosh-tutorials/vmware-macos-17.jpg)
-
 
 选择“稍后安装操作系统”，点击“下一步”按钮
 
-
 ![vmware-macos-18.jpg](/image/systems/hackintosh-tutorials/vmware-macos-18.jpg)
-
 
 这里要选择“Apple macOS”，然后下拉选择“macOS 15”选项。如果你这里没有Apple macOS的引导项，说明你的Unlocker没有执行成功，再根据我上面提到的那几种情况排查一下吧
 
-
 ![vmware-macos-19.jpg](/image/systems/hackintosh-tutorials/vmware-macos-19.jpg)
-
 
 虚拟机的名称可以设置一下，然后虚拟机的位置记得要选择一个剩余空间比较大的盘，比如我这里把它放到H盘（建议路径中不要出现中文字符）
 
-
 ![vmware-macos-20.jpg](/image/systems/hackintosh-tutorials/vmware-macos-20.jpg)
-
 
 最大磁盘默认是80G，我这里把它改为了100G，建议设置大一点，放心，它不会马上占用这些空间的，占用多少取决于你以后如何使用macOS里的硬盘。但是如果你现在设置的最大空间不够大，那以后就不好扩容了。还有就是要勾选“将虚拟磁盘存储为单个文件”，这样磁盘性能会更好。都设置好之后就点击“下一步”按钮
 
-
 ![vmware-macos-21.jpg](/image/systems/hackintosh-tutorials/vmware-macos-21.jpg)
-
 
 虽然基本设置都弄好了，但是我们还是要点击“自定义硬件”按钮。首先是设置内存（指的是运行内存，不是硬盘存储空间），它默认是设置4G，但是我的电脑运行内存比较大，所以我给它8G。这个内存设置得越大，你的macOS就越流畅，但是你的宿主机就会越卡，你可以根据自己的实际情况进行分配
 
-
 ![vmware-macos-22.jpg](/image/systems/hackintosh-tutorials/vmware-macos-22.jpg)
-
 
 现在点击“新CD/DVD（SATA）”选项，然后点击“使用ISO镜像文件”，点击“浏览”按钮，选中之前下载好的苹果镜像文件（也就是Install_macOS_Sequoia_15.0.iso），之后关闭自定义面板，再点击“完成”即可。可能我描述得不是很立体，具体操作步骤你可以参考一下我的截图
 
-
 ![vmware-macos-23.jpg](/image/systems/hackintosh-tutorials/vmware-macos-23.jpg)
-
-
 
 #### 5.安装macOS 15
 
 好了，硬件方面都已经设置好了，现在终于进入正题了，我们点击左边的“开启虚拟机”按钮启动虚拟机
 
-
 ![vmware-macos-24.jpg](/image/systems/hackintosh-tutorials/vmware-macos-24.jpg)
 
-
 不出意外的话，你现在已经看到了macOS的logo了
-
 
 ![vmware-macos-25.jpg](/image/systems/hackintosh-tutorials/vmware-macos-25.jpg)
 
 剩下的安装和物理机器安装的一样了
 
-
-
-
 #### 6.安装VMtools
 
 虽然壁纸显示正常了，但是电脑依然是那么卡，我们看一下系统的信息，发现它才3M的图形缓存，不卡才怪
 
-
 ![vmware-macos-52.jpg](/image/systems/hackintosh-tutorials/vmware-macos-52.jpg)
-
 
 所以我们需要安装一下VMtools让它能识别更大的显存，而且安装VMtools还有其他好处，比如说可以让它自动适应桌面分辨率，还可以在宿主机之间随便拖拽传输文件
 
 现在，我们让它关机
 
-
 ![vmware-macos-53.jpg](/image/systems/hackintosh-tutorials/vmware-macos-53.jpg)
-
 
 完全关机之后点击“编辑虚拟机设置”按钮，又回到自定义硬件的界面了，还是点击“CD/DVD （SATA）”选项，这次要把ISO镜像改为“darwin12.0.5.iso”这个文件了（可以参考我的截图），别忘了点击“确定”按钮
 
-
 ![vmware-macos-54.jpg](/image/systems/hackintosh-tutorials/vmware-macos-54.jpg)
-
 
 现在再次启动虚拟机，进入macOS之后，发现桌面右上角已经加载了“VMware Tools”了，双击打开它，再双击“安装VMware Tools”按钮就可以启动安装向导了，第一个界面就点击“继续”按钮
 
-
 ![vmware-macos-55.jpg](/image/systems/hackintosh-tutorials/vmware-macos-55.jpg)
-
 
 选择“为这台电脑上的所有用户安装”，再点击“继续”按钮
 
-
 ![vmware-macos-56.jpg](/image/systems/hackintosh-tutorials/vmware-macos-56.jpg)
-
 
 在macOS安装软件一般不需要修改安装路径，直接点击“安装”按钮
 
-
 ![vmware-macos-57.jpg](/image/systems/hackintosh-tutorials/vmware-macos-57.jpg)
-
 
 它会让你输入你的账户密码，也就是你创建账户的时候设置的那个密码，再点击“安装软件”按钮
 
-
 ![vmware-macos-58.jpg](/image/systems/hackintosh-tutorials/vmware-macos-58.jpg)
-
 
 如果安装过程出现各种提示，肯定都是选择“允许”。还有就是，可能会提示“系统扩展已被阻止”，那就点击“打开系统设置”按钮
 
-
 ![vmware-macos-59.jpg](/image/systems/hackintosh-tutorials/vmware-macos-59.jpg)
-
 
 在系统的隐私与安全性这边可以看到“来自开发者XXX已被阻止载入”（可以参考一下我的截图），那我们要点击“允许”按钮
 
-
 ![vmware-macos-60.jpg](/image/systems/hackintosh-tutorials/vmware-macos-60.jpg)
-
 
 然后它会再次让你输入你的账户密码
 
-
 ![vmware-macos-61.jpg](/image/systems/hackintosh-tutorials/vmware-macos-61.jpg)
-
 
 如果它提示你需要重新启动那就重新启动吧
 
-
 ![vmware-macos-62.jpg](/image/systems/hackintosh-tutorials/vmware-macos-62.jpg)
-
 
 如果提示安装失败了，不要慌，重来一次就好，有了第一次授权之后第二次安装就可以轻松完成
 
-
 ![vmware-macos-63.jpg](/image/systems/hackintosh-tutorials/vmware-macos-63.jpg)
-
 
 如果你不点“重新启动”按钮，你也可以自己手动关机，然后再打开虚拟机设置这里，把“CD/DVD（SATA）”这里的“启动时连接”这个选项取消勾选，不然它每次进入macOS都会加载指定的镜像
 
-
 ![vmware-macos-64.jpg](/image/systems/hackintosh-tutorials/vmware-macos-64.jpg)
-
 
 现在启动macOS之后，再次查看图形显存，发现这次已经达到128M了，虽然还是小得可怜，但是起码没有那么卡了，当然你也可以进入设置，把一些动作特效什么的都关闭，这样可能会更流畅点
 
-
 ![vmware-macos-65.jpg](/image/systems/hackintosh-tutorials/vmware-macos-65.jpg)
-
 
 可能有些同学会发现macOS显示的时间不对，那可能是之前的时区没有选对，你可以打开系统设置，在“通用”里面找到“最接近的城市”，把它改为中国的城市就行
 
-
 ![vmware-macos-66.jpg](/image/systems/hackintosh-tutorials/vmware-macos-66.jpg)
-
 
 现在各种功能都是正常的，网络也是正常的，我们可以打开浏览器看看
 
-
 ![vmware-macos-67.jpg](/image/systems/hackintosh-tutorials/vmware-macos-67.jpg)
-
 
 OK，整个安装过程已经结束了，你可以自己探索一下macOS 15哈哈
 
-
 ![vmware-macos-68.jpg](/image/systems/hackintosh-tutorials/vmware-macos-68.jpg)
-
-
-
-
 
 ### b.2 PVE黑苹果
 
@@ -1976,16 +1828,12 @@ OK，整个安装过程已经结束了，你可以自己探索一下macOS 15哈�
 
 #### PVE 虚拟化黑苹果显卡直通及远程访问教程
 
-
-
 ##### PVE 虚拟化黑苹果显卡直通教程（核显&独显通用），低延迟远程访问方案：VNC、ARD、ToDesk、ParSec、Jump Desktop 等远程桌面协议/软件测试横评
 
 Apr 13, 2022 7 minute read visitors 
 PVE 虚拟化黑苹果显卡直通教程（核显&独显通用），低延迟远程访问方案：VNC、ARD、ToDesk、ParSec、Jump Desktop 等远程桌面协议/软件测试横评
 
-
 #### 适用场景
-
 
 博主曾经用笔记本装黑苹果做过一段时间的主力机，但是因为有使用 Windows 的强需求，双系统切换不方便所以最终换回的 Windows。当时就在想如果有一台服务器跑着 MacOS，随时可以从主力机 Windows 远程访问岂不是两全其美。但是近年矿潮显卡价格虚高，实在是没有入手的欲望，最近趁矿难显卡价格下跌入手一块 AMD RX460 实践一下这个想法
 
@@ -1995,7 +1843,6 @@ PVE 虚拟化黑苹果显卡直通教程（核显&独显通用），低延迟远
 2. 在 PVE 上成功安装黑苹果（使用 ）
 3. 至少进入黑苹果一次开启 `设置->共享->屏幕共享`（显卡直通可能会导致 PVE 自带的 VNC 卡在白苹果界面）
 
-
 黑苹果能否成功运行和硬件以及驱动有很大的关系，而使用 PVE 使用的 KVM 虚拟化技术可以最大程度上屏蔽硬件的差异提高成功率，借助 [KVM-Opencore](https://github.com/thenickdude/KVM-Opencore)项目提供的驱动可以做到开箱即用，不用折腾
 
 PVE 和黑苹果安装教程这里推荐两篇博客，写的非常详细
@@ -2003,26 +1850,17 @@ PVE 和黑苹果安装教程这里推荐两篇博客，写的非常详细
 - [Installing macOS 12 “Monterey” on Proxmox 7](https://www.nicksherlock.com/2021/10/installing-macos-12-monterey-on-proxmox-7)
 - [国光的 PVE 生产环境配置优化记录](https://www.sqlsec.com/2022/04/pve.html)
 
-
-
 对于国光这篇文章有一处勘误，文章中说到 PVE 7.1 不能显卡直通，实际上我测试是可以的，读者可以在下文中找到我使用的软件版本 
-
-
 
 #### 主要配置
 
-
-
 ##### 硬件配置
-
 
 CPU: i5 10400 GPU: UHD630、AMD RX460
 
 其他硬件均虚拟化
 
-
 ##### 软件版本
-
 
 虚拟化平台：PVE
 
@@ -2039,17 +1877,13 @@ pve-kernel-5.13: 7.1-9
 
 MacOS 版本：macOS Monterey 12.3.1(21E258)（使用 [OSX-KVM](https://github.com/thenickdude/OSX-KVM)项目制作镜像） OpenCore&EFI 版本： [KVM-Opencore v16](https://github.com/thenickdude/KVM-Opencore/releases/tag/v16)
 
-
 #### 显卡直通
-
 
 因为我是通过远程访问使用黑苹果，所以并没有把要直通的 GPU 设置为主 GPU，这是本文和其他直通教程的主要区别。这样做的好处是可以用 PVE 的后台直接查看黑苹果启动情况、进入 Recovery 模式等
 
 参考 [Arch Linux wiki](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29)
 
-
 ##### 启用 IOMMU
-
 
 这里引用 Arch Linux wiki 中对 IOMMU 的介绍：
 
@@ -2070,7 +1904,6 @@ MacOS 版本：macOS Monterey 12.3.1(21E258)（使用 [OSX-KVM](https://github.c
 - iommu=pt：pt 是 passthrough 的缩写，可以提高性能
 - pcie_acs_override=downstream: 可以将同一 Group 中的设备分开直通
 - video=efifb:off：禁用 efifb 驱动，防止出现报错 BAR 3: cannot reserve [mem]
-
 
 更新内核参数
 
@@ -2113,13 +1946,9 @@ IOMMU Group 6:
         03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X] [1002:aae0]
 ```
 
-
 如果上面没有开启 `pcie_acs_override=downstream`就只能将整个 Group 下的设备都直通给某个虚拟机 
 
-
-
 ##### 隔离 GPU
-
 
 我们需要使用占位驱动程序（vfio）接管显卡，这样才能后续将显卡分配给虚拟机
 
@@ -2176,9 +2005,7 @@ blacklist radeon
 update-initramfs -u
 ```
 
-
 ##### 分配显卡
-
 
 重启后就可以将显卡分配给虚拟机了：
 
@@ -2186,21 +2013,15 @@ update-initramfs -u
 
 [![pve 直通选项](/image/systems/hackintosh-tutorials/pve_pve-passthrough.jpeg)](/p/pve-virtualized-hackintosh-gpu-passthrough-and-remote-access-tutorial/pve-passthrough.jpeg)pve 直通选项
 
-
 不同的显卡这里选择的选项不太一样，根据我的试验： 直通 UHD630 只需要勾选 `全功能（All Functions）`直通 AMD RX460 除了 `主 GPU（Primary GPU）`外的选项都需要勾选 
-
 
 直通之后 PVE 自带的 VNC 可能会卡在白苹果界面，其实系统已经正常启动，可以使用 MacOS 自带的 VNC 进行连接
 
 [![白苹果](/image/systems/hackintosh-tutorials/pve_stuck-apple.png)](/p/pve-virtualized-hackintosh-gpu-passthrough-and-remote-access-tutorial/stuck-apple.png)白苹果
 
-
 #### 远程访问
 
-
-
 ##### 分辨率调整
-
 
 当你通过 PVE 自带的 VNC 连接黑苹果的时候会发现有一个分辨率为 1080p 的内置显示器，并且没有其他分辨率的选项，所以需要一些奇技淫巧来强制修改分辨率：
 
@@ -2214,63 +2035,43 @@ update-initramfs -u
 
 [![修改分辨率](/image/systems/hackintosh-tutorials/pve_switch-res.jpeg)](/p/pve-virtualized-hackintosh-gpu-passthrough-and-remote-access-tutorial/switch-res.jpeg)修改分辨率
 
-
 不推荐使用带有 HiDPI 的分辨率，因为 HiDPI 是一种超采样技术（HiDPI 原理可以参考 [这篇文章](https://blog.skk.moe/post/hidpi-what-why-how/)）靠渲染更多的像素来使图像“看起来”更清晰。但是大部分远程桌面软件都会将原生分辨率压缩为当前物理屏幕分辨率进行传输，所以开启 HiDPI 除了会浪费计算资源、增加延迟外没有任何意义 
-
 
 （可选）使用 SwitchResX 关闭默认显示器 这个步骤不是必须的，如果你的远程桌面软件无法选择用于串流的显示器（比如 VNC Viewer）可以关闭默认显示器来强制软件使用虚拟显示器
 
 [![关闭默认显示器](/image/systems/hackintosh-tutorials/pve_disable-default-display.jpeg)](/p/pve-virtualized-hackintosh-gpu-passthrough-and-remote-access-tutorial/disable-default-display.jpeg)关闭默认显示器
 
-
 ##### 原生方案
-
 
 MacOS 原生提供 VNC 和 ARD 两种协议进行远程访问，可以在 `设置->分享`中开启
 
-
 ###### VNC
-
 
 自带的 VNC 是阉割版的，体验上做的很差：不支持调整画质、分辨率，不支持选择显示器（多显示器会横向拼接显示内容）从 Windows 访问键位映射有问题并且无法修改，卡顿严重，拖动窗口的时候尤其明显。唯一的优点是画质非常好，是本文介绍的所有方案中唯一一个使用原生分辨率传输（开启 HiDPI 画质明显提升）
 
-
 ###### ARD
-
 
 ARD 属于是 VNC 套壳，可以使用 Apple 官方的 [Apple Remote Desktop](https://apps.apple.com/us/app/apple-remote-desktop/id409907375?mt=12)软件（售价高达 518，不会真有冤大头会买吧。。。）连接黑苹果主机。相比于 VNC，ARD 支持选择显示器，提供 4 挡可调的图像质量，在保证画质的前提下提供不错的延迟表现。并且除了远程桌面以外还提供命令执行、系统报告、文件传输等系统管理功能，缺点是只支持 MacOS（Windows 下可以使用支持 VNC 协议的软件连接，但是会退化成和原生 VNC 一样的垃圾体验）
 
-
 ###### 自建 VNC Server
-
 
 既然自带的 VNC 如此不堪使用，ARD 又不提供 Windows 客户端，我们只能求助于第三方软件来提供满血版 VNC 协议支持。这里推荐 [Real VNC](https://www.realvnc.com/en/connect/download/vnc/macos/)，可以兼具 VNC 高画质和 ARD 的低延迟，除了不支持 HiDPI 外基本上能提供和连接显示器一致的体验
 
-
 ##### 第三方软件/私有协议
-
-
 
 ###### ToDesk
 
-
 ToDesk 在我的体验中卡顿非常严重。除了提供免费的内网穿透以外，相比其他方案基本上毫无优势可言，如果你有公网 IP 的话不要选择它。所以名气大的（尤其是国产软件）不一定真的好用。。。
-
 
 ###### ParSec
 
-
 ParSec 的原本用途是游戏串流，提供精细的配置项可供选择，细节上体验很舒适。相比于其他方案它的延迟和画面质量很稳定，不会在画面快速变化时卡顿或者糊掉，并且支持播放被控主机声音。可能是现在 Mac 版还处于 Beta 阶段的原因，ParSec 对性能要求很高，RX460 在 2560×1440 分辨率下延迟 20ms 左右，3440×1440（2k 带鱼屏）分辨率下延迟 40ms 左右
-
 
 ###### Jump Desktop
 
-
 Jump Desktop 是老牌 mac 远程桌面应用，使用私有的 Fluid 协议。延迟低、带宽占用低，但是画面也是最糊的，特别是窗口拖动等画面快速变化的场景涂抹感非常严重。Jump Desktop 支持自定义任何按键或是组合键的映射，和 ParSec 一样也支持播放被控主机声音
 
-
 #### 总结与性能测试
-
 
 测试环境：
 
@@ -2737,418 +2538,7 @@ CONFIG./USB/quirks=0x0d8c:0x0014::0xffff:UQ_KBD_IGNORE:0x08bb:0x2902::0xffff:UQ_
 ![](/image/systems/hackintosh-tutorials/esxi_1739963390-QQ20250219-190242.webp)
 百度网盘 [立即下载](https://pan.baidu.com/s/1BH4Emu4me0zNPQeQY5mrrQ)提取码: tbch [复制](javascript:;)天翼云盘 [立即下载](https://cloud.189.cn/t/RjUzAjYniu2i)提取码: yhz2 [复制](javascript:;)夸克网盘 [立即下载](https://pan.quark.cn/s/552eb3a25736)提取码: EpBv [复制](javascript:;)客服QQ271638927，网站统一解压密码imacos.top  **原文链接： [https://imacos.top/2025/02/18/vmware-esxi/](https://imacos.top/2025/02/18/vmware-esxi/)，转载请注明出处。    [** 0](javascript:;) [** 1](javascript:;)  [**](javascript:;)[**](#)[**](#)[**](#)[**](#)
 
-
-
-### b.4 OpenCore Legacy Patcher (OCLP)
-
-
-
-#### OCLP 简介与特性
-
-> 来源：https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/
-
-  
-
-#### OpenCore Legacy Patcher v1.4.2 黑苹果及老Mac电脑OpenCore综合驱动补丁工具
-
-  ** [imacos.top](https://imacos.top/author/heipingguowu/) **2024-03-13  ** [其他驱动](https://imacos.top/category/hpgw/bbqd/qtqd/)· [黑果工具](https://imacos.top/category/hpgw/hggj/) **2.29k  **104  ** [推广](javascript:;)    
-![](/image/systems/hackintosh-tutorials/oclp_intro_1659243478-OC-Patcher-300x300.png)
- 
-
- 
-
-#### 简介
-
- 
-OpenCore Legacy Patcher 由 Dortania 主导开发，一个基于 Python 的开源项目，围绕 Acidanthera 的 OpenCorePkg 和 Lilu，用于在受支持和不受支持的 Mac 上运行和解锁 macOS 中的功能。
- 
-项目的主要目标是为 Apple 不再支持的 Mac 注入新的活力，允许在 2007 年以前的机器上安装和使用 macOS Big Sur 和更新的 macOS 版本。
- 
-一些使用教程:
- 
-- 老款MAC强行升级，在不受支持的 Mac 上升级 macOS [https://imacos.top/2023/07/12/12/](https://imacos.top/2023/07/12/12/)
-- 使用OpenCore Legacy Patcher补丁灰色的解决方式办法 [https://imacos.top/2022/11/13/opencore-legacy-patcher-start-root-patching/](https://imacos.top/2022/11/13/opencore-legacy-patcher-start-root-patching/)
-- 官方英文版的教程,点击查看 [基本使用教程](https://dortania.github.io/OpenCore-Legacy-Patcher/)。
-
- 
-
-#### 软件特性
-
- 
-- 支持 macOS Big Sur、 Monterey、Ventura
-- 支持本机无线（Over The Air，OTA）系统更新
-- 支持 Penryn 和更新版本的 Mac（白苹果）
-- 在 BCM943224 和更新的芯片组上完全支持 WPA Wifi 和个人热点
-- 系统完整性保护、FileVault 2、.im4m 安全启动和存储
-- 在非原生操作系统上启动恢复操作系统、安全模式和单用户模式
-- 即使在 Mac（白苹果）上也能解锁 Sidecar 和 AirPlay 等功能
-- 在非标准硬件上启用增强的 SATA 和 NVMe 电源管理
-- 需要零固件补丁（即 APFS ROM 补丁）
-- Metal 和非 Metal GPU 的图形加速，目前已实现试验性支持 NVIDIA Kepler(GTX6x0)、Maxwell(GTX9x0)、Pascal(GTX10x0) 运行 Big Sur 和 Monterey。
-
- 
-「注意」
- 
-- 本工具仅支持全新安装和升级 macOS，无法使用已使用其他修补程序（例如 Patched Sur 或 bigmac）修补的 macOS Big Sur 安装，因为 APFS 快照和 SIP 文件完整性以及受损。但是，你仍然可以使用此修补程序重新安装 macOS 并保留原始数据。
-- 目前 OpenCore Legacy Patcher 正式支持修补以运行 macOS Big Sur 和 Monterey 安装、Ventura安装。对于较旧的操作系统，OpenCore 可能会起作用，但 Dortania 目前不提供支持。
-
- 
-
- 
-
-#### 安装
-
- 
-- OpenCore-Pacher-GUI.app： 
-- 基于可视化 GUI 的应用程序
-- 推荐给所有用户
-- AutoPkg-Assets.pkg： 
-- OpenCore-Patcher 使用的其他资源
-- 需要时自动拉取，请勿手动使用
-- 此为开源软件，直接将软件拖到应用程序目录即可；
-- 无需激活可直接使用，建议关闭自动更新以免激活失效（如果有）；
-- 添加引导参数EFI / OC / config . plist  # boot-args 位于 NVRAM 下 -> 7C436110-AB2A-4BBB-A880-FE41995C9F82下。  amfi_get_out_of_my_way = 0x1  # AMFI 已启用 ngfxcompat = 1  # 强制缺少 compat 属性 ngfxgl = 1  # 强制 OpenGL 属性缺失 nvda_drv_vrl = 1  # nvda_drv(_vrl) 变量缺失   # 要解决 SIP 错误，请将 csr-active-config 更改为030A0000  # 重新启动后，从启动选择器中选择重置两次 NVRAM
-
- 
-
-#### 更新日志 · 历史版本
-
-   “OpenCoreLegacyPatcher1.4.2”  [展开/收缩](javascript:void(0))    
-
-##### 警告 1：如果您拥有非 Metal Mac，请勿升级到 macOS 14.4
-
- 
-配备非 Metal 显卡的 Mac 目前不支持 macOS 14.4，请参阅 macOS 14.4 非 Metal 会话错误 #1125 了解更多信息。受影响的 Mac：
- 
-- MacBook5,1 - MacBook7,1（2008 年初 - 2010 年中）
-- MacBookAir2,1 - MacBookAir4,x（2008 年中 - 2011 年中）
-- MacBookPro4,1 - MacBookPro8,x（2008 年末 - 2011 年末）
-- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
-- Macmini3,1 - Macmini5,x（2009 年初 - 2011 年中）
-- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
-
-  受影响的 GPU 型号   
-
-##### 警告 2：如果升级到 macOS 14.4，您必须事先安装 OCLP 1.4.2。
-
- 
-许多硬件，包括 Metal GPU、WiFi 卡、T1 芯片组等都有针对 macOS 14.4 的新补丁。我们强烈建议您提前安装 OCLP 1.4.2 以确保顺利更新。
- 
-
-##### 警告 3：升级到 12.7.4、13.6.5 或 14.4 可能会破坏旧版无线卡上的自动加入 WiFi 网络
-
- 
-要恢复自动加入支持，请忘记网络并重新添加。
- 
-这仅适用于旧版 WiFi 卡，包含在以下型号中：
- 
-- MacBook5,x（2008 年初 - 2009 年初）
-- MacBookAir2,1 - MacBookAir3,x（2008 年中 - 2010 年末）
-- MacBookPro4,1 - MacBookPro7,1（2008 年末 - 2010 年中）
-- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
-- Macmini3,1（2009 年初 - 2009 年底）
-- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
-
-  
-随着 OpenCore Legacy Patcher v1.4.2 的发布，此版本主要针对 macOS 14.4 和所有 Mac，以确保功能正常。在 1.4.0 和 1.4.1 中，1.4.2 解决了现代无线卡上 WiFi 的自动加入问题、12.7.4 和 13.6.5 的传统 WiFi 支持以及 macOS Ventura 的 USB 1.1 回归问题。
- 
-我们希望每个人都喜欢新版本！
-  
-正如预期的那样，macOS Sonoma 支持仍在积极开发中。这是一个社区驱动的项目，因此我们要求用户控制期望，并在遇到影响您的问题时使用较旧的操作系统。
-  
-
-#### 完整变更日志
-
-  1.4.2 变更日志  
-- 解决 macOS 14.4 上对 Modern Wireless 的自动加入支持问题  
-- 适用于BCM94360、4360、4350、4331和43224芯片组
-- 解决 macOS 12.7.4 和 13.6.5 上旧版无线的 WiFi 支持问题  
-- 适用于 BCM94328、BCM94322 和 Atheros 芯片组
-- 解决 macOS Ventura 上的 USB 1.1 从 OCLP 1.4.0 回归的问题
-- 增量二进制文件：  
-- PatcherSupportPkg 1.4.8 - 发布
-
-   1.4.1 变更日志  
-- 更新更新器实现
-- 解决运行 macOS 14.4 及更高版本的 MacBookAir6,x 的键盘/触控板支持问题  
-- 扩展 SPI 键盘和触控板补丁以包括 MacBookAir6,x
-- 发布 BCM2046 和 BCM2070 芯片组的蓝牙 NVRAM 变量  
-- 减少了 NVRAM 重置的需要，以恢复较新操作系统中的蓝牙支持（感谢 [@Ausdauersportler](https://github.com/Ausdauersportler)）
-
-   1.4.0 变更日志  
-- 重构子流程调用
-- 解决 RecoveryOS 支持（在 OpenCorePkg 中解决回归问题）
-- 恢复 macOS 14.4 及更高版本的 SPI 键盘和触控板支持  
-- 适用于 MacBook8,1、MacBookAir7,x 和 MacBookPro12,1-14,x
-- 在 macOS 14.4 及更高版本上恢复对 T1 的支持  
-- 适用于MacBookPro13,2,MacBookPro13,3,MacBookPro14,2,MacBookPro14,3
-- 在 macOS 14.4 及更高版本上恢复对旧版 Metal GPU 的支持  
-- 适用于：  
-- 通过 Skylake 的英特尔 Ivy Bridge
-- 英伟达开普勒
-- AMD 旧版 GCN
-- 在 macOS 14.4 及更高版本上恢复对 USB 1.1 的支持  
-- 适用于 Penryn Mac、Xserve3,1 和 MacPro4,1/5,1
-- 解决 macOS 14.4 及更高版本上对传统和现代 WiFi 的支持  
-- 适用于所有配备 WiFi 的 Mac 电脑
-- 14.4 的注意事项：在您忘记并重新加入网络之前，自动加入可能无法工作
-- 增量二进制文件：  
-- OpenCorePkg 0.9.7 - 发布
-
-  
-
-#### 资产信息
-
- 
-- OpenCore-Patcher-GUI.app：  
-- 基于可视化 GUI 的应用程序
-- 推荐给所有用户
-- AutoPkg-Assets.pkg：  
-- OpenCore-Patcher 使用的其他资源
-- 需要时自动拉取，无需下载
-
- 
-
-    “OpenCoreLegacyPatcher1.4.1”  [展开/收缩](javascript:void(0))    
-
-##### 警告 1：如果您拥有非 Metal Mac，请勿升级到 macOS 14.4
-
- 
-配备非 Metal 显卡的 Mac 目前不支持 macOS 14.4，请参阅macOS 14.4 非 Metal 会话错误 #1125了解更多信息。受影响的 Mac：
- 
-- MacBook5,1 - MacBook7,1（2008 年初 - 2010 年中）
-- MacBookAir2,1 - MacBookAir4,x（2008 年中 - 2011 年中）
-- MacBookPro4,1 - MacBookPro8,x（2008 年末 - 2011 年末）
-- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
-- Macmini3,1 - Macmini5,x（2009 年初 - 2011 年中）
-- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
-
-  受影响的 GPU 型号     品牌  系列  型号      AMD  TeraScale 1 和 2  2000 - 6000 系列    英伟达  特斯拉  8000-200系列    英伟达  麦克斯韦和帕斯卡  900 - 1000系列    英特尔  铁湖  高清系列    英特尔  珊迪大桥  高清3000系列      
-
-##### 警告 2：如果升级到 macOS 14.4，您必须事先安装 OCLP 1.4.0。
-
- 
-许多硬件，包括 Metal GPU、WiFi 卡、T1 芯片组等都有针对 macOS 14.4 的新补丁。我们强烈建议您提前安装 OCLP 1.4.0 以确保顺利更新。
- 
-
-##### 警告 3：升级到 14.4 可能会破坏自动加入 WiFi 网络
-
- 
-要恢复自动加入支持，请忘记网络并重新添加。
- 
-
-    “OpenCoreLegacyPatcher1.3.0”  [展开/收缩](javascript:void(0))    
-
-##### 警告：在以下计算机上升级到 macOS 14.2 之前，您必须安装此更新：
-
- 
-- **MacBook Air** 
-- MacBookAir5,x（2012 年中）
-- MacBookAir6,x（2013 年中、2014 年初）
-- **MacBook Pro** 
-- MacBookPro9,x（2012 年中）
-- MacBookPro10,x（2012 年中、2012 年末、2013 年初）
-- MacBookPro11,x（2013 年末、2014 年中）
-- **Macmini电脑** 
-- Macmini6,x（2012 年末）
-- Macmini7,1（2014 年末）
-- **iMac** 
-- iMac13,x（2012 年末）
-- iMac14,x（2013 年末、2014 年中）
-
-  
-**受影响的显卡系列（所有基于 3802 的 Metal GPU）：**
- 
-- Intel iGPUs 
-- Ivy Bridge
-- Haswell
-- Nvidia dGPUs 
-- Nvidia Kepler
-
-  
-随着 OpenCore Legacy Patcher v1.3.0 的发布，此版本主要针对 macOS 14.2 和配备基于 Metal 3802 显卡的 Mac。
-  
-
-#### 完整变更日志
-
-  1.3.0 变更日志  
-- 解决 `CFBundleExecutable`kext 不匹配的二进制名称。 
-- 解决 ProperTree 二元检测
-- 适用扩展： 
-- corecrypto_T1.kext
-- corecaptureElCap.kext
-- IO80211ElCap.kext
-- 解决 macOS 14.2 Beta 2 及更高版本的 3802-GPU 支持问题。 
-- 适用的GPU： 
-- Intel Ivy Bridge 和 Haswell iGPU
-- Nvidia Kepler dGPU
-- 增量二进制文件： 
-- PatcherSupportPkg 1.4.6 - 发布
-
-  
-
-  
-解压密码：imacos.top
- 资源下载 下载价格 VIP 专享 仅限VIP下载 [升级VIP](https://imacos.top/user-2/?action=vip)[立即购买](javascript:;)注册登录升级VIP会员，尊享全站资源下载特权  **原文链接： [https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/](https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/)，转载请注明出处。    [** 1](javascript:;) [** 2](javascript:;)  [OpenCore Legacy Patcher](https://imacos.top/tag/opencore-legacy-patcher/) [**](javascript:;)[**](#)[**](#)[**](#)[**](#) 
-
-
-
-#### OCLP 安装实战教程
-
-> 来源：https://3c.yipee.cc/265832/%E3%80%90%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB%E3%80%91%E5%88%A9%E7%94%A8-opencore-legacy-patcher%EF%BC%8C%E8%AE%93%E8%88%8A%E6%AC%BE-mac-%E9%9B%BB%E8%85%A6%E4%B9%9F%E8%83%BD%E6%9B%B4%E6%96%B0%E5%88%B0/
-
-   
-- [3C科技](https://3c.yipee.cc/category/3c%e7%a7%91%e6%8a%80/)
-- [教學及心得分享](https://3c.yipee.cc/category/%e6%95%99%e5%ad%b8%e5%8f%8a%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab/)
-- [新消息](https://3c.yipee.cc/category/news/)
-- [軟體平台及應用](https://3c.yipee.cc/category/3c%e7%a7%91%e6%8a%80/software/)
-- [關鍵焦點](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/%e9%97%9c%e9%8d%b5%e7%84%a6%e9%bb%9e/)
-- [頭條推薦](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/%e9%a0%ad%e6%a2%9d%e6%8e%a8%e8%96%a6/)
-- [首頁主推分類](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/)
-
-  
-
-#### 【心得分享】利用 OpenCore Legacy Patcher，讓舊款 MAC 電腦也能更新到最新版 macOS
-
-   [![](/image/systems/hackintosh-tutorials/oclp_tut_1768999782608.jpg)
- 三嘻行動哇 Yipee.cc](https://3c.yipee.cc/author/yipee_admin/)   **2024-11-11   ** [5](https://3c.yipee.cc/265832/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91%e5%88%a9%e7%94%a8-opencore-legacy-patcher%ef%bc%8c%e8%ae%93%e8%88%8a%e6%ac%be-mac-%e9%9b%bb%e8%85%a6%e4%b9%9f%e8%83%bd%e6%9b%b4%e6%96%b0%e5%88%b0/)   .entry-header   
-**「加三嘻行動哇 Yipee! 成為好友」**
- 
-【 **[Facebook](https://www.facebook.com/3c2yipee)、 [Youtube](https://www.youtube.com/@YipeeCc)、 [Twitter](https://twitter.com/Yipee1766)、 [Instagram](https://www.instagram.com/yipee1766/)、 [Telegram](https://t.me/yipee88)、 [Line](https://page.line.me/eti8749x)**】
-
-![](/image/systems/hackintosh-tutorials/oclp_tut_1-MacOS-720x441.jpg)
- 
-蘋果每年都會推出新一代 macOS 作業系統更新，也幾乎每年都淘汰部分舊機型無法升級到最新的 macOS，如果使用者想要體驗新功能，就必須購買新機才行。
- 
-問題是 Mac 電腦很耐用，如果只是為了想要體驗新系統就重新買一台電腦其實滿浪費的。這次要來分享利用開源程式 OpenCore 讓舊款 Mac 電腦更新到最新版 macOS，同時還會透露一些小撇步讓大家升級成功喔！
- 
-
-#### 【教學影片】
-
- 
-
- 
-
-#### 【圖文分享】
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-10-15-12.35.48-720x462.png)
- 
-這次測試的機型是 2012 年的 MAC mini，目前的作業系統是 macOS Catalina 10.5.7，希望可以升級到更新的 macOS 作業系統。
- 
-
-#### 第一步
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-10-20-4.08.06-720x452.png)
- 
-首先，開啟 **[「OpenCore Legacy Patcher」](https://dortania.github.io/OpenCore-Legacy-Patcher/)**官方網頁，點擊藍色的 **「Getting Started→」**按鈕。
- 
-同時，也要準備一個至少 16GB 的 USB 隨身碟，但要注意隨身碟裡的重要資料要另外儲存起來，因為後面的執行步驟會讓隨身碟資料格式化，全部資料會消失不見。
- 
-
-#### 第二步
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.09.15-720x367.jpg)
- 
-要下載 OpenCore-Patcher 應用程式時，要確定自己下載的版本是最新版，目前在 **「 [Github](https://github.com/dortania/OpenCore-Legacy-Patcher/releases)」**的最新版是 OpenCore Legacy Patcher 2.1.2，支援 macOS Sequoia 作業系統。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.12.32-720x269.png)
- 
-捲動螢幕，點擊下載 **「OpenCore-Patcher-GUI.app.zip」**檔案。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.27.34.png)
- 
-解壓縮檔案後，會看到 **「OpenCore-Patcher.app」**，接著點擊執行。
- 
-
-#### 第三步：官方沒說的小秘訣
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.25.46-720x397.png)
- 
-當 OpenCore Legacy Patcher 執行時，通常會直接選擇 **「Create macOS Installer」**建立 macOS 作業系統安裝檔。
- 
-**然而，為了順利成功製作 USB 隨身碟，有個官方沒說的小秘訣一定要注意！就是要設定「完全取用磁碟」權限。**
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.25.54-720x537.png)
- 
-開啟 Mac 電腦的 **「系統設定」**App ，選擇 **「隱私權與安全性」**功能，點擊 **「完全取用磁碟」**，接著把 **「終端機」**和 **「OpenCore-Patcher」**加入並同意取用。
- 
-
-#### 第四步：建立 macOS 安裝程式
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.25.46-720x397.png)
- 
-重新開啟 OpenCore Legacy Patcher App 之後，選擇 **「Create macOS Installer」**建立 macOS 作業系統安裝檔。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.26.10-720x397.png)
- 
-點擊 **「Download macOS Installer」**。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.26.24-720x544.png)
- 
-選取想要的安裝作業系統版本，然後按下 **「Download」**按鈕。雖然說目前可製作 macOS Sequoia 15.1 作業系統安裝檔，但是這次想測試的是「macOS Sonoma 14」。
- 
-這裡有個小建議，就是下載作業系統時，建議使用要升級的裝置去執行 OpenCore-Patcher.app 並執行下載 macOS，這是因為如果你的裝置不支援某個新的macOS 時，就會跳出提醒畫面，就能換下載其他的作業系統。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_OCLP-GUI-Installer-Format-USB.a14e2cea.png)
- 
-macOS 下載完成之後，將 USB 隨身碟插入 Mac ，Patcher 會開始進行安裝程式的閃存過程。
- 
-
-#### 第五步：啟動 OpenCore 和安裝 macOS
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_OCLP-GUI-Main-Menu.40fc1dad-720x397.png)
- 
-再次打開 OpenCore Legacy Patcher App，點擊 **「Build and Install OpenCore」**。等系統執行完成後，點擊 **「Install OpenCore」**。
- 
-選擇 USB 隨身碟，並選擇想要安裝 OpenCore 的位置，並等待它執行完成。
- 
-
-#### 第六步：啟動 OpenCore 和安裝 macOS
-
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.52.16-720x360.png)
- 
-等安裝完 OpenCore 之後，會要求將 Mac 電腦重新開機。開機後，會顯示安裝畫面。
- 
-最後，就是等著系統安裝完成啦。
- 
-![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.49.46-720x415.png)
- 
-這次實際安裝過程裡，柏青哥分別在具有 Touch Bar 觸控按鈕的 2011年MacBook Pro 及 2012 年 Mac mini 安裝了 macOS Sonoma 14 作業系統。
- 
-值得一提的是，2011年MacBook Pro 安裝一次搞定，順利地完成了。至於 Mac mini 則是重新安裝了 3 次才成功。
- 
-換句話說，不是每一台 Mac 裝置都能順利地透過 OpenCore 一次升級到最新的作業系統，而是可能要測試好幾次才行。
- 
-如果想讓你的老 Mac 也能使用更新的 macOS ，不妨可以試試喔！
- 
-**延伸閱讀：**
- 
-**[【心得分享】DIY 3D列印 MagSafe 無線充電座，讓 iPhone 變身美型電子時鐘！](https://3c.yipee.cc/263687/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91diy-3d%e5%88%97%e5%8d%b0-magsafe-%e7%84%a1%e7%b7%9a%e5%85%85%e9%9b%bb%e5%ba%a7%ef%bc%8c%e8%ae%93-iphone-%e8%ae%8a%e8%ba%ab%e7%be%8e%e5%9e%8b/)**
- 
-**[【心得分享】DJI OSMO ACTION 5 PRO 開箱實測水下自動攝影與冷凍庫耐寒挑戰](https://3c.yipee.cc/261595/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91dji-osmo-action-5-pro-%e9%96%8b%e7%ae%b1%ef%bc%8c%e5%af%a6%e6%b8%ac%e6%b0%b4%e4%b8%8b%e8%87%aa%e5%8b%95%e6%94%9d%e5%bd%b1%e8%88%87%e5%86%b7/)**
- 
-**[【心得分享】抽不到死侍和金鋼狼的翹臀 Xbox 控制器？那就用 3D 列印 DIY 自己做一個吧！](https://3c.yipee.cc/260647/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91%e6%8a%bd%e4%b8%8d%e5%88%b0%e6%ad%bb%e4%be%8d%e5%92%8c%e9%87%91%e9%8b%bc%e7%8b%bc%e7%9a%84%e7%bf%b9%e8%87%80-xbox-%e6%8e%a7%e5%88%b6%e5%99%a8/)**
- 
-**[【iOS 18 教學】自訂鎖定畫面按鈕，把手電筒和相機可以換成其他功能了！](https://app.yipee.cc/137084)**
- 
-**[【總整理】11 款超推薦免費線上去背、圖片橡皮擦網站，一鍵去除背景、加入馬賽克簡單又好用！(2024.07.17更新)](https://3c.yipee.cc/253361/%e3%80%90%e7%b8%bd%e6%95%b4%e7%90%86%e3%80%9111-%e6%ac%be%e8%b6%85%e6%8e%a8%e8%96%a6%e5%85%8d%e8%b2%bb%e7%b7%9a%e4%b8%8a%e5%8e%bb%e8%83%8c%e3%80%81%e5%9c%96%e7%89%87%e6%a9%a1%e7%9a%ae%e6%93%a6/)**
- 
-**[【教學】教你如何把 Google Photos / Google 相簿的照片備份到 iCloud 相簿上](https://3c.yipee.cc/253228/%e3%80%90%e6%95%99%e5%ad%b8%e3%80%91%e6%95%99%e4%bd%a0%e5%a6%82%e4%bd%95%e6%8a%8a-google-photos-google-%e7%9b%b8%e7%b0%bf%e7%9a%84%e7%85%a7%e7%89%87%e5%82%99%e4%bb%bd%e5%88%b0-icloud-%e7%9b%b8/)**
-     [![好友人數](/image/systems/hackintosh-tutorials/oclp_tut_5c8f30d424595f34ae328ca85153828d.png)](https://app.yipee.cc/106617/)      
-
-##### 大家對網站文章上的一個讚、+1及轉分享，都是對我們的最好的鼓勵及繼續下去的原動力，請大家不要吝嗇。
-
- .entry-content  .entry-footer  
-
 ## 0xC 实用优化教程
-
 
 ### 12.1 性能与功耗监控
 推荐使用 **Intel Power Gadget** 查看 CPU 频率、功耗和温度。
@@ -3174,15 +2564,11 @@ macOS 下載完成之後，將 USB 隨身碟插入 Mac ，Patcher 會開始進�
 - **工具**：[one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
 - **命令**：在终端运行 `bash -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"`，按提示选择分辨率。
 
-
-
 ## 0xD 主题与启动项
 
 ### 13.1 启用图形化界面 (OpenCanopy)
 
 ![OpenCanopy Theme](/image/systems/hackintosh-tutorials/opencanopy-preview.png)
-
-
 
 OpenCore 自带的文本界面太丑？可以开启 OpenCanopy 图形界面。
 
@@ -3211,10 +2597,7 @@ OpenCore 默认可能给 Windows 显示 generic 硬盘图标。
 -   在 OpenCore 界面按 `Space` (空格) 可以显示/隐藏辅助条目（需开启 `HideAuxiliary`）。
 -   如果要永久隐藏某个分区，可以在 Config 中 `Misc` -> `Security` -> `ScanPolicy` 进行调整，或者使用 `Ignore` 规则。
 
-
-
 ## 0xE OC配置详情单
-
 
 ## 0xF 安装常见问题
 
@@ -3420,7 +2803,6 @@ Halting on critical error
 
 上面的代码中，XXXX.kext 可能是任何值，例如 VirtualSMC.kext，CPUFriend.kext，AppleALC.kext 等等，但是问题的原因是一样的：在 /EFI/OC/Kexts/ 目录下没有对应的 kext 文件。解决方法也很简单，添加对应的 kext，或者在 config.plist 中禁用相关的 kext。下载 kext 可以看看 黑苹果星球整理的月度 kext 更新包。除此之外还有 XXX.efi is missing 之类的也是同类型错误，只是 XXX.efi 文件一般位于 /EFI/OC/Drivers/ 目录下。
 
-
 ### QA-30 启动时显示 ++++++++++++++++++++ End RandomSeed
 
 ```
@@ -3560,7 +2942,6 @@ IOConsoleUsers: gIOScreenLockState 3, hs 0, bs 0, now 0, sm 0x0
 - 尝试 -gfxmlr 启动参数，这可能同时可以解决"Divide by Zero"错误
 - 在 10.15.4 及以上版本 macOS 中，某些机型上的第八、九代酷睿可能需要添加启动参数 igfxonln=1
 - 更多参阅 WhateverGreen 补丁
-
 
 ### QA-34 启动界面看不到 macOS 启动分区
 
@@ -3914,7 +3295,6 @@ OCS: No schema for SkipCustomEtryCheck at 8 index, context <Boot>!
 
 - 使用 0.6.2 版本的 Sample.plist 重建 config.plist；
 - 使用 BeyondCompare 等代码对比工具查找两个版本 Sample.plist 的不同之处，然后使用 VScode 等代码编辑器工具修正 0.6.1 版的 config.plist
-
 
 ### QA-60 启动时显示 OC: Driver AudioDxe.efi at 0 cannot be found!
 
@@ -4698,7 +4078,6 @@ Compiler Version 0x20190509 (538510601)
 **解决方法：**
 1. 从 Kernel → Add 和 EFI/OC/Kexts 中删除 NullCPUPowerManagement
 2. 然后在 Kernel → Quirks 下启用 DummyPowerManagement
-
 
 ### QA-127 000011.291605 HSP3@14300000:AppleUSBHostPort::disconnect:persistent enumeration failures
 
