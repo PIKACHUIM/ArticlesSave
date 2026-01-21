@@ -1011,6 +1011,7 @@ csr-active-config：FF0F000
 
 **8.1 添加启动参数**
 
+
 在`config.plist` → `NVRAM` → `Add` → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → `boot-args`中添加：
 
 - `igfxonln=1`：强制所有显示器在线（解决唤醒黑屏）
@@ -2734,7 +2735,420 @@ CONFIG./USB/quirks=0x0d8c:0x0014::0xffff:UQ_KBD_IGNORE:0x08bb:0x2902::0xffff:UQ_
 然后顺利开机，OC 引导成功，机型和三码都被我们成功修正了，CPU 型号也正常识别了：
  
 ![](/image/systems/hackintosh-tutorials/esxi_1739963390-QQ20250219-190242.webp)
- 百度网盘 [立即下载](https://pan.baidu.com/s/1BH4Emu4me0zNPQeQY5mrrQ)提取码: tbch [复制](javascript:;)天翼云盘 [立即下载](https://cloud.189.cn/t/RjUzAjYniu2i)提取码: yhz2 [复制](javascript:;)夸克网盘 [立即下载](https://pan.quark.cn/s/552eb3a25736)提取码: EpBv [复制](javascript:;)客服QQ271638927，网站统一解压密码imacos.top  **原文链接： [https://imacos.top/2025/02/18/vmware-esxi/](https://imacos.top/2025/02/18/vmware-esxi/)，转载请注明出处。    [** 0](javascript:;) [** 1](javascript:;)  [**](javascript:;)[**](#)[**](#)[**](#)[**](#) ## 0xC 实用优化教程
+百度网盘 [立即下载](https://pan.baidu.com/s/1BH4Emu4me0zNPQeQY5mrrQ)提取码: tbch [复制](javascript:;)天翼云盘 [立即下载](https://cloud.189.cn/t/RjUzAjYniu2i)提取码: yhz2 [复制](javascript:;)夸克网盘 [立即下载](https://pan.quark.cn/s/552eb3a25736)提取码: EpBv [复制](javascript:;)客服QQ271638927，网站统一解压密码imacos.top  **原文链接： [https://imacos.top/2025/02/18/vmware-esxi/](https://imacos.top/2025/02/18/vmware-esxi/)，转载请注明出处。    [** 0](javascript:;) [** 1](javascript:;)  [**](javascript:;)[**](#)[**](#)[**](#)[**](#)
+
+
+
+### b.4 OpenCore Legacy Patcher (OCLP)
+
+
+
+#### OCLP 简介与特性
+
+> 来源：https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/
+
+  
+
+#### OpenCore Legacy Patcher v1.4.2 黑苹果及老Mac电脑OpenCore综合驱动补丁工具
+
+  ** [imacos.top](https://imacos.top/author/heipingguowu/) **2024-03-13  ** [其他驱动](https://imacos.top/category/hpgw/bbqd/qtqd/)· [黑果工具](https://imacos.top/category/hpgw/hggj/) **2.29k  **104  ** [推广](javascript:;)    
+![](/image/systems/hackintosh-tutorials/oclp_intro_1659243478-OC-Patcher-300x300.png)
+ 
+
+ 
+
+#### 简介
+
+ 
+OpenCore Legacy Patcher 由 Dortania 主导开发，一个基于 Python 的开源项目，围绕 Acidanthera 的 OpenCorePkg 和 Lilu，用于在受支持和不受支持的 Mac 上运行和解锁 macOS 中的功能。
+ 
+项目的主要目标是为 Apple 不再支持的 Mac 注入新的活力，允许在 2007 年以前的机器上安装和使用 macOS Big Sur 和更新的 macOS 版本。
+ 
+一些使用教程:
+ 
+- 老款MAC强行升级，在不受支持的 Mac 上升级 macOS [https://imacos.top/2023/07/12/12/](https://imacos.top/2023/07/12/12/)
+- 使用OpenCore Legacy Patcher补丁灰色的解决方式办法 [https://imacos.top/2022/11/13/opencore-legacy-patcher-start-root-patching/](https://imacos.top/2022/11/13/opencore-legacy-patcher-start-root-patching/)
+- 官方英文版的教程,点击查看 [基本使用教程](https://dortania.github.io/OpenCore-Legacy-Patcher/)。
+
+ 
+
+#### 软件特性
+
+ 
+- 支持 macOS Big Sur、 Monterey、Ventura
+- 支持本机无线（Over The Air，OTA）系统更新
+- 支持 Penryn 和更新版本的 Mac（白苹果）
+- 在 BCM943224 和更新的芯片组上完全支持 WPA Wifi 和个人热点
+- 系统完整性保护、FileVault 2、.im4m 安全启动和存储
+- 在非原生操作系统上启动恢复操作系统、安全模式和单用户模式
+- 即使在 Mac（白苹果）上也能解锁 Sidecar 和 AirPlay 等功能
+- 在非标准硬件上启用增强的 SATA 和 NVMe 电源管理
+- 需要零固件补丁（即 APFS ROM 补丁）
+- Metal 和非 Metal GPU 的图形加速，目前已实现试验性支持 NVIDIA Kepler(GTX6x0)、Maxwell(GTX9x0)、Pascal(GTX10x0) 运行 Big Sur 和 Monterey。
+
+ 
+「注意」
+ 
+- 本工具仅支持全新安装和升级 macOS，无法使用已使用其他修补程序（例如 Patched Sur 或 bigmac）修补的 macOS Big Sur 安装，因为 APFS 快照和 SIP 文件完整性以及受损。但是，你仍然可以使用此修补程序重新安装 macOS 并保留原始数据。
+- 目前 OpenCore Legacy Patcher 正式支持修补以运行 macOS Big Sur 和 Monterey 安装、Ventura安装。对于较旧的操作系统，OpenCore 可能会起作用，但 Dortania 目前不提供支持。
+
+ 
+
+ 
+
+#### 安装
+
+ 
+- OpenCore-Pacher-GUI.app： 
+- 基于可视化 GUI 的应用程序
+- 推荐给所有用户
+- AutoPkg-Assets.pkg： 
+- OpenCore-Patcher 使用的其他资源
+- 需要时自动拉取，请勿手动使用
+- 此为开源软件，直接将软件拖到应用程序目录即可；
+- 无需激活可直接使用，建议关闭自动更新以免激活失效（如果有）；
+- 添加引导参数EFI / OC / config . plist  # boot-args 位于 NVRAM 下 -> 7C436110-AB2A-4BBB-A880-FE41995C9F82下。  amfi_get_out_of_my_way = 0x1  # AMFI 已启用 ngfxcompat = 1  # 强制缺少 compat 属性 ngfxgl = 1  # 强制 OpenGL 属性缺失 nvda_drv_vrl = 1  # nvda_drv(_vrl) 变量缺失   # 要解决 SIP 错误，请将 csr-active-config 更改为030A0000  # 重新启动后，从启动选择器中选择重置两次 NVRAM
+
+ 
+
+#### 更新日志 · 历史版本
+
+   “OpenCoreLegacyPatcher1.4.2”  [展开/收缩](javascript:void(0))    
+
+##### 警告 1：如果您拥有非 Metal Mac，请勿升级到 macOS 14.4
+
+ 
+配备非 Metal 显卡的 Mac 目前不支持 macOS 14.4，请参阅 macOS 14.4 非 Metal 会话错误 #1125 了解更多信息。受影响的 Mac：
+ 
+- MacBook5,1 - MacBook7,1（2008 年初 - 2010 年中）
+- MacBookAir2,1 - MacBookAir4,x（2008 年中 - 2011 年中）
+- MacBookPro4,1 - MacBookPro8,x（2008 年末 - 2011 年末）
+- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
+- Macmini3,1 - Macmini5,x（2009 年初 - 2011 年中）
+- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
+
+  受影响的 GPU 型号   
+
+##### 警告 2：如果升级到 macOS 14.4，您必须事先安装 OCLP 1.4.2。
+
+ 
+许多硬件，包括 Metal GPU、WiFi 卡、T1 芯片组等都有针对 macOS 14.4 的新补丁。我们强烈建议您提前安装 OCLP 1.4.2 以确保顺利更新。
+ 
+
+##### 警告 3：升级到 12.7.4、13.6.5 或 14.4 可能会破坏旧版无线卡上的自动加入 WiFi 网络
+
+ 
+要恢复自动加入支持，请忘记网络并重新添加。
+ 
+这仅适用于旧版 WiFi 卡，包含在以下型号中：
+ 
+- MacBook5,x（2008 年初 - 2009 年初）
+- MacBookAir2,1 - MacBookAir3,x（2008 年中 - 2010 年末）
+- MacBookPro4,1 - MacBookPro7,1（2008 年末 - 2010 年中）
+- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
+- Macmini3,1（2009 年初 - 2009 年底）
+- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
+
+  
+随着 OpenCore Legacy Patcher v1.4.2 的发布，此版本主要针对 macOS 14.4 和所有 Mac，以确保功能正常。在 1.4.0 和 1.4.1 中，1.4.2 解决了现代无线卡上 WiFi 的自动加入问题、12.7.4 和 13.6.5 的传统 WiFi 支持以及 macOS Ventura 的 USB 1.1 回归问题。
+ 
+我们希望每个人都喜欢新版本！
+  
+正如预期的那样，macOS Sonoma 支持仍在积极开发中。这是一个社区驱动的项目，因此我们要求用户控制期望，并在遇到影响您的问题时使用较旧的操作系统。
+  
+
+#### 完整变更日志
+
+  1.4.2 变更日志  
+- 解决 macOS 14.4 上对 Modern Wireless 的自动加入支持问题  
+- 适用于BCM94360、4360、4350、4331和43224芯片组
+- 解决 macOS 12.7.4 和 13.6.5 上旧版无线的 WiFi 支持问题  
+- 适用于 BCM94328、BCM94322 和 Atheros 芯片组
+- 解决 macOS Ventura 上的 USB 1.1 从 OCLP 1.4.0 回归的问题
+- 增量二进制文件：  
+- PatcherSupportPkg 1.4.8 - 发布
+
+   1.4.1 变更日志  
+- 更新更新器实现
+- 解决运行 macOS 14.4 及更高版本的 MacBookAir6,x 的键盘/触控板支持问题  
+- 扩展 SPI 键盘和触控板补丁以包括 MacBookAir6,x
+- 发布 BCM2046 和 BCM2070 芯片组的蓝牙 NVRAM 变量  
+- 减少了 NVRAM 重置的需要，以恢复较新操作系统中的蓝牙支持（感谢 [@Ausdauersportler](https://github.com/Ausdauersportler)）
+
+   1.4.0 变更日志  
+- 重构子流程调用
+- 解决 RecoveryOS 支持（在 OpenCorePkg 中解决回归问题）
+- 恢复 macOS 14.4 及更高版本的 SPI 键盘和触控板支持  
+- 适用于 MacBook8,1、MacBookAir7,x 和 MacBookPro12,1-14,x
+- 在 macOS 14.4 及更高版本上恢复对 T1 的支持  
+- 适用于MacBookPro13,2,MacBookPro13,3,MacBookPro14,2,MacBookPro14,3
+- 在 macOS 14.4 及更高版本上恢复对旧版 Metal GPU 的支持  
+- 适用于：  
+- 通过 Skylake 的英特尔 Ivy Bridge
+- 英伟达开普勒
+- AMD 旧版 GCN
+- 在 macOS 14.4 及更高版本上恢复对 USB 1.1 的支持  
+- 适用于 Penryn Mac、Xserve3,1 和 MacPro4,1/5,1
+- 解决 macOS 14.4 及更高版本上对传统和现代 WiFi 的支持  
+- 适用于所有配备 WiFi 的 Mac 电脑
+- 14.4 的注意事项：在您忘记并重新加入网络之前，自动加入可能无法工作
+- 增量二进制文件：  
+- OpenCorePkg 0.9.7 - 发布
+
+  
+
+#### 资产信息
+
+ 
+- OpenCore-Patcher-GUI.app：  
+- 基于可视化 GUI 的应用程序
+- 推荐给所有用户
+- AutoPkg-Assets.pkg：  
+- OpenCore-Patcher 使用的其他资源
+- 需要时自动拉取，无需下载
+
+ 
+
+    “OpenCoreLegacyPatcher1.4.1”  [展开/收缩](javascript:void(0))    
+
+##### 警告 1：如果您拥有非 Metal Mac，请勿升级到 macOS 14.4
+
+ 
+配备非 Metal 显卡的 Mac 目前不支持 macOS 14.4，请参阅macOS 14.4 非 Metal 会话错误 #1125了解更多信息。受影响的 Mac：
+ 
+- MacBook5,1 - MacBook7,1（2008 年初 - 2010 年中）
+- MacBookAir2,1 - MacBookAir4,x（2008 年中 - 2011 年中）
+- MacBookPro4,1 - MacBookPro8,x（2008 年末 - 2011 年末）
+- iMac7,1 - iMac12,x（2007 年中 - 2011 年中）
+- Macmini3,1 - Macmini5,x（2009 年初 - 2011 年中）
+- MacPro3,1 - MacPro5,1（2008 年初 - 2012 年中）
+
+  受影响的 GPU 型号     品牌  系列  型号      AMD  TeraScale 1 和 2  2000 - 6000 系列    英伟达  特斯拉  8000-200系列    英伟达  麦克斯韦和帕斯卡  900 - 1000系列    英特尔  铁湖  高清系列    英特尔  珊迪大桥  高清3000系列      
+
+##### 警告 2：如果升级到 macOS 14.4，您必须事先安装 OCLP 1.4.0。
+
+ 
+许多硬件，包括 Metal GPU、WiFi 卡、T1 芯片组等都有针对 macOS 14.4 的新补丁。我们强烈建议您提前安装 OCLP 1.4.0 以确保顺利更新。
+ 
+
+##### 警告 3：升级到 14.4 可能会破坏自动加入 WiFi 网络
+
+ 
+要恢复自动加入支持，请忘记网络并重新添加。
+ 
+
+    “OpenCoreLegacyPatcher1.3.0”  [展开/收缩](javascript:void(0))    
+
+##### 警告：在以下计算机上升级到 macOS 14.2 之前，您必须安装此更新：
+
+ 
+- **MacBook Air** 
+- MacBookAir5,x（2012 年中）
+- MacBookAir6,x（2013 年中、2014 年初）
+- **MacBook Pro** 
+- MacBookPro9,x（2012 年中）
+- MacBookPro10,x（2012 年中、2012 年末、2013 年初）
+- MacBookPro11,x（2013 年末、2014 年中）
+- **Macmini电脑** 
+- Macmini6,x（2012 年末）
+- Macmini7,1（2014 年末）
+- **iMac** 
+- iMac13,x（2012 年末）
+- iMac14,x（2013 年末、2014 年中）
+
+  
+**受影响的显卡系列（所有基于 3802 的 Metal GPU）：**
+ 
+- Intel iGPUs 
+- Ivy Bridge
+- Haswell
+- Nvidia dGPUs 
+- Nvidia Kepler
+
+  
+随着 OpenCore Legacy Patcher v1.3.0 的发布，此版本主要针对 macOS 14.2 和配备基于 Metal 3802 显卡的 Mac。
+  
+
+#### 完整变更日志
+
+  1.3.0 变更日志  
+- 解决 `CFBundleExecutable`kext 不匹配的二进制名称。 
+- 解决 ProperTree 二元检测
+- 适用扩展： 
+- corecrypto_T1.kext
+- corecaptureElCap.kext
+- IO80211ElCap.kext
+- 解决 macOS 14.2 Beta 2 及更高版本的 3802-GPU 支持问题。 
+- 适用的GPU： 
+- Intel Ivy Bridge 和 Haswell iGPU
+- Nvidia Kepler dGPU
+- 增量二进制文件： 
+- PatcherSupportPkg 1.4.6 - 发布
+
+  
+
+  
+解压密码：imacos.top
+ 资源下载 下载价格 VIP 专享 仅限VIP下载 [升级VIP](https://imacos.top/user-2/?action=vip)[立即购买](javascript:;)注册登录升级VIP会员，尊享全站资源下载特权  **原文链接： [https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/](https://imacos.top/2024/03/13/opencore-legacy-patcher-v1-4-2/)，转载请注明出处。    [** 1](javascript:;) [** 2](javascript:;)  [OpenCore Legacy Patcher](https://imacos.top/tag/opencore-legacy-patcher/) [**](javascript:;)[**](#)[**](#)[**](#)[**](#) 
+
+
+
+#### OCLP 安装实战教程
+
+> 来源：https://3c.yipee.cc/265832/%E3%80%90%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB%E3%80%91%E5%88%A9%E7%94%A8-opencore-legacy-patcher%EF%BC%8C%E8%AE%93%E8%88%8A%E6%AC%BE-mac-%E9%9B%BB%E8%85%A6%E4%B9%9F%E8%83%BD%E6%9B%B4%E6%96%B0%E5%88%B0/
+
+   
+- [3C科技](https://3c.yipee.cc/category/3c%e7%a7%91%e6%8a%80/)
+- [教學及心得分享](https://3c.yipee.cc/category/%e6%95%99%e5%ad%b8%e5%8f%8a%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab/)
+- [新消息](https://3c.yipee.cc/category/news/)
+- [軟體平台及應用](https://3c.yipee.cc/category/3c%e7%a7%91%e6%8a%80/software/)
+- [關鍵焦點](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/%e9%97%9c%e9%8d%b5%e7%84%a6%e9%bb%9e/)
+- [頭條推薦](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/%e9%a0%ad%e6%a2%9d%e6%8e%a8%e8%96%a6/)
+- [首頁主推分類](https://3c.yipee.cc/category/web%e9%a6%96%e9%a0%81%e4%b8%bb%e6%8e%a8%e5%88%86%e9%a1%9e/)
+
+  
+
+#### 【心得分享】利用 OpenCore Legacy Patcher，讓舊款 MAC 電腦也能更新到最新版 macOS
+
+   [![](/image/systems/hackintosh-tutorials/oclp_tut_1768999782608.jpg)
+ 三嘻行動哇 Yipee.cc](https://3c.yipee.cc/author/yipee_admin/)   **2024-11-11   ** [5](https://3c.yipee.cc/265832/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91%e5%88%a9%e7%94%a8-opencore-legacy-patcher%ef%bc%8c%e8%ae%93%e8%88%8a%e6%ac%be-mac-%e9%9b%bb%e8%85%a6%e4%b9%9f%e8%83%bd%e6%9b%b4%e6%96%b0%e5%88%b0/)   .entry-header   
+**「加三嘻行動哇 Yipee! 成為好友」**
+ 
+【 **[Facebook](https://www.facebook.com/3c2yipee)、 [Youtube](https://www.youtube.com/@YipeeCc)、 [Twitter](https://twitter.com/Yipee1766)、 [Instagram](https://www.instagram.com/yipee1766/)、 [Telegram](https://t.me/yipee88)、 [Line](https://page.line.me/eti8749x)**】
+
+![](/image/systems/hackintosh-tutorials/oclp_tut_1-MacOS-720x441.jpg)
+ 
+蘋果每年都會推出新一代 macOS 作業系統更新，也幾乎每年都淘汰部分舊機型無法升級到最新的 macOS，如果使用者想要體驗新功能，就必須購買新機才行。
+ 
+問題是 Mac 電腦很耐用，如果只是為了想要體驗新系統就重新買一台電腦其實滿浪費的。這次要來分享利用開源程式 OpenCore 讓舊款 Mac 電腦更新到最新版 macOS，同時還會透露一些小撇步讓大家升級成功喔！
+ 
+
+#### 【教學影片】
+
+ 
+
+ 
+
+#### 【圖文分享】
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-10-15-12.35.48-720x462.png)
+ 
+這次測試的機型是 2012 年的 MAC mini，目前的作業系統是 macOS Catalina 10.5.7，希望可以升級到更新的 macOS 作業系統。
+ 
+
+#### 第一步
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-10-20-4.08.06-720x452.png)
+ 
+首先，開啟 **[「OpenCore Legacy Patcher」](https://dortania.github.io/OpenCore-Legacy-Patcher/)**官方網頁，點擊藍色的 **「Getting Started→」**按鈕。
+ 
+同時，也要準備一個至少 16GB 的 USB 隨身碟，但要注意隨身碟裡的重要資料要另外儲存起來，因為後面的執行步驟會讓隨身碟資料格式化，全部資料會消失不見。
+ 
+
+#### 第二步
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.09.15-720x367.jpg)
+ 
+要下載 OpenCore-Patcher 應用程式時，要確定自己下載的版本是最新版，目前在 **「 [Github](https://github.com/dortania/OpenCore-Legacy-Patcher/releases)」**的最新版是 OpenCore Legacy Patcher 2.1.2，支援 macOS Sequoia 作業系統。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.12.32-720x269.png)
+ 
+捲動螢幕，點擊下載 **「OpenCore-Patcher-GUI.app.zip」**檔案。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.27.34.png)
+ 
+解壓縮檔案後，會看到 **「OpenCore-Patcher.app」**，接著點擊執行。
+ 
+
+#### 第三步：官方沒說的小秘訣
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.25.46-720x397.png)
+ 
+當 OpenCore Legacy Patcher 執行時，通常會直接選擇 **「Create macOS Installer」**建立 macOS 作業系統安裝檔。
+ 
+**然而，為了順利成功製作 USB 隨身碟，有個官方沒說的小秘訣一定要注意！就是要設定「完全取用磁碟」權限。**
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.25.54-720x537.png)
+ 
+開啟 Mac 電腦的 **「系統設定」**App ，選擇 **「隱私權與安全性」**功能，點擊 **「完全取用磁碟」**，接著把 **「終端機」**和 **「OpenCore-Patcher」**加入並同意取用。
+ 
+
+#### 第四步：建立 macOS 安裝程式
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.25.46-720x397.png)
+ 
+重新開啟 OpenCore Legacy Patcher App 之後，選擇 **「Create macOS Installer」**建立 macOS 作業系統安裝檔。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.26.10-720x397.png)
+ 
+點擊 **「Download macOS Installer」**。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-4.26.24-720x544.png)
+ 
+選取想要的安裝作業系統版本，然後按下 **「Download」**按鈕。雖然說目前可製作 macOS Sequoia 15.1 作業系統安裝檔，但是這次想測試的是「macOS Sonoma 14」。
+ 
+這裡有個小建議，就是下載作業系統時，建議使用要升級的裝置去執行 OpenCore-Patcher.app 並執行下載 macOS，這是因為如果你的裝置不支援某個新的macOS 時，就會跳出提醒畫面，就能換下載其他的作業系統。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_OCLP-GUI-Installer-Format-USB.a14e2cea.png)
+ 
+macOS 下載完成之後，將 USB 隨身碟插入 Mac ，Patcher 會開始進行安裝程式的閃存過程。
+ 
+
+#### 第五步：啟動 OpenCore 和安裝 macOS
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_OCLP-GUI-Main-Menu.40fc1dad-720x397.png)
+ 
+再次打開 OpenCore Legacy Patcher App，點擊 **「Build and Install OpenCore」**。等系統執行完成後，點擊 **「Install OpenCore」**。
+ 
+選擇 USB 隨身碟，並選擇想要安裝 OpenCore 的位置，並等待它執行完成。
+ 
+
+#### 第六步：啟動 OpenCore 和安裝 macOS
+
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.52.16-720x360.png)
+ 
+等安裝完 OpenCore 之後，會要求將 Mac 電腦重新開機。開機後，會顯示安裝畫面。
+ 
+最後，就是等著系統安裝完成啦。
+ 
+![](/image/systems/hackintosh-tutorials/oclp_tut_-2024-11-10-5.49.46-720x415.png)
+ 
+這次實際安裝過程裡，柏青哥分別在具有 Touch Bar 觸控按鈕的 2011年MacBook Pro 及 2012 年 Mac mini 安裝了 macOS Sonoma 14 作業系統。
+ 
+值得一提的是，2011年MacBook Pro 安裝一次搞定，順利地完成了。至於 Mac mini 則是重新安裝了 3 次才成功。
+ 
+換句話說，不是每一台 Mac 裝置都能順利地透過 OpenCore 一次升級到最新的作業系統，而是可能要測試好幾次才行。
+ 
+如果想讓你的老 Mac 也能使用更新的 macOS ，不妨可以試試喔！
+ 
+**延伸閱讀：**
+ 
+**[【心得分享】DIY 3D列印 MagSafe 無線充電座，讓 iPhone 變身美型電子時鐘！](https://3c.yipee.cc/263687/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91diy-3d%e5%88%97%e5%8d%b0-magsafe-%e7%84%a1%e7%b7%9a%e5%85%85%e9%9b%bb%e5%ba%a7%ef%bc%8c%e8%ae%93-iphone-%e8%ae%8a%e8%ba%ab%e7%be%8e%e5%9e%8b/)**
+ 
+**[【心得分享】DJI OSMO ACTION 5 PRO 開箱實測水下自動攝影與冷凍庫耐寒挑戰](https://3c.yipee.cc/261595/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91dji-osmo-action-5-pro-%e9%96%8b%e7%ae%b1%ef%bc%8c%e5%af%a6%e6%b8%ac%e6%b0%b4%e4%b8%8b%e8%87%aa%e5%8b%95%e6%94%9d%e5%bd%b1%e8%88%87%e5%86%b7/)**
+ 
+**[【心得分享】抽不到死侍和金鋼狼的翹臀 Xbox 控制器？那就用 3D 列印 DIY 自己做一個吧！](https://3c.yipee.cc/260647/%e3%80%90%e5%bf%83%e5%be%97%e5%88%86%e4%ba%ab%e3%80%91%e6%8a%bd%e4%b8%8d%e5%88%b0%e6%ad%bb%e4%be%8d%e5%92%8c%e9%87%91%e9%8b%bc%e7%8b%bc%e7%9a%84%e7%bf%b9%e8%87%80-xbox-%e6%8e%a7%e5%88%b6%e5%99%a8/)**
+ 
+**[【iOS 18 教學】自訂鎖定畫面按鈕，把手電筒和相機可以換成其他功能了！](https://app.yipee.cc/137084)**
+ 
+**[【總整理】11 款超推薦免費線上去背、圖片橡皮擦網站，一鍵去除背景、加入馬賽克簡單又好用！(2024.07.17更新)](https://3c.yipee.cc/253361/%e3%80%90%e7%b8%bd%e6%95%b4%e7%90%86%e3%80%9111-%e6%ac%be%e8%b6%85%e6%8e%a8%e8%96%a6%e5%85%8d%e8%b2%bb%e7%b7%9a%e4%b8%8a%e5%8e%bb%e8%83%8c%e3%80%81%e5%9c%96%e7%89%87%e6%a9%a1%e7%9a%ae%e6%93%a6/)**
+ 
+**[【教學】教你如何把 Google Photos / Google 相簿的照片備份到 iCloud 相簿上](https://3c.yipee.cc/253228/%e3%80%90%e6%95%99%e5%ad%b8%e3%80%91%e6%95%99%e4%bd%a0%e5%a6%82%e4%bd%95%e6%8a%8a-google-photos-google-%e7%9b%b8%e7%b0%bf%e7%9a%84%e7%85%a7%e7%89%87%e5%82%99%e4%bb%bd%e5%88%b0-icloud-%e7%9b%b8/)**
+     [![好友人數](/image/systems/hackintosh-tutorials/oclp_tut_5c8f30d424595f34ae328ca85153828d.png)](https://app.yipee.cc/106617/)      
+
+##### 大家對網站文章上的一個讚、+1及轉分享，都是對我們的最好的鼓勵及繼續下去的原動力，請大家不要吝嗇。
+
+ .entry-content  .entry-footer  
+
+## 0xC 实用优化教程
+
 
 ### 12.1 性能与功耗监控
 推荐使用 **Intel Power Gadget** 查看 CPU 频率、功耗和温度。
