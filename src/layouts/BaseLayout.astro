@@ -17,6 +17,7 @@ import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
 import Banner from "@components/Banner.astro";
 import MobileTOC from "@components/widgets/MobileTOC.astro";
+import ThemeSwitcher from "@components/widgets/ThemeSwitcher.astro";
 
 const {
   title,
@@ -119,6 +120,12 @@ const bannerSubtitle = pageConfig?.subtitle || "";
     class="flex flex-col min-h-screen"
     {...isIndexed ? { "data-pagefind-body": true } : {}}
   >
+    <!-- 壁纸层（动漫主题壁纸） -->
+    <div class="wallpaper-layer" id="wallpaperLayer" aria-hidden="true"></div>
+    <!-- 壁纸遮罩层 -->
+    <div class="wallpaper-mask" aria-hidden="true"></div>
+    <!-- 多主题切换器 -->
+    <ThemeSwitcher />
     <Banner title={bannerTitle} subtitle={bannerSubtitle} />
     <Navbar />
     <div class="max-w-blog mx-auto w-full flex-grow">

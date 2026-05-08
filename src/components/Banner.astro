@@ -2,6 +2,7 @@
 import {
   BANNER_IMAGES,
   BANNER_HEIGHT,
+  ANIME_THEME_BANNERS,
   SITE_PAGES,
   TYPEWRITER_TEXTS,
 } from "@config";
@@ -53,13 +54,16 @@ const displaySubtitle = pageConfig.subtitle || "";
 const hasTitle = displayTitle !== undefined && displayTitle !== "";
 const hasSubtitle = displaySubtitle !== undefined && displaySubtitle !== "";
 
-// 只使用配置中的图片列表
+// 只使用配置中的图片列表（动漫主题图片由前端 JS 动态替换）
 let carouselImgsList = BANNER_IMAGES;
 const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
 const bannerHeight = BANNER_HEIGHT;
+// 动漫主题轮播图数据：序列化为 JSON 字符串，通过 data 属性传给前端，避免 define:vars 对象序列化问题
+const animeThemeBannersJson = JSON.stringify(ANIME_THEME_BANNERS || {});
+const bannerImagesJson = JSON.stringify(BANNER_IMAGES || []);
 ---
 
-<div id="banner" class="banner">
+<div id="banner" class="banner" data-anime-banners={animeThemeBannersJson} data-banner-images={bannerImagesJson}>
   <div class="banner-inner h-full w-full">
     <!-- 始终显示轮播图片 -->
     <div class="carousel">
@@ -68,8 +72,7 @@ const bannerHeight = BANNER_HEIGHT;
           carouselImgsList.map((img, index) => (
             <li
               class="item"
-              style={{ animationDelay: `${index * 6}s` }}
-              data-background-image={img}
+              style={`background-image: url("${img}"); animation: carousel-animation ${carouselImgsList.length * 6}s linear ${index * 6}s infinite both;`}
             />
           ))
         }
@@ -214,54 +217,111 @@ const bannerHeight = BANNER_HEIGHT;
   });
 </script>
 
-<!-- 现有的轮播图片脚本 -->
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const styleElement = document.createElement("style");
-    const carouselImgs = document.getElementById("carousel_imgs");
-    const carouselImgsCount = carouselImgs?.children.length ?? 0;
+<!-- 轮播图片脚本：支持动漫主题动态切换 -->
+<script is:inline>
+  // 从 DOM data 属性读取 JSON，完全避免 define:vars 对嵌套对象的序列化问题
+  (function initCarouselData() {
+    var bannerEl = document.getElementById('banner');
+    try {
+      window._animeBanners = JSON.parse(bannerEl.getAttribute('data-anime-banners') || '{}');
+    } catch (_) { window._animeBanners = {}; }
+    try {
+      window._bannerImages = JSON.parse(bannerEl.getAttribute('data-banner-images') || '[]');
+    } catch (_) { window._bannerImages = []; }
+  })();
+  var _animeBanners = window._animeBanners || {};
 
-    if (carouselImgsCount > 0) {
-      const carouselAnimation = `    
-      @keyframes carousel-animation {    
-        0% {    
-          opacity: 0;    
-          transform: scale(1);    
-        }    
-        3% {    
-          opacity: 1;    
-        }    
-        8% {    
-          opacity: 1;    
-          animation-timing-function: ease-out;    
-        }    
-        ${100 / carouselImgsCount}% {    
-          opacity: 1;    
-        }    
-        ${100 / carouselImgsCount + 50 / carouselImgsCount}% {    
-          opacity: 0;    
-          animation-timing-function: ease-out;    
-        }    
-        100% {    
-          opacity: 0;    
-          transform: scale(2);    
-        }    
-      }    
-      `;
-      styleElement.textContent = carouselAnimation;
-      let bannerElement = document.getElementById("banner");
-      if (bannerElement && !bannerElement.querySelector("style"))
-        bannerElement.appendChild(styleElement);
-    }
+  // 重建轮播 DOM 并注入动画
+  function rebuildCarousel(images) {
+    const carouselImgs = document.getElementById('carousel_imgs');
+    if (!carouselImgs) return;
 
-    // 设置背景图片
-    const items = document.querySelectorAll("#carousel_imgs .item");
-    items.forEach((item) => {
-      const bgImage = item.getAttribute("data-background-image");
-      if (bgImage) {
-        (item as HTMLElement).style.backgroundImage = `url(${bgImage})`;
+    // 重建动画 keyframes（先算好，再建 li）
+    const count = images.length;
+    if (count === 0) return;
+    const totalTime = count * 6;
+    const pct1 = (100 / count).toFixed(3);
+    const pct2 = (100 / count + 50 / count).toFixed(3);
+    const keyframes = [
+      '@keyframes carousel-animation {',
+      '  0%   { opacity: 0; transform: scale(1); }',
+      '  3%   { opacity: 1; }',
+      '  8%   { opacity: 1; animation-timing-function: ease-out; }',
+      '  ' + pct1 + '% { opacity: 1; }',
+      '  ' + pct2 + '% { opacity: 0; animation-timing-function: ease-out; }',
+      '  100% { opacity: 0; transform: scale(2); }',
+      '}'
+    ].join('\n');
+
+    const bannerElement = document.getElementById('banner');
+    if (!bannerElement) return;
+    // 移除旧的动态 style，重新注入
+    const oldStyle = bannerElement.querySelector('style[data-carousel]');
+    if (oldStyle) oldStyle.remove();
+    const styleEl = document.createElement('style');
+    styleEl.setAttribute('data-carousel', '1');
+    styleEl.textContent = keyframes;
+    bannerElement.appendChild(styleEl);
+
+    // 重建 li 列表，直接在 style 上写完整 animation 属性，确保 duration 生效
+    carouselImgs.innerHTML = '';
+    images.forEach(function (img, index) {
+      const li = document.createElement('li');
+      li.className = 'item';
+      // 用完整 animation 简写覆盖 CSS 中的 animation-name 等分项
+      li.style.cssText = [
+        'background-image: url("' + img + '");',
+        'animation: carousel-animation ' + totalTime + 's linear ' + (index * 6) + 's infinite both;'
+      ].join(' ');
+      carouselImgs.appendChild(li);
+    });
+  }
+
+  // 从 localStorage 或 html 属性获取当前动漫主题 key
+  function getCurrentAnimeThemeKey() {
+    // 优先读 html 属性（ThemeSwitcher 已设置）
+    var fromAttr = document.documentElement.getAttribute('data-anime-theme');
+    if (fromAttr) return fromAttr;
+    // 降级：从 localStorage 读取，过滤掉非动漫主题
+    try {
+      var saved = localStorage.getItem('pikatools.anime-theme');
+      if (saved && saved !== 'light' && saved !== 'dark' && saved !== 'auto') {
+        return saved;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function applyCarouselByTheme() {
+    var animeTheme = getCurrentAnimeThemeKey();
+    var themeBanners = animeTheme ? _animeBanners[animeTheme] : null;
+    var defaultImages = window._bannerImages || [];
+    var images = (animeTheme && themeBanners && themeBanners.length > 0)
+      ? themeBanners
+      : (defaultImages.length > 0 ? defaultImages : []);
+    rebuildCarousel(images);
+  }
+
+  document.addEventListener('astro:page-load', function () {
+    // 延迟执行，确保 ThemeSwitcher 的 IIFE 已完成，data-anime-theme 已设置
+    setTimeout(applyCarouselByTheme, 0);
+
+    // 监听 html[data-anime-theme] 属性变化，动态切换轮播图
+    var observer = new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].attributeName === 'data-anime-theme') {
+          applyCarouselByTheme();
+          break;
+        }
       }
     });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-anime-theme'] });
+  });
+
+  // Astro 页面切换后重新应用
+  // 延迟 80ms，确保 ThemeSwitcher 的 astro:after-swap 先执行完
+  document.addEventListener('astro:after-swap', function () {
+    setTimeout(applyCarouselByTheme, 80);
   });
 </script>
 
@@ -281,10 +341,18 @@ const bannerHeight = BANNER_HEIGHT;
     @apply dark:bg-black/30;
   }
 
-  .carousel .item {
-    @apply absolute left-0 top-0 z-0 h-full w-full origin-center bg-cover bg-center bg-no-repeat opacity-0;
-    animation: carousel-animation var(--carouselAnimationTime) linear infinite
-      0s;
+  :global(.carousel .item) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
     backface-visibility: hidden;
     transform-style: preserve-3d;
   }

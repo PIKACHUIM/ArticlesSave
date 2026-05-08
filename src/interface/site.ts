@@ -79,6 +79,9 @@ export interface SiteConfig {
   banner?: {
     images: string[];
     height: string;
+    anime_themes?: {
+      [themeKey: string]: string[];
+    };
   };
   pages?: {
     [key: string]: PageConfig;

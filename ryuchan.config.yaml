@@ -23,6 +23,18 @@ site:
       - "https://s2.loli.net/2025/01/25/UCYKvc1ZhgPHB9m.webp"
       - "https://s2.loli.net/2025/01/25/JjpLOW8VSmufzlA.webp"
     height: "60vh"
+    # 动漫主题专属轮播图，切换到对应动漫主题时自动替换 Banner 图片
+    anime_themes:
+      march7:
+        - "https://patchwiki.biligame.com/images/sr/e/e6/57h91ahf93rtqa7hn2x7d0rgehtcdg9.png"
+        - "https://patchwiki.biligame.com/images/sr/3/31/9fa1lelfm2d1mn0g7i9gys0d2zmia44.png"
+      gura:
+        - "https://scrmbl.imgix.net/posts-images/2025/04/gawr-gura-a.jpg"
+      umaru:
+        - "https://haowallpaper.com/link/common/file/previewFileImg/15063312094498112"
+      pikachu:
+        - "https://i.imgur.com/6QX2a1c.jpg"
+        - "https://i.pinimg.com/736x/b5/d3/94/b5d3942429c0ebde0f82f918c586a2d1.jpg"
   # Banner 页面标题配置
   pages:
     home:

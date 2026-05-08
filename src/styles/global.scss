@@ -636,6 +636,323 @@ code {
   }
 }
 
+/* ==========================================================
+   多主题壁纸变量系统 (照搬 worker.js 主题配置)
+   通过 html[data-anime-theme="..."] 激活动漫主题壁纸层
+   ========================================================== */
+
+/* 壁纸层 & 遮罩层 */
+.wallpaper-layer {
+  position: fixed;
+  inset: 0;
+  background-image: var(--wallpaper-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: var(--wallpaper-opacity, 0);
+  filter: blur(var(--wallpaper-blur, 0px));
+  pointer-events: none;
+  /* 低于 banner .carousel 的 -z-10(-10)，不遮挡轮播图 */
+  z-index: -20;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              background-image 0.6s ease;
+}
+
+.wallpaper-mask {
+  position: fixed;
+  inset: 0;
+  background: var(--wallpaper-mask-color, transparent);
+  pointer-events: none;
+  /* 同样低于 banner，不遮挡轮播图 */
+  z-index: -19;
+  transition: background 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 主题切换器面板 */
+.anime-theme-switcher {
+  position: fixed;
+  top: 1.25rem;
+  right: 4.5rem;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.anime-theme-toggle {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(148, 163, 210, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.25s ease;
+  font-size: 1.1rem;
+
+  &:hover {
+    transform: rotate(30deg) scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.anime-theme-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(148, 163, 210, 0.18);
+  border-radius: 18px;
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.5);
+  min-width: 210px;
+  transform-origin: top right;
+  transform: translateY(-8px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.anime-theme-panel-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(168, 176, 211, 0.8);
+  padding: 0.25rem 0.4rem 0.1rem;
+}
+
+.anime-theme-chip-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+.anime-theme-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(168, 176, 211, 0.9);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(124, 241, 201, 0.12);
+    color: #eef1ff;
+    transform: translateY(-1px);
+  }
+
+  &.active {
+    background: rgba(124, 241, 201, 0.15);
+    color: #7cf1c9;
+    border-color: rgba(124, 241, 201, 0.5);
+  }
+
+  .chip-icon {
+    font-size: 0.9rem;
+    width: 16px;
+    text-align: center;
+  }
+
+  .chip-label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* 动漫主题激活时的 chip 高亮颜色适配 */
+html[data-anime-theme="march7"] .anime-theme-chip.active {
+  color: #ff9ec7;
+  border-color: rgba(255, 158, 199, 0.5);
+  background: rgba(255, 158, 199, 0.15);
+}
+html[data-anime-theme="gura"] .anime-theme-chip.active {
+  color: #5fe0ff;
+  border-color: rgba(95, 224, 255, 0.5);
+  background: rgba(95, 224, 255, 0.15);
+}
+html[data-anime-theme="umaru"] .anime-theme-chip.active {
+  color: #ff8c3a;
+  border-color: rgba(255, 140, 58, 0.5);
+  background: rgba(255, 140, 58, 0.15);
+}
+html[data-anime-theme="pikachu"] .anime-theme-chip.active {
+  color: #ef3e36;
+  border-color: rgba(239, 62, 54, 0.5);
+  background: rgba(239, 62, 54, 0.15);
+}
+
+/* 动漫主题壁纸配置 */
+html[data-anime-theme="march7"] {
+  --wallpaper-opacity: 0.35;
+  --wallpaper-blur: 2px;
+  --wallpaper-mask-color: rgba(15, 20, 48, 0.05);
+}
+html[data-anime-theme="gura"] {
+  --wallpaper-opacity: 0.30;
+  --wallpaper-blur: 3px;
+  --wallpaper-mask-color: rgba(4, 26, 46, 0.05);
+}
+html[data-anime-theme="umaru"] {
+  --wallpaper-opacity: 0.25;
+  --wallpaper-blur: 4px;
+  --wallpaper-mask-color: rgba(255, 246, 234, 0.05);
+}
+html[data-anime-theme="pikachu"] {
+  --wallpaper-opacity: 0.28;
+  --wallpaper-blur: 3px;
+  --wallpaper-mask-color: rgba(255, 248, 217, 0.05);
+}
+
+/* ==========================================================
+   动漫主题：所有 card 加毛玻璃效果
+   ========================================================== */
+html[data-anime-theme] {
+  /* 侧边栏 card-base —— 亮色毛玻璃 */
+  .card-base {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-color: rgba(255, 255, 255, 0.40) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10) !important;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease !important;
+    color: #1e2340 !important;
+  }
+
+  /* 文章列表 PostCard —— 亮色毛玻璃 */
+  .bg-base-100,
+  .bg-base-200 {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    color: #1e2340 !important;
+  }
+
+  /* blog-container（分类/标签/归档页容器）—— 亮色毛玻璃 */
+  .blog-container {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #1e2340 !important;
+  }
+
+  /* 导航栏下拉菜单 —— 亮色毛玻璃 */
+  .dropdown-content {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-color: rgba(255, 255, 255, 0.40) !important;
+    color: #1e2340 !important;
+  }
+
+  /* 搜索框 input —— 亮色毛玻璃 */
+  .input,
+  .input-bordered,
+  input[type="text"],
+  input[type="search"] {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-color: rgba(255, 255, 255, 0.50) !important;
+    color: #1e2340 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    &::placeholder {
+      color: rgba(30, 35, 64, 0.50) !important;
+    }
+    &:focus {
+      background: rgba(255, 255, 255, 0.55) !important;
+      border-color: rgba(255, 255, 255, 0.70) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.40), 0 4px 16px rgba(0, 0, 0, 0.10) !important;
+    }
+  }
+
+  /* 搜索容器 search-container —— 亮色毛玻璃 */
+  .search-container {
+    background: rgba(255, 255, 255, 0.20) !important;
+    backdrop-filter: blur(12px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+    border-radius: 0.75rem !important;
+  }
+
+  /* daisyui card / 通用卡片 —— 亮色毛玻璃 */
+  .card {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(14px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    color: #1e2340 !important;
+  }
+
+  /* 所有 card 内部子元素统一继承深色字体，覆盖 daisyui 暗色主题的白色 */
+  .card-base,
+  .card-base *,
+  .bg-base-100,
+  .bg-base-100 *,
+  .bg-base-200,
+  .bg-base-200 *,
+  .blog-container,
+  .blog-container *,
+  .card,
+  .card * {
+    color: #1e2340 !important;
+  }
+
+  /* 链接保持蓝色可读 */
+  .card-base a,
+  .bg-base-100 a,
+  .bg-base-200 a,
+  .blog-container a,
+  .card a {
+    color: #2563eb !important;
+    &:hover {
+      color: #1d4ed8 !important;
+    }
+  }
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .anime-theme-switcher {
+    top: 0.75rem;
+    right: 4rem;
+  }
+  .anime-theme-panel {
+    min-width: 180px;
+  }
+  .anime-theme-chip-group {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Pagefind UI customization with oklch colors */
 #pagefind-search {
   --pagefind-ui-scale: 1;

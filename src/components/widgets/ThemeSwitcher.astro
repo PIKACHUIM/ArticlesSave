@@ -1,0 +1,184 @@
+---
+import { SITE_THEME } from "@config";
+
+// 主题配置，照搬 worker.js 的 themes 配置
+const themes = [
+  { key: "light",   name: "亮色UI",  icon: "☀️",  kind: "base",  pc: "", mobile: "" },
+  { key: "dark",    name: "暗色UI",  icon: "🌙",  kind: "base",  pc: "", mobile: "" },
+  { key: "march7",  name: "三月七",  icon: "❄️",  kind: "anime",
+    pc: "/themes/march7-pc.png", mobile: "/themes/march7-mobile.png" },
+  { key: "gura",    name: "鲨鲨妹",  icon: "🐟",  kind: "anime",
+    pc: "/themes/gura-pc.jpg",   mobile: "/themes/gura-pc.jpg" },
+  { key: "umaru",   name: "干物妹",  icon: "🍪",  kind: "anime",
+    pc: "/themes/umaru-pc.jpg",  mobile: "/themes/umaru-pc.jpg" },
+  { key: "pikachu", name: "皮卡丘",  icon: "⚡",  kind: "anime",
+    pc: "/themes/pikachu-pc.jpg", mobile: "/themes/pikachu-mobile.jpg" },
+];
+---
+
+<!-- 多主题切换器 -->
+<div class="anime-theme-switcher" role="toolbar" aria-label="主题切换">
+  <button
+    type="button"
+    class="anime-theme-toggle"
+    id="animeThemeToggle"
+    aria-label="展开主题"
+    title="主题"
+  >
+    🎨
+  </button>
+  <div class="anime-theme-panel" id="animeThemePanel">
+    <div class="anime-theme-panel-title">主题 / Theme</div>
+    <div class="anime-theme-chip-group">
+      {themes.map((t) => (
+        <button
+          type="button"
+          class="anime-theme-chip"
+          data-anime-theme-key={t.key}
+          data-kind={t.kind}
+          data-pc={t.pc}
+          data-mobile={t.mobile}
+          title={t.name}
+          aria-label={t.name}
+        >
+          <span class="chip-icon">{t.icon}</span>
+          <span class="chip-label">{t.name}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ SITE_THEME }} is:inline>
+(function () {
+  'use strict';
+
+  const ANIME_THEME_KEY = 'pikatools.anime-theme';
+  const DEFAULT_ANIME_THEME = 'auto'; // auto = 跟随 daisyui 主题
+
+  const animeThemeToggle = document.getElementById('animeThemeToggle');
+  const animeThemePanel  = document.getElementById('animeThemePanel');
+  const animeChips       = document.querySelectorAll('.anime-theme-chip');
+
+  // 获取或创建壁纸层
+  function getWallpaperLayer() {
+    return document.getElementById('wallpaperLayer');
+  }
+
+  function isMobile() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  function setWallpaper(pcUrl, mobileUrl) {
+    const layer = getWallpaperLayer();
+    if (!layer) return;
+    const url = (isMobile() && mobileUrl) ? mobileUrl : (pcUrl || '');
+    if (!url) {
+      layer.style.backgroundImage = 'none';
+      return;
+    }
+    const probe = new Image();
+    probe.onload = function () {
+      layer.style.backgroundImage = 'url("' + url + '")';
+    };
+    probe.onerror = function () {
+      layer.style.backgroundImage = 'none';
+    };
+    probe.src = url;
+  }
+
+  function applyAnimeTheme(key) {
+    const chip = document.querySelector('.anime-theme-chip[data-anime-theme-key="' + key + '"]');
+    if (!chip) return false;
+
+    const kind   = chip.getAttribute('data-kind');
+    const pcUrl  = chip.getAttribute('data-pc');
+    const mobUrl = chip.getAttribute('data-mobile');
+
+    // 更新 html 属性
+    if (kind === 'anime') {
+      document.documentElement.setAttribute('data-anime-theme', key);
+    } else {
+      document.documentElement.removeAttribute('data-anime-theme');
+    }
+
+    // 切换 daisyui 主题（亮/暗）
+    if (key === 'light') {
+      document.documentElement.setAttribute('data-theme', SITE_THEME.light);
+      document.documentElement.setAttribute('data-theme-type', 'light');
+      localStorage.setItem('theme', SITE_THEME.light);
+    } else if (key === 'dark') {
+      document.documentElement.setAttribute('data-theme', SITE_THEME.dark);
+      document.documentElement.setAttribute('data-theme-type', 'dark');
+      localStorage.setItem('theme', SITE_THEME.dark);
+    }
+    // 动漫主题不改变 daisyui 主题，只叠加壁纸
+
+    // 壁纸
+    if (kind === 'anime') {
+      setWallpaper(pcUrl, mobUrl);
+    } else {
+      setWallpaper('', '');
+    }
+
+    // 更新 chip 激活状态
+    animeChips.forEach(c => c.classList.toggle('active', c === chip));
+
+    try { localStorage.setItem(ANIME_THEME_KEY, key); } catch (_) {}
+    return true;
+  }
+
+  // 初始化
+  (function init() {
+    let saved = null;
+    try { saved = localStorage.getItem(ANIME_THEME_KEY); } catch (_) {}
+    if (saved && applyAnimeTheme(saved)) return;
+    // 根据当前 daisyui 主题决定默认选中
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const isLight = currentTheme === SITE_THEME.light;
+    applyAnimeTheme(isLight ? 'light' : 'dark');
+  })();
+
+  // 面板开关
+  if (animeThemeToggle && animeThemePanel) {
+    animeThemeToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      animeThemePanel.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!animeThemePanel.contains(e.target) && e.target !== animeThemeToggle) {
+        animeThemePanel.classList.remove('open');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') animeThemePanel.classList.remove('open');
+    });
+  }
+
+  // chip 点击
+  animeChips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      applyAnimeTheme(this.getAttribute('data-anime-theme-key'));
+    });
+  });
+
+  // 视口变化时重新选择壁纸
+  let resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      const active = document.querySelector('.anime-theme-chip.active');
+      if (active && active.getAttribute('data-kind') === 'anime') {
+        setWallpaper(active.getAttribute('data-pc'), active.getAttribute('data-mobile'));
+      }
+    }, 180);
+  });
+
+  // Astro 页面切换后重新初始化
+  document.addEventListener('astro:after-swap', function () {
+    let saved = null;
+    try { saved = localStorage.getItem(ANIME_THEME_KEY); } catch (_) {}
+    if (saved) applyAnimeTheme(saved);
+  });
+})();
+</script>
