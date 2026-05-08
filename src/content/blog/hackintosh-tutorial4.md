@@ -1,8 +1,8 @@
 ---
-title: 黑苹果安装详细教程
-description: 黑苹果完整安装步骤图文教程，从U盘启动到系统安装完成
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x4 黑果实机部署详细安装教程
+description: 黑果完整安装步骤图文教程，从U盘启动到系统安装完成
+pubDate: 02 11 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,9 +11,9 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
-## 0x4 黑苹果安装详细教程
+## 0x4 黑果安装详细教程
 开机！选择U盘中的OpenCore启动
 
 ![vmware-macos-25.jpg](/image/systems/hackintosh-tutorials/vmware-macos-25.jpg)

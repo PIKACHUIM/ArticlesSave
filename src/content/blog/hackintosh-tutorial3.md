@@ -1,8 +1,8 @@
 ---
-title: 黑苹果安装准备工作
-description: 黑苹果安装前的BIOS设置、镜像写入U盘、EFI文件生成等准备工作
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x3 黑果安装之前设置准备工作
+description: 黑果安装前的BIOS设置、镜像写入U盘、EFI文件生成等准备工作
+pubDate: 02 12 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,19 +11,19 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
-## 0x3 黑苹果安装准备工作
+## 0x3 黑果安装准备工作
 ### 3.0 BIOS设置
 
-在安装黑苹果之前，正确设置BIOS是至关重要的一步。BIOS配置不当可能导致系统无法启动、性能异常或功能缺失。以下是根据主板类型分类的详细BIOS设置表格。
+在安装黑果之前，正确设置BIOS是至关重要的一步。BIOS配置不当可能导致系统无法启动、性能异常或功能缺失。以下是根据主板类型分类的详细BIOS设置表格。
 
 #### 3.0.1 通用BIOS设置（所有主板）
 
 | 设置项 | 推荐值 | 说明 | 备注 |
 |--------|--------|------|------|
 | **Secure Boot** | Disabled（禁用） | 安全启动会阻止非苹果签名的引导程序加载 | 必须禁用，否则无法启动OpenCore |
-| **OS Type / Boot Mode** | UEFI only | 使用UEFI引导模式，不支持Legacy | 现代黑苹果必需 |
+| **OS Type / Boot Mode** | UEFI only | 使用UEFI引导模式，不支持Legacy | 现代黑果必需 |
 | **CSM (Compatibility Support Module)** | Disabled | 禁用传统BIOS兼容模式 | 部分老旧主板需开启，但建议禁用 |
 | **SATA Mode** | AHCI | SATA控制器工作模式 | AHCI是macOS必需的，IDE模式无法识别硬盘 |
 | **Above 4G Decoding** | Enabled | 启用4GB以上内存地址解码 | 大内存或多显卡系统必须开启 |
@@ -208,15 +208,15 @@ A: BIOS检查：
  - 如果名称有part*，比如.part1.rar，则需要下载所有的part
 
 2. 打开软件：选择——从**文件烧录**——选择DMG/ISO/CDR/IMG
-![QQ20260121-202336.jpg](/public/image/systems/hackintosh-tutorials/QQ20260121-202336.jpg)
+![QQ20260121-202336.jpg](/image/systems/hackintosh-tutorials/QQ20260121-202336.jpg)
 
 3. 选择模板：**选择你的USB设备**——**现在烧录**————**自动校验————完成烧录**
-![QQ20260121-202345.jpg](/public/image/systems/hackintosh-tutorials/QQ20260121-202345.jpg)
+![QQ20260121-202345.jpg](/image/systems/hackintosh-tutorials/QQ20260121-202345.jpg)
 
 > 如提示校验失败，大概率是因为无法自动拔插读取，是正常情况，其实已经成功了
 
 ### 3.2 生成EFI
 1. 加QQ群：773762093，下载RapidEFI-v4.0.0-Windows.zip，解压打开
 2. 根据你的实际情况，选择平台和设备，生成EFI
-![QQ20260121-203255.jpg](/public/image/systems/hackintosh-tutorials/QQ20260121-203255.jpg)
+![QQ20260121-203255.jpg](/image/systems/hackintosh-tutorials/QQ20260121-203255.jpg)
 3. 把EFI文件夹覆盖粘贴到U盘ESP分区

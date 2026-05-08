@@ -4,7 +4,7 @@ description: Office 官方源制作的ISO镜像，纯净无精简
 pubDate: 12 15 2024
 categories:
   - System
-image:  /public/image/systems/nvidia-cmp-hx-driver/QQ20251216-180049.jpg
+image:  /image/systems/nvidia-cmp-hx-driver/QQ20251216-180049.jpg
 tags:
   - System
   - Driver

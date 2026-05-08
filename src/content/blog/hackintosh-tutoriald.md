@@ -1,8 +1,8 @@
 ---
-title: 黑苹果主题与启动项管理
+title: 0xD 黑果主题美化与启动项管理
 description: OpenCanopy图形主题安装、Windows启动图标自定义、隐藏多余启动项
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+pubDate: 02 02 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,7 +11,7 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0xD 主题与启动项
 

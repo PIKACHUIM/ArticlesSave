@@ -1,8 +1,8 @@
 ---
-title: 黑苹果镜像下载地址汇总
-description: 黑苹果镜像、工具、补丁下载地址汇总，包含离线版、在线版、虚拟机版等
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x2 黑果安装镜像下载地址汇总
+description: 黑果镜像、工具、补丁下载地址汇总，包含离线版、在线版、虚拟机版等
+pubDate: 02 13 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,15 +11,15 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
-## 0x2 黑苹果镜像下载地址
-### 2.0 黑苹果教程&引导下载
+## 0x2 黑果镜像下载地址
+### 2.0 黑果教程&引导下载
 
-- [Dortania - OpenCore黑苹果安装教程](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html)
-- [国光的黑苹果安装教程：手把手教你配置 OpenCore](https://apple.sqlsec.com/)
-- [Daliansky - 黑苹果长期维护机型 EFI 及安装教程整理](https://github.com/daliansky/Hackintosh)
-- [皮卡的资源站 - 黑苹果EFI引导文件搜集](https://shared.pika.net.cn/Sources/OSImages/MacOS/EFIData)
+- [Dortania - OpenCore黑果安装教程](https://dortania.github.io/OpenCore-Install-Guide/prerequisites.html)
+- [国光的黑果安装教程：手把手教你配置 OpenCore](https://apple.sqlsec.com/)
+- [Daliansky - 黑果长期维护机型 EFI 及安装教程整理](https://github.com/daliansky/Hackintosh)
+- [皮卡的资源站 - 黑果EFI引导文件搜集](https://shared.pika.net.cn/Sources/OSImages/MacOS/EFIData)
 
 ### 2.1 镜像下载
 

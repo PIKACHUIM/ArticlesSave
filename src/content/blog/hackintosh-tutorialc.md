@@ -1,8 +1,8 @@
 ---
-title: 黑苹果实用优化教程
-description: 黑苹果性能监控、硬件加速验证、HiDPI开启等实用优化技巧
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0xC 黑果实用优化性能调节教程
+description: 黑果性能监控、硬件加速验证、HiDPI开启等实用优化技巧
+pubDate: 02 03 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,7 +11,7 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0xC 实用优化教程
 

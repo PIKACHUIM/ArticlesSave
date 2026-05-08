@@ -1,8 +1,8 @@
 ---
-title: 黑苹果驱动网卡蓝牙教程
-description: 黑苹果博通/Intel网卡蓝牙驱动方法，支持AirDrop、Handoff等功能
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x7 黑果驱动网卡WiFi蓝牙教程
+description: 黑果博通/Intel网卡蓝牙驱动方法，支持AirDrop、Handoff等功能
+pubDate: 02 08 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,13 +11,13 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0x7 驱动网卡蓝牙
 
 ### 7.1 博通网卡驱动
 
-博通 (Broadcom) 网卡曾经是黑苹果的首选，因为许多型号（如 BCM94360, BCM943602, Fenvi T919 等）在 macOS 中是免驱的，支持原生的 AirDrop、Handoff 和随航功能。
+博通 (Broadcom) 网卡曾经是黑果的首选，因为许多型号（如 BCM94360, BCM943602, Fenvi T919 等）在 macOS 中是免驱的，支持原生的 AirDrop、Handoff 和随航功能。
 
 #### 7.1.1 macOS Ventura (13.x) 及以下
 - **免驱卡**: 插上即可使用，无需额外驱动。

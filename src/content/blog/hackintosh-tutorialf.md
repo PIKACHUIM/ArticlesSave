@@ -1,8 +1,8 @@
 ---
-title: 黑苹果安装常见问题(FAQ)
-description: 黑苹果安装过程中150+个常见问题解答，涵盖卡代码、黑屏、声卡等各类问题
+title: 0xF 黑果安装常见问题排查-FAQ
+description: 黑果安装过程中150+个常见问题解答，涵盖卡代码、黑屏、声卡等各类问题
 pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,7 +11,7 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0xF 安装常见问题
 
@@ -105,7 +105,7 @@ cd /Volumes/EFI && rm -rf .Trashes
 1. USB 没有定制，建议参考 USB 定制教程重新定制
 2. 缺少键鼠驱动，打一下 VoodooPS2Controller.kext 即可
 
-### QA-20 Lenovo ThinkPad X13 20T3 10代U 其实黑苹果挺完美的，睡眠也很棒棒
+### QA-20 Lenovo ThinkPad X13 20T3 10代U 其实黑果挺完美的，睡眠也很棒棒
 
 BIOS 里面调整休眠策略为 Linux，即可开启 S3 睡眠，自测一晚上耗电正常，特此记录给后人一些经验吧。
 
@@ -215,7 +215,7 @@ oc：Image Kexts\XXXX.kext\Contents\MacOS\XXXX.kext is missing for kext XXXX.kex
 Halting on critical error
 ```
 
-上面的代码中，XXXX.kext 可能是任何值，例如 VirtualSMC.kext，CPUFriend.kext，AppleALC.kext 等等，但是问题的原因是一样的：在 /EFI/OC/Kexts/ 目录下没有对应的 kext 文件。解决方法也很简单，添加对应的 kext，或者在 config.plist 中禁用相关的 kext。下载 kext 可以看看 黑苹果星球整理的月度 kext 更新包。除此之外还有 XXX.efi is missing 之类的也是同类型错误，只是 XXX.efi 文件一般位于 /EFI/OC/Drivers/ 目录下。
+上面的代码中，XXXX.kext 可能是任何值，例如 VirtualSMC.kext，CPUFriend.kext，AppleALC.kext 等等，但是问题的原因是一样的：在 /EFI/OC/Kexts/ 目录下没有对应的 kext 文件。解决方法也很简单，添加对应的 kext，或者在 config.plist 中禁用相关的 kext。下载 kext 可以看看 黑果星球整理的月度 kext 更新包。除此之外还有 XXX.efi is missing 之类的也是同类型错误，只是 XXX.efi 文件一般位于 /EFI/OC/Drivers/ 目录下。
 
 ### QA-30 启动时显示 ++++++++++++++++++++ End RandomSeed
 
@@ -926,13 +926,13 @@ dependency: com.apple.iokit.IOPCIFamily(2.9)[ xxxx....
 接下来有两种选择：
 
 - 第一种是把 U 盘插到纯 2.0 接口（外观上一般为黑色 4 针）；
-- 第二种是先在 Windows 对 USB 接口进行定制，具体原因和方法见「黑苹果 Windows 定制 USB」，完成后使用定制好的 USB 文件再尝试安装；
+- 第二种是先在 Windows 对 USB 接口进行定制，具体原因和方法见「黑果 Windows 定制 USB」，完成后使用定制好的 USB 文件再尝试安装；
 
 ### QA-72 安装 macOS Big Sur 11.3 及以上版本时，跑完进度条后见到妙控板/妙控鼠标配对界面
 
 此问题的源头来自 macOS 系统本身。苹果自 macOS Big Sur 11.3 开始修改了 USB 映射方式，导致 OpenCore 依赖的 Quirks 特性 XhciLimitPort 失效（Clover 自 r5123 开始完全是 OC 内核，因此同理）。截止 OpenCore 0.8.6 开发版，Acidanthera 团队仍未修复，估计也不太可能修复了。
 
-简单来说，就是此时 macOS 没有找到任何键盘/鼠标/妙控板等操控设备，它以为自己运行在白苹果电脑上，于是提示用户打开秒控鼠标/妙控板的开关。至于没有检测到的原因就说来话长了，具体可参考「黑苹果 Windows 定制 USB」的前言部分。
+简单来说，就是此时 macOS 没有找到任何键盘/鼠标/妙控板等操控设备，它以为自己运行在白苹果电脑上，于是提示用户打开秒控鼠标/妙控板的开关。至于没有检测到的原因就说来话长了，具体可参考「黑果 Windows 定制 USB」的前言部分。
 
 ### QA-73 启动时显示 ifnet_attach: All kernel threads created for interface en0
 
@@ -948,7 +948,7 @@ IOKit Daemon (kernelmanagerd) stall[0], (240s): 'PXSX'
 
 ### QA-74 关于 macOS 12.0 Monterey 的无线和蓝牙驱动
 
-macOS Monterey 12.0 大幅修改了蓝牙和无线网卡的驱动框架，一是因为抛弃了 2015 年以前推出的机型支持，二是为通用控制做准备。虽然黑苹果老卡可以通过第三方驱动得到支持，但是在设置上和以往有一些区别。简单来说就是以下几点：
+macOS Monterey 12.0 大幅修改了蓝牙和无线网卡的驱动框架，一是因为抛弃了 2015 年以前推出的机型支持，二是为通用控制做准备。虽然黑果老卡可以通过第三方驱动得到支持，但是在设置上和以往有一些区别。简单来说就是以下几点：
 
 - 除免驱卡外（例如奋威 T919 或其它型号较新的苹果原装拆机卡），必须使用新驱动 BlueToolFixup.kext；
 - 蓝牙驱动 BrcmPatchRAM 中的注入器（BrcmBluetoothInjector.kext），不能在 12.0 中启用，会卡住。可以删除或不启用，如果你有切换多个版本系统的需求，OpenCore 还可设置 MaxKernel 值 20.99.99 ，Clover 则需要建立不同版本号的 Kext 目录下的文件夹；
@@ -1024,7 +1024,7 @@ macOS Monterey 12.0 大幅修改了蓝牙和无线网卡的驱动框架，一是
 
 **第一部分主题失效：**
 
-是因为开发团队大刀阔斧修改了主题服务文件，需要搭配新的主题文件才能开启图形界面，可以从官方下载也可以下载黑苹果星球打包好的文件：
+是因为开发团队大刀阔斧修改了主题服务文件，需要搭配新的主题文件才能开启图形界面，可以从官方下载也可以下载黑果星球打包好的文件：
 
 - 下载 OpenCore Package，适用于 0.6.7 及以前版本，提取码：xr61
 - 下载 OpenCore 0.6.8 官方主题文件包，适用于 0.6.8-0.6.9，提取码：azjc
@@ -1795,7 +1795,7 @@ Forcing CS_RUNTIME for entitlement: com.apple.rootless.restricted-block-devices
 
 **解决方法：** 取消以下两项即可
 
-### QA-149 黑苹果引导界面卡：LoadImage failed – Security Violation
+### QA-149 黑果引导界面卡：LoadImage failed – Security Violation
 
 **错误信息示例：**
 ```
@@ -1807,7 +1807,7 @@ OCB: LoadImage failed - Security Violation
 **解决方法：**
 - Misc → Security → SecureBootModel → Disable
 
-### QA-150 黑苹果引导界面卡：VM Swap Subsystem is ON
+### QA-150 黑果引导界面卡：VM Swap Subsystem is ON
 
 **问题说明：** 卡在这个代码，一般会有 2 种情况，一种是卡在这里不动，一种是在这里卡 15～20 秒左右，可以进系统。
 

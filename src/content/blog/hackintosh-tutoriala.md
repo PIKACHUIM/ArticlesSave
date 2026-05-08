@@ -1,8 +1,8 @@
 ---
-title: 黑苹果定制USB教程
+title: 0xA 黑果定制USB 排查问题教程
 description: 使用USBToolBox进行USB端口定制，解决睡眠秒醒、蓝牙失效等问题
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+pubDate: 02 05 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,11 +11,11 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0xA 定制USB 教程
 
-USB 定制是黑苹果安装后必做的一步，否则可能出现睡眠秒醒、蓝牙失效、USB 设备掉线等问题。目前推荐使用 **USBToolBox** 在 Windows 下进行定制。
+USB 定制是黑果安装后必做的一步，否则可能出现睡眠秒醒、蓝牙失效、USB 设备掉线等问题。目前推荐使用 **USBToolBox** 在 Windows 下进行定制。
 
 ### 10.1 准备工作
 1.  下载 [USBToolBox 工具](https://github.com/USBToolBox/tool/releases) (Windows.exe)

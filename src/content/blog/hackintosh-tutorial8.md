@@ -1,8 +1,8 @@
 ---
-title: 黑苹果驱动声卡教程
-description: 黑苹果AppleALC/VoodooHDA声卡驱动方法，解决无声、爆音等问题
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x8 黑果声卡驱动排查问题教程
+description: 黑果AppleALC/VoodooHDA声卡驱动方法，解决无声、爆音等问题
+pubDate: 02 07 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,13 +11,13 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0x8 驱动声卡教程
 
 ### 8.1 AppleALC 声卡驱动 (推荐)
 
-[AppleALC](https://github.com/acidanthera/AppleALC) 是目前最完美的黑苹果声卡驱动方案，它是开源的内核扩展，支持修补原生 AppleHDA，实现原生音频支持。
+[AppleALC](https://github.com/acidanthera/AppleALC) 是目前最完美的黑果声卡驱动方案，它是开源的内核扩展，支持修补原生 AppleHDA，实现原生音频支持。
 
 #### 8.1.1 准备工作
 1.  确保 EFI 中已加载 `Lilu.kext`。

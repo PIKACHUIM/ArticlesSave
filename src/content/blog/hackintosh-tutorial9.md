@@ -1,8 +1,8 @@
 ---
-title: 黑苹果定制SSDT教程
-description: 黑苹果ACPI/SSDT定制完整教程，包含提取、反编译、编辑、安装等步骤
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x9 黑果定制SSDT排查问题教程
+description: 黑果ACPI/SSDT定制完整教程，包含提取、反编译、编辑、安装等步骤
+pubDate: 02 06 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,7 +11,7 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0x9 定制SSDT教程
 
@@ -37,7 +37,7 @@ ACPI的主要功能包括：
 **SSDT**（Secondary System Description Table，次级系统描述表）：
 - 补充DSDT的表格，用于扩展或修改特定硬件功能
 - 一个系统可以有多个SSDT表
-- 在黑苹果中，SSDT主要解决：
+- 在黑果中，SSDT主要解决：
   - CPU电源管理
   - USB端口映射
   - 屏蔽独显

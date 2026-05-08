@@ -1,8 +1,8 @@
 ---
-title: 黑苹果驱动显卡教程
-description: 黑苹果Intel/AMD/Nvidia显卡驱动方法，包含核显注入、独显驱动等
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+title: 0x6 黑果显卡驱动以及排错教程
+description: 黑果Intel/AMD/Nvidia显卡驱动方法，包含核显注入、独显驱动等
+pubDate: 02 09 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,7 +11,7 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
 ## 0x6 驱动显卡教程
 
@@ -64,7 +64,7 @@ badge: Hackintosh
 
 #### 6.1.2 手动注入核显
 
-手动注入核显是黑苹果安装中的重要环节，通过在OpenCore的`config.plist`中配置`DeviceProperties`来驱动Intel核显。以下是详细的配置步骤：
+手动注入核显是黑果安装中的重要环节，通过在OpenCore的`config.plist`中配置`DeviceProperties`来驱动Intel核显。以下是详细的配置步骤：
 
 ##### 1. 准备工作
 
@@ -80,7 +80,7 @@ badge: Hackintosh
 核显的PCI设备路径通常为`PciRoot(0x0)/Pci(0x2,0x0)`，可以通过以下工具获取：
 - 使用`gfxutil`工具：在终端运行`./gfxutil -f IGPU`
 - 使用Hackintool工具查看
-![16321210545547.png](/public/image/systems/hackintosh-tutorials/16321210545547.png)
+![16321210545547.png](/image/systems/hackintosh-tutorials/16321210545547.png)
 
 **1.3 准备必要的Kext驱动**
 
@@ -111,7 +111,7 @@ badge: Hackintosh
 - 转换步骤：去掉`0x`前缀 → `3E9B0007` → 两两倒序 → `0700 9B3E`
 - 最终填写：`0700 9B3E`（在Hackintool中）或`DATA`类型的`BwCbPg==`（Base64编码）
 
-![核显ID转换示例](/public/image/systems/hackintosh-tutorials/QQ20260121-192601.jpg)
+![核显ID转换示例](/image/systems/hackintosh-tutorials/QQ20260121-192601.jpg)
 
 ##### 3. 在config.plist中配置
 
@@ -158,7 +158,7 @@ badge: Hackintosh
 <data>AQAAAA==</data>
 ```
 
-![DeviceProperties配置示例](/public/image/systems/hackintosh-tutorials/QQ20260121-192602.jpg)
+![DeviceProperties配置示例](/image/systems/hackintosh-tutorials/QQ20260121-192602.jpg)
 
 ##### 4. 接口配置（多屏输出）
 
@@ -197,7 +197,7 @@ badge: Hackintosh
 | DVI | 00020000 | AgAAAA== |
 | VGA | 00000002 | AgAAAA== |
 
-![接口配置示例](/public/image/systems/hackintosh-tutorials/QQ20260121-192603.jpg)
+![接口配置示例](/image/systems/hackintosh-tutorials/QQ20260121-192603.jpg)
 
 ##### 5. 使用Hackintool自动生成
 
@@ -226,7 +226,7 @@ badge: Hackintosh
 - **Primary Display**：如果有独显，设置为`iGPU`（仅核显）或`Auto`（双显卡）
 - **iGPU Multi-Monitor**：如果需要核显+独显同时输出，设置为`Enabled`
 
-![BIOS核显设置](/public/image/systems/hackintosh-tutorials/QQ20260121-192605.jpg)
+![BIOS核显设置](/image/systems/hackintosh-tutorials/QQ20260121-192605.jpg)
 
 ##### 7. 验证与调试
 
@@ -296,7 +296,7 @@ badge: Hackintosh
 - [WhateverGreen官方文档](https://github.com/acidanthera/WhateverGreen)
 - [Intel核显ID速查表](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md)
 - [Hackintool工具下载](https://github.com/headkaze/Hackintool)
-- [国光的黑苹果教程](https://apple.sqlsec.com/)
+- [国光的黑果教程](https://apple.sqlsec.com/)
 
 通过以上步骤，你应该能够成功驱动Intel核显。如果遇到问题，建议先检查BIOS设置，然后逐步排查`ig-platform-id`和framebuffer配置。
 
@@ -313,7 +313,7 @@ badge: Hackintosh
   - 支持 macOS 10.15 (Catalina) 到最新版本。
 
 #### AMD 独显
-AMD 显卡在黑苹果中兼容性最好。对于原生不支持的型号，现在也有了解决方案。
+AMD 显卡在黑果中兼容性最好。对于原生不支持的型号，现在也有了解决方案。
 
 1. **原生支持 / WhateverGreen (推荐)**
    适用于大多数免驱卡，使用官方 `WhateverGreen.kext`。
@@ -333,7 +333,7 @@ AMD 显卡在黑苹果中兼容性最好。对于原生不支持的型号，现�
 
 **总结**: 
 - 如果你的卡是 RX 580/5700XT/6600XT/6800XT 等原生卡，请继续使用 **WhateverGreen**。
-- 如果你是 RX 6700XT / 6500XT 等“黑苹果绝缘卡”，请使用 **NootRX**。
+- 如果你是 RX 6700XT / 6500XT 等“黑果绝缘卡”，请使用 **NootRX**。
 - 如果你是 AMD APU 核显用户，请使用 **NootedRed**。
 
 ### Nvidia 驱动独显

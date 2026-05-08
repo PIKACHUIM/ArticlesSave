@@ -1,8 +1,8 @@
 ---
-title: 黑苹果OCLP-MOD补丁教程
+title: 0x5 黑果OCLP-MOD补丁安装教程
 description: 使用OpenCore Legacy Patcher为旧硬件打补丁，驱动旧版网卡和显卡
-pubDate: 01 31 2026
-image: /public/image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
+pubDate: 02 10 2026
+image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh
 tags:
@@ -11,13 +11,13 @@ badge: Hackintosh
 
 ---
 
-> 本文是[《黑苹果安装教程以及下载和常见问题》](/blog/hackintosh-tutorials)的章节拆分文章，点击链接可查看完整教程目录。
+> 本文是[《黑果安装教程以及下载和常见问题》](/blog/hackintosh-tutorial0)的章节拆分文章，点击链接可查看完整教程目录。
 
-## 0x5 黑苹果OCLP-MOD补丁教程
+## 0x5 黑果OCLP-MOD补丁教程
 
 ### 5.1 OCLP-MOD 简介
 OpenCore Legacy Patcher (OCLP) 是一个基于 Python 的开源项目，主要旨在让旧款 Mac 能够运行较新的 macOS 版本。
-在黑苹果（Hackintosh）领域，OCLP 主要用于：
+在黑果（Hackintosh）领域，OCLP 主要用于：
 1. **驱动旧硬件**：如在 macOS Sonoma 中驱动博通 Wi-Fi 网卡。
 2. **图形加速**：为旧款 NVIDIA (Kepler/Maxwell/Pascal) 和 Intel 核显提供补丁支持。
 3. **功能解锁**：解锁 Sidecar、AirPlay 等功能。
