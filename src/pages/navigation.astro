@@ -8,240 +8,625 @@ import { Icon } from "astro-icon/components";
 <BaseLayout title="导航">            
   <MainCard infoIcon="lucide:compass">      
     <div class="space-y-10">      
-      <!-- 开发工具 -->      
+      <!-- 视频影音 -->      
       <section>      
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">      
-          <Icon name="lucide:code" class="w-6 h-6 text-primary" />      
-          <span>开发工具</span>      
+          <Icon name="lucide:video" class="w-6 h-6 text-primary" />      
+          <span>视频影音</span>      
         </h2>      
                 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">      
           <NavigationCard      
-            name="Umami"      
-            avatar="https://img.xiaozhangya.xin/file/Logo/1753850918996_umami.png"      
-            description="网站访问统计分析平台"      
-            url="https://us.umami.is/dashboard"      
-            category="统计分析"  
-            id="DEV001"  
+            name="哔哩哔哩"      
+            avatar="https://www.bilibili.com/favicon.ico"      
+            description="B站弹幕视频网站"      
+            url="https://bilibili.com"      
+            category="视频平台"  
+            id="VID001"  
           />      
-                  
           <NavigationCard      
-            name="Vercel"      
-            avatar="https://img.xiaozhangya.xin/file/Logo/1753851435981_Vercel.png"      
-            description="现代化的前端部署平台"      
-            url="https://vercel.com/login?next=%2Fxz131714s-projects"      
-            category="部署托管"  
-            id="DEV002"  
+            name="YouTube"      
+            avatar="https://www.youtube.com/favicon.ico"      
+            description="全球最大视频平台"      
+            url="https://youtube.com"      
+            category="视频平台"  
+            id="VID002"  
           />      
-                  
           <NavigationCard      
-            name="Iconify"      
-            avatar="https://iconify.design/favicon.ico"      
-            description="海量图标库和图标搜索工具"      
-            url="https://iconify.design/"      
-            category="图标设计"  
-            id="DEV003"  
-          />   
-          
+            name="QQ音乐"      
+            avatar="https://y.qq.com/favicon.ico"      
+            description="腾讯音乐平台"      
+            url="https://y.qq.com"      
+            category="音乐平台"  
+            id="VID003"  
+          />      
           <NavigationCard      
-            name="Iconfont"      
-            avatar= "https://img.xiaozhangya.xin/file/Logo/DEPF9Ovv.png"    
-            description="阿里巴巴图标库"      
-            url="https://www.iconfont.cn/"    
-            category="图标设计"  
-            id="DEV004"  
-          /> 
-    
+            name="网易云音乐"      
+            avatar="https://music.163.com/favicon.ico"      
+            description="网易音乐平台"      
+            url="https://music.163.com"      
+            category="音乐平台"  
+            id="VID004"  
+          />      
           <NavigationCard      
-            name="Shields"      
-            avatar="https://shields.io/img/logo.png"      
-            description="为项目生成各种徽章"      
-            url="https://shields.io/"      
-            category="徽章工具"  
-            id="DEV005"  
-          />  
-          
+            name="Netflix"      
+            avatar="https://www.netflix.com/favicon.ico"      
+            description="网飞全球流媒体"      
+            url="https://www.netflix.com"      
+            category="流媒体"  
+            id="VID005"  
+          />      
           <NavigationCard      
-            name="Clarity"      
-            avatar="https://picbed.xiaozhangya.xin/picbed/20250726225237829.png"      
-            description="微软的用户行为分析工具"      
-            url="https://clarity.microsoft.com/"      
-            category="用户分析"  
-            id="DEV005"  
-          />
+            name="Spotify"      
+            avatar="https://www.spotify.com/favicon.ico"      
+            description="全球音乐流媒体"      
+            url="https://www.spotify.com"      
+            category="音乐平台"  
+            id="VID006"  
+          />      
+          <NavigationCard      
+            name="Twitch"      
+            avatar="https://www.twitch.tv/favicon.ico"      
+            description="全球游戏直播平台"      
+            url="https://www.twitch.tv"      
+            category="直播平台"  
+            id="VID007"  
+          />      
+          <NavigationCard      
+            name="niconico"      
+            avatar="https://www.nicovideo.jp/favicon.ico"      
+            description="日本弹幕视频网站"      
+            url="https://www.nicovideo.jp"      
+            category="视频平台"  
+            id="VID008"  
+          />      
         </div>      
       </section>    
-    
-      <!-- 服务平台 -->    
+
+      <!-- 网盘资源 -->    
       <section>    
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
-          <Icon name="lucide:server" class="w-6 h-6 text-primary" />    
-          <span>服务平台</span>    
+          <Icon name="lucide:cloud" class="w-6 h-6 text-primary" />    
+          <span>网盘资源</span>    
         </h2>    
             
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
           <NavigationCard    
-            name="DigitalPlat"    
-            avatar="https://picbed.xiaozhangya.xin/picbed/20250726172053106.png"    
-            description="免费域名注册"    
-            url="https://dash.domain.digitalplat.org/panel/main"    
-            category="域名管理"  
+            name="百度网盘"    
+            avatar="https://pan.baidu.com/favicon.ico"    
+            description="百度云存储服务"    
+            url="https://pan.baidu.com"    
+            category="网盘"  
+            id="CLD001"  
+          />
+          <NavigationCard    
+            name="阿里云盘"    
+            avatar="https://www.aliyundrive.com/favicon.ico"    
+            description="阿里巴巴云存储"    
+            url="https://www.aliyundrive.com"    
+            category="网盘"  
+            id="CLD002"  
+          />
+          <NavigationCard    
+            name="123网盘"    
+            avatar="https://123pan.com/favicon.ico"    
+            description="123云盘服务"    
+            url="https://123pan.com"    
+            category="网盘"  
+            id="CLD003"  
+          />
+          <NavigationCard    
+            name="夸克云盘"    
+            avatar="https://pan.quark.cn/favicon.ico"    
+            description="夸克云存储服务"    
+            url="https://pan.quark.cn"    
+            category="网盘"  
+            id="CLD004"  
+          />
+          <NavigationCard    
+            name="Google Drive"    
+            avatar="https://drive.google.com/favicon.ico"    
+            description="谷歌云盘"    
+            url="https://drive.google.com"    
+            category="网盘"  
+            id="CLD005"  
+          />
+          <NavigationCard    
+            name="OneDrive"    
+            avatar="https://onedrive.live.com/favicon.ico"    
+            description="微软云盘服务"    
+            url="https://onedrive.live.com"    
+            category="网盘"  
+            id="CLD006"  
+          />
+          <NavigationCard    
+            name="MEGA"    
+            avatar="https://mega.nz/favicon.ico"    
+            description="加密云存储服务"    
+            url="https://mega.nz"    
+            category="网盘"  
+            id="CLD007"  
+          />
+          <NavigationCard    
+            name="皮卡资源中心"    
+            avatar="https://shared.pika.net.cn/favicon.ico"    
+            description="皮卡资源分享中心"    
+            url="https://shared.pika.net.cn/"    
+            category="资源"  
+            id="CLD008"  
+          />
+        </div>    
+      </section>    
+
+      <!-- AI 智能工具 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:bot" class="w-6 h-6 text-primary" />    
+          <span>AI 智能工具</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="ChatGPT"    
+            avatar="https://chatgpt.com/favicon.ico"    
+            description="OpenAI 对话助手"    
+            url="https://chatgpt.com"    
+            category="AI对话"  
+            id="AI001"  
+          />
+          <NavigationCard    
+            name="Claude"    
+            avatar="https://claude.ai/favicon.ico"    
+            description="Anthropic 对话助手"    
+            url="https://claude.ai"    
+            category="AI对话"  
+            id="AI002"  
+          />
+          <NavigationCard    
+            name="Gemini"    
+            avatar="https://gemini.google.com/favicon.ico"    
+            description="谷歌 AI 助手"    
+            url="https://gemini.google.com"    
+            category="AI对话"  
+            id="AI003"  
+          />
+          <NavigationCard    
+            name="DeepSeek"    
+            avatar="https://chat.deepseek.com/favicon.ico"    
+            description="深度求索对话模型"    
+            url="https://chat.deepseek.com"    
+            category="AI对话"  
+            id="AI004"  
+          />
+          <NavigationCard    
+            name="Kimi"    
+            avatar="https://kimi.moonshot.cn/favicon.ico"    
+            description="月之暗面长文本助手"    
+            url="https://kimi.moonshot.cn"    
+            category="AI对话"  
+            id="AI005"  
+          />
+          <NavigationCard    
+            name="Perplexity"    
+            avatar="https://www.perplexity.ai/favicon.ico"    
+            description="AI 搜索引擎"    
+            url="https://www.perplexity.ai"    
+            category="AI搜索"  
+            id="AI006"  
+          />
+          <NavigationCard    
+            name="Midjourney"    
+            avatar="https://www.midjourney.com/favicon.ico"    
+            description="AI 艺术图像生成"    
+            url="https://www.midjourney.com"    
+            category="AI绘画"  
+            id="AI007"  
+          />
+          <NavigationCard    
+            name="Suno"    
+            avatar="https://suno.com/favicon.ico"    
+            description="AI 音乐生成平台"    
+            url="https://suno.com"    
+            category="AI音乐"  
+            id="AI008"  
+          />
+          <NavigationCard    
+            name="Hugging Face"    
+            avatar="https://huggingface.co/favicon.ico"    
+            description="AI 模型开源社区"    
+            url="https://huggingface.co"    
+            category="AI社区"  
+            id="AI009"  
+          />
+        </div>    
+      </section>    
+
+      <!-- 云服务器 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:server" class="w-6 h-6 text-primary" />    
+          <span>云服务器</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="腾讯云"    
+            avatar="https://cloud.tencent.com/favicon.ico"    
+            description="腾讯云计算服务"    
+            url="https://cloud.tencent.com"    
+            category="云服务"  
             id="SRV001"  
           />
-
+          <NavigationCard    
+            name="阿里云"    
+            avatar="https://aliyun.com/favicon.ico"    
+            description="阿里云计算服务"    
+            url="https://aliyun.com"    
+            category="云服务"  
+            id="SRV002"  
+          />
+          <NavigationCard    
+            name="华为云"    
+            avatar="https://huaweicloud.com/favicon.ico"    
+            description="华为云计算服务"    
+            url="https://huaweicloud.com"    
+            category="云服务"  
+            id="SRV003"  
+          />
           <NavigationCard    
             name="Cloudflare"    
             avatar="https://www.cloudflare.com/favicon.ico"    
             description="全球领先的CDN和安全服务"    
-            url="https://dash.cloudflare.com/login"    
-            category="域名托管服务"  
-            id="SRV002"
+            url="https://dash.cloudflare.com"    
+            category="CDN服务"  
+            id="SRV004"  
           />
-
           <NavigationCard    
-            name="EdgeOne"
-            avatar="https://img.xiaozhangya.xin/file/Logo/cRfyZZ2A.png"
-            description="国内CDN和边缘计算服务"
-            url="https://console.edgeone.cn/login"
-            category="CDN服务"
-            id="SRV003"    
-          />
-
-          <NavigationCard    
-            name="Spaceship"    
-            avatar="https://img.xiaozhangya.xin/file/Logo/1753850924810_Spaceship.png"    
-            description="A domain odyssey"  
-            url="https://www.spaceship.com/"
-            category="域名售卖"  
-            id="SRV004"           
-           />
-
-          <NavigationCard    
-            name="Waline"    
-            avatar="https://waline.js.org/favicon.ico"    
-            description="简洁、安全的评论系统"    
-            url="https://waline.js.org/"    
-            category="评论服务"  
+            name="Akile"    
+            avatar="https://akile.io/favicon.ico"    
+            description="Akile云服务器"    
+            url="https://akile.io"    
+            category="云服务"  
             id="SRV005"  
           />
-          
           <NavigationCard    
-            name="Giscus"    
-            avatar="https://avatars.githubusercontent.com/ml/9968?s=82&v=4"    
-            description="GitHub Discussions 评论系统"  
-            url="https://giscus.app/zh-CN"
-            category="评论服务"  
-            id="SRV006"           
-           /> 
-           <NavigationCard    
-            name="Akismet"    
-            avatar="https://img.xiaozhangya.xin/file/Logo/opkjgCvb.svg"    
-            description="保持评论区干净整洁的小助手"  
-            url="https://akismet.com/"  
-            category="评论服务"  
-            id="SRV007"    
-          />
-
-
-          <NavigationCard    
-            name="GitHub"    
-            avatar="https://github.githubassets.com/favicons/favicon.svg"    
-            description="全球最大的开源社区"    
-            url="https://github.com"    
-            category="代码托管"   
-            id="SRV008"
-          />
-
-          <NavigationCard    
-            name="InfinityFree"    
-            avatar="https://img.xiaozhangya.xin/file/Logo/1754280946361_InfinityFree.png"    
-            description="免费托管WordPress和其他网站"    
-            url="https://www.infinityfree.com"    
-            category="免费主机"  
-            id="SRV009"
+            name="野草云"    
+            avatar="https://www.yecaoyun.com/favicon.ico"    
+            description="野草云服务器"    
+            url="https://www.yecaoyun.com/"    
+            category="云服务"  
+            id="SRV006"  
           />
         </div>    
       </section>    
-    
-      <!-- 娱乐资源 -->    
+
+      <!-- 论坛社区 -->    
       <section>    
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
-          <Icon name="lucide:image" class="w-6 h-6 text-primary" />    
-          <span>娱乐资源</span>    
+          <Icon name="lucide:messages-square" class="w-6 h-6 text-primary" />    
+          <span>论坛社区</span>    
         </h2>    
             
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
           <NavigationCard    
-            name="Wallhaven"    
-            avatar="https://picbed.xiaozhangya.xin/picbed/20250726182418838.png"    
-            description="高质量壁纸分享社区"    
-            url="https://wallhaven.cc/"    
-            category="壁纸资源"  
-            id="ENT001"  
-          /> 
+            name="NodeSeek"    
+            avatar="https://www.nodeseek.com/favicon.ico"    
+            description="技术社区论坛"    
+            url="https://www.nodeseek.com"    
+            category="技术社区"  
+            id="COM001"  
+          />
           <NavigationCard    
-            name="网盘资源社"    
-            avatar="https://img.xiaozhangya.xin/file/Logo/RwkDhIdV.png"    
-            description="网盘资源分享平台"    
-            url="https://www.wpzysq.com/"    
-            category="网盘资源"  
-            id="ENT002"  
-          /> 
-          
-          
-              
+            name="LinuxDo"    
+            avatar="https://linux.do/favicon.ico"    
+            description="Linux技术社区"    
+            url="https://linux.do"    
+            category="技术社区"  
+            id="COM002"  
+          />
           <NavigationCard    
-            name="宝可梦节点"    
-            avatar="https://52pokemon.huxx.top/favicon.ico"    
-            description="网络代理服务"    
-            url="https://52pokemon.huxx.top/login"    
-            category="代理服务"  
-            id="ENT003"  
-          />    
+            name="V2EX"    
+            avatar="https://v2ex.com/favicon.ico"    
+            description="创意工作者社区"    
+            url="https://v2ex.com"    
+            category="技术社区"  
+            id="COM003"  
+          />
+          <NavigationCard    
+            name="Reddit"    
+            avatar="https://reddit.com/favicon.ico"    
+            description="全球社区论坛"    
+            url="https://reddit.com"    
+            category="综合社区"  
+            id="COM004"  
+          />
+          <NavigationCard    
+            name="知乎"    
+            avatar="https://www.zhihu.com/favicon.ico"    
+            description="中文问答社区"    
+            url="https://www.zhihu.com"    
+            category="问答社区"  
+            id="COM005"  
+          />
+          <NavigationCard    
+            name="Hacker News"    
+            avatar="https://news.ycombinator.com/favicon.ico"    
+            description="国外高质量技术社区"    
+            url="https://news.ycombinator.com"    
+            category="技术社区"  
+            id="COM006"  
+          />
+          <NavigationCard    
+            name="Stack Overflow"    
+            avatar="https://stackoverflow.com/favicon.ico"    
+            description="程序员问答社区"    
+            url="https://stackoverflow.com"    
+            category="技术问答"  
+            id="COM007"  
+          />
+          <NavigationCard    
+            name="Discord"    
+            avatar="https://discord.com/favicon.ico"    
+            description="国外社区语音平台"    
+            url="https://discord.com"    
+            category="社交平台"  
+            id="COM008"  
+          />
         </div>    
-      </section>
-      
-      <!-- Useful Resources Section -->  
-      <section>  
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">  
-          <Icon name="lucide:bookmark" class="w-6 h-6 text-primary" />  
-          <span>Useful Resources</span>  
-        </h2>  
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">  
-          <NavigationCard  
-            name="Astro"  
-            avatar="https://img.xiaozhangya.xin/file/Logo/HXADhsBn.png"  
-            description="Astro是一个现代化的静态网站生成器，专注于性能和开发者体验。"  
-            url="https://docs.astro.build"  
+      </section>    
+
+      <!-- 开发工具 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:code" class="w-6 h-6 text-primary" />    
+          <span>开发工具</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="GitHub"    
+            avatar="https://github.githubassets.com/favicons/favicon.svg"    
+            description="全球代码托管平台"    
+            url="https://github.com"    
+            category="代码托管"  
+            id="DEV001"  
+          />
+          <NavigationCard    
+            name="GitLab"    
+            avatar="https://gitlab.com/favicon.ico"    
+            description="一体化 DevOps 平台"    
+            url="https://gitlab.com"    
+            category="代码托管"  
+            id="DEV002"  
+          />
+          <NavigationCard    
+            name="MDN Web Docs"    
+            avatar="https://developer.mozilla.org/favicon.ico"    
+            description="Web 技术权威文档"    
+            url="https://developer.mozilla.org"    
             category="文档"  
-            id="RES001"  
-          />  
-          <NavigationCard  
-            name="Tailwind"  
-            avatar="https://img.xiaozhangya.xin/file/Logo/mrp0EiyB.png"  
-            description="Tailwind CSS是一个功能类优先的CSS框架，提供了实用的样式类。"  
-            url="https://tailwindcss.com/docs"  
+            id="DEV003"  
+          />
+          <NavigationCard    
+            name="Docker Hub"    
+            avatar="https://hub.docker.com/favicon.ico"    
+            description="容器镜像仓库"    
+            url="https://hub.docker.com"    
+            category="容器"  
+            id="DEV004"  
+          />
+          <NavigationCard    
+            name="npm"    
+            avatar="https://www.npmjs.com/favicon.ico"    
+            description="Node.js 包管理器"    
+            url="https://www.npmjs.com"    
+            category="包管理"  
+            id="DEV005"  
+          />
+          <NavigationCard    
+            name="Regex101"    
+            avatar="https://regex101.com/favicon.ico"    
+            description="正则表达式测试器"    
+            url="https://regex101.com"    
+            category="工具"  
+            id="DEV006"  
+          />
+          <NavigationCard    
+            name="Postman"    
+            avatar="https://www.postman.com/favicon.ico"    
+            description="API 测试与开发"    
+            url="https://www.postman.com"    
+            category="API工具"  
+            id="DEV007"  
+          />
+          <NavigationCard    
+            name="DevDocs"    
+            avatar="https://devdocs.io/favicon.ico"    
+            description="各种语言文档聚合"    
+            url="https://devdocs.io"    
             category="文档"  
-            id="RES002"  
-          />  
-          <NavigationCard  
-            name="DaisyUI"  
-            avatar="https://img.xiaozhangya.xin/file/Logo/WEl6nL3H.svg"  
-            description="DaisyUI是一个基于Tailwind CSS的组件库，提供了丰富的UI组件。"  
-            url="https://daisyui.com/components/"  
-            category="UI 框架"  
-            id="RES003"  
-          />  
-          <NavigationCard  
-            name="TypeScript"  
-            avatar="https://img.xiaozhangya.xin/file/Logo/FL3XpMDh.png"  
-            description="TypeScript是JavaScript的超集，添加了静态类型和其他功能。"  
-            url="https://www.typescriptlang.org/docs/handbook/intro.html"  
-            category="文档"  
-            id="RES004"  
-          />  
-        </div>  
-      </section>
+            id="DEV008"  
+          />
+        </div>    
+      </section>    
+
+      <!-- 设计创意 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:palette" class="w-6 h-6 text-primary" />    
+          <span>设计创意</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="Figma"    
+            avatar="https://www.figma.com/favicon.ico"    
+            description="协作式 UI 设计平台"    
+            url="https://www.figma.com"    
+            category="设计工具"  
+            id="DES001"  
+          />
+          <NavigationCard    
+            name="Canva"    
+            avatar="https://www.canva.cn/favicon.ico"    
+            description="在线平面设计工具"    
+            url="https://www.canva.cn"    
+            category="设计工具"  
+            id="DES002"  
+          />
+          <NavigationCard    
+            name="Dribbble"    
+            avatar="https://dribbble.com/favicon.ico"    
+            description="设计师作品展示平台"    
+            url="https://dribbble.com"    
+            category="设计社区"  
+            id="DES003"  
+          />
+          <NavigationCard    
+            name="Unsplash"    
+            avatar="https://unsplash.com/favicon.ico"    
+            description="免费高清图片素材"    
+            url="https://unsplash.com"    
+            category="图片素材"  
+            id="DES004"  
+          />
+          <NavigationCard    
+            name="iconfont"    
+            avatar="https://iconfont.cn/favicon.ico"    
+            description="阿里矢量图标库"    
+            url="https://iconfont.cn"    
+            category="图标库"  
+            id="DES005"  
+          />
+          <NavigationCard    
+            name="Coolors"    
+            avatar="https://coolors.co/favicon.ico"    
+            description="配色方案生成器"    
+            url="https://coolors.co"    
+            category="配色工具"  
+            id="DES006"  
+          />
+        </div>    
+      </section>    
+
+      <!-- 实用工具 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:wrench" class="w-6 h-6 text-primary" />    
+          <span>实用工具</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="DeepL"    
+            avatar="https://www.deepl.com/favicon.ico"    
+            description="高质量 AI 翻译"    
+            url="https://www.deepl.com"    
+            category="翻译"  
+            id="UTL001"  
+          />
+          <NavigationCard    
+            name="TinyPNG"    
+            avatar="https://tinypng.com/favicon.ico"    
+            description="图片无损压缩"    
+            url="https://tinypng.com"    
+            category="图片工具"  
+            id="UTL002"  
+          />
+          <NavigationCard    
+            name="iLovePDF"    
+            avatar="https://www.ilovepdf.com/favicon.ico"    
+            description="PDF 在线处理套件"    
+            url="https://www.ilovepdf.com"    
+            category="PDF工具"  
+            id="UTL003"  
+          />
+          <NavigationCard    
+            name="Speedtest"    
+            avatar="https://www.speedtest.net/favicon.ico"    
+            description="网络速度测试"    
+            url="https://www.speedtest.net"    
+            category="网络工具"  
+            id="UTL004"  
+          />
+          <NavigationCard    
+            name="JSON 解析"    
+            avatar="https://www.json.cn/favicon.ico"    
+            description="JSON 格式化与校验"    
+            url="https://www.json.cn"    
+            category="开发工具"  
+            id="UTL005"  
+          />
+          <NavigationCard    
+            name="互联网档案馆"    
+            avatar="https://archive.org/favicon.ico"    
+            description="网页历史快照"    
+            url="https://archive.org"    
+            category="存档"  
+            id="UTL006"  
+          />
+        </div>    
+      </section>    
+
+      <!-- 学习文档 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:book-open" class="w-6 h-6 text-primary" />    
+          <span>学习文档</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="菜鸟教程"    
+            avatar="https://www.runoob.com/favicon.ico"    
+            description="编程语言在线教程"    
+            url="https://www.runoob.com"    
+            category="教程"  
+            id="EDU001"  
+          />
+          <NavigationCard    
+            name="力扣 LeetCode"    
+            avatar="https://leetcode.cn/favicon.ico"    
+            description="算法题库平台"    
+            url="https://leetcode.cn"    
+            category="算法"  
+            id="EDU002"  
+          />
+          <NavigationCard    
+            name="Coursera"    
+            avatar="https://www.coursera.org/favicon.ico"    
+            description="全球在线课程平台"    
+            url="https://www.coursera.org"    
+            category="在线课程"  
+            id="EDU003"  
+          />
+          <NavigationCard    
+            name="维基百科"    
+            avatar="https://zh.wikipedia.org/favicon.ico"    
+            description="自由的百科全书"    
+            url="https://zh.wikipedia.org"    
+            category="百科"  
+            id="EDU004"  
+          />
+          <NavigationCard    
+            name="Google Scholar"    
+            avatar="https://scholar.google.com/favicon.ico"    
+            description="学术文献搜索"    
+            url="https://scholar.google.com"    
+            category="学术"  
+            id="EDU005"  
+          />
+          <NavigationCard    
+            name="W3Schools"    
+            avatar="https://www.w3schools.com/favicon.ico"    
+            description="Web 技术教程"    
+            url="https://www.w3schools.com"    
+            category="教程"  
+            id="EDU006"  
+          />
+        </div>    
+      </section>    
+
       <div class="divider my-8">
         <Icon name="lucide:heart" class="w-10 h-10 text-primary" />
       </div>
