@@ -1,5 +1,5 @@
 ---
-title: 0xB 虚拟机安装黑果教程
+title: 0xB 虚拟机黑果安装教程（汇总）
 description: VMware/PVE/ESXi虚拟机安装macOS黑果完整教程
 pubDate: 02 04 2026
 image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg

@@ -1,7 +1,7 @@
 ---
 title: 0xB-1 虚拟机黑果教程(VMware)
 description: 使用 VMware Pro 17 在 Windows 上安装 macOS 15 黑果完整教程
-pubDate: 02 04 2026
+pubDate: 02 05 2026
 image: /image/systems/hackintosh-tutorials/QQ20260121-164021.jpg
 categories:
   - Hackintosh

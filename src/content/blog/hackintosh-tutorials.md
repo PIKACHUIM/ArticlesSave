@@ -56,12 +56,12 @@ graph TD
 | 0x7 | [驱动网卡蓝牙](/blog/hackintosh-tutorial7) | 博通/Intel网卡蓝牙驱动方法 |
 | 0x8 | [驱动声卡教程](/blog/hackintosh-tutorial8) | AppleALC/VoodooHDA声卡驱动 |
 | 0x9 | [定制SSDT教程](/blog/hackintosh-tutorial9) | ACPI/SSDT定制完整教程 |
-| 0xA | [定制USB教程](/blog/hackintosh-tutorial10) | USBToolBox USB端口定制 |
+| 0xA | [定制USB教程](/blog/hackintosh-tutoriala) | USBToolBox USB端口定制 |
 | 0xB | [虚拟机黑果](/blog/hackintosh-tutorialb) | VMware/PVE/ESXi虚拟机安装（[VMware](/blog/hackintosh-tutorialb1) / [PVE](/blog/hackintosh-tutorialb2) / [ESXi](/blog/hackintosh-tutorialb3)） |
-| 0xC | [实用优化教程](/blog/hackintosh-tutorial12) | 性能监控、HiDPI等优化技巧 |
-| 0xD | [主题与启动项](/blog/hackintosh-tutorial13) | OpenCanopy主题、启动项管理 |
-| 0xE | [OC配置详情单](/blog/hackintosh-tutorial14) | OpenCore配置详细说明 |
-| 0xF | [安装常见问题](/blog/hackintosh-tutorial15) | 150+个常见问题解答 |
+| 0xC | [实用优化教程](/blog/hackintosh-tutorialc) | 性能监控、HiDPI等优化技巧 |
+| 0xD | [主题与启动项](/blog/hackintosh-tutoriald) | OpenCanopy主题、启动项管理 |
+| 0xE | [OC配置详情单](/blog/hackintosh-tutoriale) | OpenCore配置详细说明 |
+| 0xF | [安装常见问题](/blog/hackintosh-tutorialf) | 150+个常见问题解答 |
 
 
 ## 教程引用参考链接

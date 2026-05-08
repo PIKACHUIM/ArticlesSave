@@ -1,7 +1,7 @@
 ---
 title: 0xB-2 虚拟机黑果教程(PVE7-9)
 description: PVE 虚拟化黑果显卡直通及远程访问完整教程
-pubDate: 02 04 2026
+pubDate: 02 05 2026
 image: /image/systems/hackintosh-tutorials/pve_hackintosh-logo.png
 categories:
   - Hackintosh

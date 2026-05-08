@@ -1,7 +1,7 @@
 ---
 title: 0xB-3 虚拟机黑果教程(ESXi7+)
 description: VMware ESXi 8.0 虚拟机安装 macOS 黑果完整教程，含显卡直通与 OpenCore 引导
-pubDate: 02 04 2026
+pubDate: 02 05 2026
 image: /image/systems/hackintosh-tutorials/esxi_1740141109--1080.webp
 categories:
   - Hackintosh
